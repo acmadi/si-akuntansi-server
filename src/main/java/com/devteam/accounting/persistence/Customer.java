@@ -1,8 +1,9 @@
 package com.devteam.accounting.persistence;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Customer {
+public class Customer implements Serializable {
 
     private Long id;
     private Timestamp version;
