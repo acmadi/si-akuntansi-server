@@ -8,17 +8,78 @@
     <name>accounting Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-    <dependencies>
+    <developers>
+        <developer>
+            <id>koko</id>
+            <name>Pancara Kusuma Wijonarko</name>
+            <email>pancara.k.wijonarko@gmail.com</email>
+            <organization></organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+7</timezone>
+        </developer>
+    </developers>
 
+    <properties>
+        <spring.version>3.2.3.RELEASE</spring.version>
+        <hibernate.version>4.2.8.Final</hibernate.version>
+        <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
+    </properties>
+
+    <build>
+        <finalName>accounting</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
             <version>1.8.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-collections</groupId>
+                    <artifactId>commons-collections</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>velocity-tools</groupId>
+            <artifactId>velocity-tools-view</artifactId>
+            <version>1.4</version>
         </dependency>
 
         <dependency>
@@ -27,6 +88,12 @@
             <version>2.0.1</version>
             <scope>compile</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <dependency>
@@ -56,7 +123,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.2.8.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
@@ -66,10 +133,16 @@
         </dependency>
 
         <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.0.4</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
         </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>c3p0</groupId>-->
+        <!--<artifactId>c3p0</artifactId>-->
+        <!--<version>0.9.0.4</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -128,7 +201,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -147,9 +220,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>accounting</finalName>
-    </build>
     <repositories>
         <repository>
             <id>jboss-releases</id>

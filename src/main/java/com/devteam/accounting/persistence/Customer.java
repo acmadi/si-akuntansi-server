@@ -1,12 +1,23 @@
 package com.devteam.accounting.persistence;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "customer")
 public class Customer implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private Long id;
-    private Timestamp version;
+
+    @Version
+    @Column(name = "version")
+    private Long version;
+
+    @Column(name = "name")
     private String name;
 
     public Customer() {
@@ -20,11 +31,11 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public Timestamp getVersion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setVersion(Timestamp version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
