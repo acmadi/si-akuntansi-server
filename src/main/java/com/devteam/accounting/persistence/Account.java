@@ -1,11 +1,14 @@
 package com.devteam.accounting.persistence;
 
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "account")
+@Audited
 @SequenceGenerator(name = "account_seq", sequenceName = "account_seq", allocationSize = 1)
 public class Account implements Serializable {
     @Id

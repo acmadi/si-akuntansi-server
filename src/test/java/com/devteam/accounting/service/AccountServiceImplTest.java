@@ -39,11 +39,9 @@ public class AccountServiceImplTest {
         dto.setCode("ACC-0001xxx ");
         accountService.save(dto);
 
-        for (int i = 1; i <= 10; i++) {
-            AccountDto acc = accountService.findById(dto.getId());
-            acc.setCode("KODE " + i);
-            accountService.update(acc);
-        }
+        AccountDto acc = accountService.findById(dto.getId());
+        acc.setCode("KODE ");
+        accountService.update(acc);
     }
 
     @Test

@@ -1,11 +1,14 @@
 package com.devteam.accounting.persistence;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "customer")
+@Audited
 public class Customer implements Serializable {
 
     @Id
