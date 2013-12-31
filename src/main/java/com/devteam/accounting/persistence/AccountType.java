@@ -7,13 +7,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "account")
+@Table(name = "account_type")
 @Audited
-@SequenceGenerator(name = "account_seq", sequenceName = "account_seq", allocationSize = 1)
-public class Account implements Serializable {
+@SequenceGenerator(name = "account_type_seq", sequenceName = "account_type_seq", allocationSize = 1)
+public class AccountType implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_type_seq")
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
@@ -28,19 +28,8 @@ public class Account implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "acc_type")
-    private AccountType type;
 
-    @ManyToOne()
-    @JoinColumn(name = "parent")
-    private Account parent;
-
-    @Column(name = "description")
-    private String description;
-
-
-    public Account() {
+    public AccountType() {
     }
 
     public Long getId() {
@@ -73,30 +62,6 @@ public class Account implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public AccountType getType() {
-        return type;
-    }
-
-    public void setType(AccountType type) {
-        this.type = type;
-    }
-
-    public Account getParent() {
-        return parent;
-    }
-
-    public void setParent(Account parent) {
-        this.parent = parent;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override

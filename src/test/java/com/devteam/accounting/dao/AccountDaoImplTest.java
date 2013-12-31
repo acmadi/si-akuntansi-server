@@ -1,7 +1,6 @@
 package com.devteam.accounting.dao;
 
 import com.devteam.accounting.persistence.Account;
-import com.devteam.accounting.spring.PersistenceConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Time: 9:29 AM
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class AccountDaoImplTest {
     @Autowired
     private AccountDao accountDao;

@@ -22,7 +22,8 @@
     </developers>
 
     <properties>
-        <spring.version>3.2.3.RELEASE</spring.version>
+        <spring.version>3.2.6.RELEASE</spring.version>
+        <springSecurity.version>3.2.0.RELEASE</springSecurity.version>
         <hibernate.version>4.2.8.Final</hibernate.version>
         <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
     </properties>
@@ -41,6 +42,17 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springSecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springSecurity.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -124,18 +136,30 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-envers</artifactId>
             <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.logging</groupId>
+                    <artifactId>jboss-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.18.0-GA</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.javassist</groupId>-->
+        <!--<artifactId>javassist</artifactId>-->
+        <!--<version>3.18.0-GA</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.apache.tomcat</groupId>
@@ -215,6 +239,12 @@
             <artifactId>json-path</artifactId>
             <version>0.8.1</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-lang</groupId>
+                    <artifactId>commons-lang</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -222,6 +252,12 @@
             <artifactId>json-path-assert</artifactId>
             <version>0.8.1</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hamcrest-core</artifactId>
+                    <groupId>org.hamcrest</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

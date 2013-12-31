@@ -56,9 +56,14 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     @Override
     public List<T> findAlls() {
         String queryString = String.format("FROM %s", getPersistentClass().getCanonicalName());
-        System.out.println(queryString);
         Query query = getCurrentSession().createQuery(queryString);
         return query.list();
+    }
+
+    @Override
+    public void removeById(Long id) {
+        T entity = (T) getCurrentSession().load(getPersistentClass(), id);
+        getCurrentSession().delete(entity);
     }
 
 }

@@ -62,4 +62,10 @@ public class AccountServiceImpl implements AccountService {
         List<Account> accounts = accountDao.findAlls();
         return mappingUtil.mapList(accounts, AccountDto.class);
     }
+
+    @Override
+    @Transactional(readOnly = false)
+    public void deleteById(Long id) {
+        accountDao.removeById(id);
+    }
 }

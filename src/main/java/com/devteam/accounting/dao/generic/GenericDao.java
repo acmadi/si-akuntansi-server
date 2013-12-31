@@ -21,4 +21,6 @@ public interface GenericDao<T, TId extends Serializable> {
     void update(T entity);
 
     List<T> findAlls();
+
+    void removeById(Long id);
 }

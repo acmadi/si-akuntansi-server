@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 /**
@@ -20,7 +21,7 @@ import static junit.framework.TestCase.assertNotNull;
  * Time: 9:46 AM
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/spring/beans.xml"})
+@ContextConfiguration(locations = {"/spring/beans-test.xml"})
 
 public class AccountServiceImplTest {
 
@@ -29,26 +30,43 @@ public class AccountServiceImplTest {
 
     @Test
     public void findById() {
-        AccountDto acc = accountService.findById(10L);
-        assertNotNull(acc);
+        AccountDto dto = new AccountDto();
+        dto.setCode("P-001 ");
+        accountService.save(dto);
+
+        AccountDto acc = accountService.findById(dto.getId());
+        assertEquals(dto.getCode(), acc.getCode());
     }
 
     @Test
     public void update() {
-        AccountDto dto = new AccountDto();
-        dto.setCode("ACC-0001xxx ");
-        accountService.save(dto);
 
-        AccountDto acc = accountService.findById(dto.getId());
-        acc.setCode("KODE ");
+        AccountDto acc = accountService.findById(1L);
+        acc.setCode("P 0001");
         accountService.update(acc);
     }
 
     @Test
     public void testSave() throws Exception {
-        AccountDto dto = new AccountDto();
-        dto.setCode("ACC-0001xxx");
-        accountService.save(dto);
+        AccountDto parent = new AccountDto();
+        parent.setCode("P001");
+        parent.setName("Parent 1");
+        parent.setDescription("Parent 1 of child 1");
+        parent.setParent(null);
+        accountService.save(parent);
+
+        AccountDto child = new AccountDto();
+        child.setCode("C001");
+        child.setName("Child 001");
+        child.setDescription("first child");
+        child.setParent(parent);
+        accountService.save(child);
+    }
+
+
+    @Test
+    public void testDeleteById() {
+        accountService.deleteById(4L);
     }
 
     @Test

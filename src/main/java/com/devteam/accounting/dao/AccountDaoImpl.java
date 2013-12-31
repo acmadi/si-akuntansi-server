@@ -25,7 +25,7 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
 
     @Override
     public List<Account> findByCode(String code) {
-        Query query = getCurrentSession().createQuery("FROM Account WHERE code LIKE :code");
+        Query query = getCurrentSession().createQuery("FROM Account a WHERE a.code LIKE :code");
         query.setParameter("code", code);
         return query.list();
     }

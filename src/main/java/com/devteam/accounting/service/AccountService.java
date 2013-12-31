@@ -22,4 +22,6 @@ public interface AccountService {
     List<AccountDto> findByCode(String code);
 
     List<AccountDto> findAlls();
+
+    void deleteById(Long id);
 }

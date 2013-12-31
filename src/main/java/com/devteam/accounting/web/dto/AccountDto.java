@@ -7,6 +7,9 @@ public class AccountDto implements Serializable {
     private Long id;
     private Long version;
     private String code;
+    private String name;
+    private String description;
+    private AccountDto parent;
 
     public AccountDto() {
     }
@@ -33,5 +36,29 @@ public class AccountDto implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public AccountDto getParent() {
+        return parent;
+    }
+
+    public void setParent(AccountDto parent) {
+        this.parent = parent;
     }
 }
