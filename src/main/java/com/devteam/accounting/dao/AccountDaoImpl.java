@@ -29,4 +29,5 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
         query.setParameter("code", code);
         return query.list();
     }
+
 }

@@ -2,8 +2,8 @@ package com.devteam.accounting.service;
 
 import com.devteam.accounting.dao.AccountDao;
 import com.devteam.accounting.persistence.Account;
-import com.devteam.accounting.util.MappingUtil;
-import com.devteam.accounting.web.dto.AccountDto;
+import com.devteam.accounting.mapping.MappingUtil;
+import com.devteam.accounting.service.dto.AccountDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -44,8 +44,6 @@ public class AccountServiceImpl implements AccountService {
     @Transactional(readOnly = true)
     public AccountDto findById(Long id) {
         Account acc = accountDao.findById(id);
-        System.out.println(acc);
-
         return (acc == null) ? null : mappingUtil.map(acc, AccountDto.class);
     }
 

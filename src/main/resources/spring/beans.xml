@@ -31,8 +31,8 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="org.hibernate.envers.auditTablePrefix"></prop>
-                <prop key="org.hibernate.envers.auditTableSuffix">_AUDIT</prop>
+                <prop key="org.hibernate.envers.auditTablePrefix">AUD_</prop>
+                <prop key="org.hibernate.envers.auditTableSuffix"></prop>
             </props>
         </property>
     </bean>
@@ -41,11 +41,5 @@
           p:sessionFactory-ref="sessionFactory">
     </bean>
 
-    <bean id="mapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
-        <property name="mappingFiles" value="classpath*:/mapper/*.xml"/>
-    </bean>
-
-    <bean id="mappingUtils" class="com.devteam.accounting.util.MappingUtil">
-        <property name="mapper" ref="mapper"/>
-    </bean>
+    <import resource="mapper.xml"/>
 </beans>

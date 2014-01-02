@@ -40,8 +40,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <!--<welcome-file>/app/home</welcome-file>-->
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/app/home</welcome-file>
     </welcome-file-list>
 
     <!--<error-page>-->

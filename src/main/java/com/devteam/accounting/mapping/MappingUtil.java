@@ -1,4 +1,4 @@
-package com.devteam.accounting.util;
+package com.devteam.accounting.mapping;
 
 import org.dozer.Mapper;
 

@@ -7,16 +7,16 @@ import java.io.Serializable;
 
 /**
  * User: pancara
- * Date: 12/31/13
- * Time: 5:34 PM
+ * Date: 1/2/14
+ * Time: 8:33 AM
  */
 @Entity
-@Table(name = "CURRENCY")
+@Table(name = "ROLE")
 @Audited
-@SequenceGenerator(name = "currency_seq", sequenceName = "currency_seq", allocationSize = 1)
-public class Currency implements Serializable {
+@SequenceGenerator(name = "role_seq", sequenceName = "role_seq", allocationSize = 1)
+public class Role implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "currency_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
@@ -28,16 +28,10 @@ public class Currency implements Serializable {
     @Column(name = "code", unique = true)
     private String code;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
-
-    @ManyToOne
-    @JoinColumn(name = "country")
-    private Country country;
-
-
-    public Currency() {
+    public Role() {
     }
 
     public Long getId() {
@@ -70,13 +64,5 @@ public class Currency implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
     }
 }

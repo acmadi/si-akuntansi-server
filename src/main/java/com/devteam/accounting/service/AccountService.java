@@ -1,9 +1,6 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.persistence.Account;
-import com.devteam.accounting.web.dto.AccountDto;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
+import com.devteam.accounting.service.dto.AccountDto;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
  * Time: 9:07 AM
  */
 public interface AccountService {
+
     void save(AccountDto account);
 
     void update(AccountDto account);

@@ -1,3 +1,11 @@
-#foreach($i in [1..10])
-    $i<br/>
-#end
+<html>
+<head>
+    <title>SiAkun</title>
+</head>
+<body>
+    #foreach($i in [1..10])
+        $i<br/>
+    #end
+</body>
+</html>
+

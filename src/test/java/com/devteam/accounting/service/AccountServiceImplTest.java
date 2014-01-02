@@ -1,8 +1,6 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.persistence.Account;
-import com.devteam.accounting.web.dto.AccountDto;
-import org.hibernate.SessionFactory;
+import com.devteam.accounting.service.dto.AccountDto;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +38,6 @@ public class AccountServiceImplTest {
 
     @Test
     public void update() {
-
         AccountDto acc = accountService.findById(1L);
         acc.setCode("P 0001");
         accountService.update(acc);
@@ -78,8 +75,10 @@ public class AccountServiceImplTest {
     }
 
     @Test
-
     public void findAlls() {
         List<AccountDto> accounts = accountService.findAlls();
+        for(AccountDto dto : accounts) {
+            System.out.println(dto);
+        }
     }
 }
