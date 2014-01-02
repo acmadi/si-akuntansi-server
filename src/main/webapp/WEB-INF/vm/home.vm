@@ -1,11 +1,237 @@
-<html>
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en"> <![endif]-->
+<html class="no-js" lang="en">
 <head>
-    <title>SiAkun</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SiAkun : Sistem Informasi Akuntansi</title>
+    <meta name="description" content="SiAkun, Sistem Informasi Akuntansi">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='#springUrl("/css/normalize.css")'>
+    <link rel='stylesheet' href='#springUrl("/css/foundation.css")'>
+    <link rel='stylesheet' href='#springUrl("/css/style.css")'>
+    <script src='#springUrl("/js/vendor/custom.modernizr.js")'></script>
 </head>
-<body>
-    #foreach($i in [1..10])
-        $i<br/>
-    #end
+<body class="antialiased hide-extras">
+<div class="marketing off-canvas-wrap">
+<div class="inner-wrap">
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>
+</nav> -->
+
+<nav class="top-bar docs-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="#">SI Akuntansi</a></h1>
+        </li>
+    </ul>
+
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="divider"></li>
+            <li>
+                <a href="#" class="">Menu1</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#" class="">Menu2</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#" class="">Menu3</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#" class="">Menu4</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#" class="">Menu5</a>
+            </li>
+            <li class="divider"></li>
+            <li class="has-form">
+                <a href="#" class="small button">Sign Out</a>
+            </li>
+        </ul>
+    </section>
+</nav>
+<section id="main">
+    <div class="row">
+        <div class="large-2 medium-2 columns containerBar">
+            <div class="hide-for-small">
+                <div class="samping">
+                    <div class="sidebar">
+                        <ul class="side-nav">
+                            <li class="heading">
+                                <img src='images/back1.png' class='back' ng-click='clickBackBtn()'/>
+                                <span>menu</span>
+                            </li>
+                            <li>
+                                <!--<img class='glyph' ng-src='{{menuItem.glyph}}'/>-->
+                                <a href="#">
+                                    <span>1</span>
+                                    <img class='submenu'/>
+                                </a>
+                            </li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<div class="contentToggle">-->
+                <!--tes-->
+                <!--</div>-->
+            </div>
+        </div>
+
+        <!--<ul>-->
+        <!--<li class="divider"></li>-->
+        <!--</ul>-->
+
+        <div class="large-10 medium-10 columns content">
+            <div class="judul">
+                Judul
+            </div>
+            <form data-abide>
+                <fieldset>
+                    <legend>Fieldset</legend>
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label for="password">Password
+                                <small>required</small>
+                            </label>
+                            <input type="password" id="password" placeholder="password" name="password"
+                                   required>
+                            <small class="error">Password harus diisi!</small>
+                        </div>
+                        <div class="large-12 columns">
+                            <label for="confirmPassword">Confirm Password
+                                <small>required</small>
+                            </label>
+                            <input type="password" id="confirmPassword" placeholder="Confirm Password"
+                                   name="confirmPassword" required data-equalto="password">
+                            <small class="error" data-error-message>Password harus sama!</small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="1 234-567-8910">
+                            <small class="error">Masukkan no telepon Anda</small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-4 columns">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="foundation@zurb.com">
+                            <small class="error">Valid email required.</small>
+                        </div>
+                        <div class="large-4 columns">
+                            <label for="url">URL
+                                <small>required</small>
+                            </label>
+                            <input type="url" id="url" placeholder="http://zurb.com" required>
+                            <small class="error">Valid URL required.</small>
+                        </div>
+                        <div class="large-4 columns">
+                            <div class="row collapse">
+                                <label for="customDropdown1">Hardest to find in grocery
+                                    <small>required</small>
+                                </label>
+                                <select id="customDropdown1" class="medium" required>
+                                    <option value="">Select grocery item</option>
+                                    <option value="first">Green Chilies</option>
+                                    <option value="second">Raisins</option>
+                                    <option value="third">Panko bread crumbs</option>
+                                    <option value="fourth">Assistance</option>
+                                </select>
+                                <small class="error">Broke.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <label for="radio1"><input name="radioButtons" type="radio" id="radio1" required>
+                                Radio Button 1</label>
+                            <label for="radio2"><input name="radioButtons" type="radio" id="radio2" required>
+                                Radio Button 2</label>
+                            <label for="radio3"><input name="radioButtons" type="radio" id="radio3" required>
+                                Radio Button 3</label>
+                        </div>
+                        <div class="large-6 columns">
+                            <label for="checkbox1"><input type="checkbox" id="checkbox1" required> Label for
+                                Checkbox</label>
+                            <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED required> Label
+                                for Checkbox</label>
+                            <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" required> Label
+                                for Checkbox</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <label for="date">Date</label>
+                            <input type="date" id="date">
+                            <small class="error">Format tanggal tidak valid</small>
+                        </div>
+                        <div class="large-6 columns">
+                            <label for="time">Time</label>
+                            <input type="time" id="time">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <label for="remarks">Closing Remarks</label>
+                            <textarea id="remarks" name="remarks"
+                                      placeholder="Leave your remarks here."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="large-12 columns">
+                            <button type="submit" class="medium button green">Submit</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+</section>
+
+</div>
+</div>
+
+<script src='#springUrl("/js/jquery.js")'></script>
+<script src='#springUrl("/js/foundation.js")'></script>
 </body>
 </html>
-
