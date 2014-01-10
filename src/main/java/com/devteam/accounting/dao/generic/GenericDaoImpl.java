@@ -44,6 +44,11 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     }
 
     @Override
+    public T loadById(Long id) {
+        return (T) getCurrentSession().load(getPersistentClass(), id);
+    }
+
+    @Override
     public void save(T entity) {
         getCurrentSession().save(entity);
     }

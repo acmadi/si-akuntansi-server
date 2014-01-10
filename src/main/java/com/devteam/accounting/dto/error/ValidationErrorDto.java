@@ -9,6 +9,7 @@ import java.util.List;
  * Time: 10:08 AM
  */
 public class ValidationErrorDto {
+
     private List<FieldErrorDto> errors = new ArrayList<>();
 
     public ValidationErrorDto() {

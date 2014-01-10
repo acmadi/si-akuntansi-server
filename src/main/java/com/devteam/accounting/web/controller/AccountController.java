@@ -30,6 +30,14 @@ public class AccountController {
     public ResponseEntity save(@RequestBody final AccountDto dto) {
         accountService.save(dto);
         return new ResponseEntity(HttpStatus.OK);
+
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity update(@RequestBody final AccountDto dto) {
+        accountService.update(dto);
+        return new ResponseEntity(HttpStatus.OK);
+
     }
 
 
@@ -39,5 +47,10 @@ public class AccountController {
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity deleteAccount(@PathVariable("id") Long id) {
+        accountService.removeById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
 }

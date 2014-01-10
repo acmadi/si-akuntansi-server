@@ -16,6 +16,8 @@ public interface GenericDao<T, TId extends Serializable> {
 
     T findById(final TId id);
 
+    T loadById(final Long id);
+
     void save(T entity);
 
     void update(T entity);
@@ -25,4 +27,6 @@ public interface GenericDao<T, TId extends Serializable> {
     Long countAlls();
 
     void removeById(Long id);
+
+
 }

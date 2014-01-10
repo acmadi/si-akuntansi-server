@@ -18,7 +18,7 @@
 
     <bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/accounting"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/accounting_test"/>
         <property name="username" value="postgres"/>
         <property name="password" value="postgres"/>
     </bean>
@@ -42,4 +42,6 @@
     </bean>
 
     <import resource="mapper.xml"/>
+    <import resource="validator.xml"/>
+
 </beans>

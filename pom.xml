@@ -26,6 +26,7 @@
         <springSecurity.version>3.2.0.RELEASE</springSecurity.version>
         <hibernate.version>4.2.8.Final</hibernate.version>
         <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
+        <servlet-api.version>2.5</servlet-api.version>
     </properties>
 
     <build>
@@ -219,6 +220,14 @@
 
 
         <!-- test dependency -->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -252,6 +261,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>

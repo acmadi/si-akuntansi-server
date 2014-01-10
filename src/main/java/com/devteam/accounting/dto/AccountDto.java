@@ -18,7 +18,6 @@ public class AccountDto implements Serializable {
     @Size(max = 1000)
     private String description;
 
-    @NotNull
     private AccountTypeDto type;
 
     private AccountDto parent;

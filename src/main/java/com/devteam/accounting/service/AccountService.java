@@ -23,4 +23,6 @@ public interface AccountService {
     QueryResult findAlls();
 
     void deleteById(Long id);
+
+    void removeById(Long id);
 }
