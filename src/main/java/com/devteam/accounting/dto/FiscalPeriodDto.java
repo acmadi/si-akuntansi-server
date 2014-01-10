@@ -1,6 +1,6 @@
-package com.devteam.accounting.service.dto;
+package com.devteam.accounting.dto;
 
-import com.devteam.accounting.service.dto.component.MonthYearDto;
+import com.devteam.accounting.dto.component.MonthYearDto;
 
 import java.io.Serializable;
 

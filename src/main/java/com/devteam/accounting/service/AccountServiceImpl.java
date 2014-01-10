@@ -3,7 +3,8 @@ package com.devteam.accounting.service;
 import com.devteam.accounting.dao.AccountDao;
 import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.mapping.MappingUtil;
-import com.devteam.accounting.service.dto.AccountDto;
+import com.devteam.accounting.dto.AccountDto;
+import com.devteam.accounting.service.wrapper.QueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -41,24 +42,28 @@ public class AccountServiceImpl implements AccountService {
         mappingUtil.map(account, dto);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public AccountDto findById(Long id) {
         Account acc = accountDao.findById(id);
         return (acc == null) ? null : mappingUtil.map(acc, AccountDto.class);
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<AccountDto> findByCode(String code) {
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public QueryResult findByCode(String code) {
         List<Account> accounts = accountDao.findByCode(code);
-        return mappingUtil.mapList(accounts, AccountDto.class);
+        List<AccountDto> data = mappingUtil.mapList(accounts, AccountDto.class);
+        Long count = accountDao.countByCode(code);
+        return new QueryResult(count, data);
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<AccountDto> findAlls() {
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public QueryResult findAlls() {
         List<Account> accounts = accountDao.findAlls();
-        return mappingUtil.mapList(accounts, AccountDto.class);
+        List<AccountDto> data = mappingUtil.mapList(accounts, AccountDto.class);
+        Long count = accountDao.countAlls();
+        return new QueryResult(count, data);
     }
 
     @Override

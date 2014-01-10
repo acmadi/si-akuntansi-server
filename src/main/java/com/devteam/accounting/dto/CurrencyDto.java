@@ -1,4 +1,4 @@
-package com.devteam.accounting.service.dto;
+package com.devteam.accounting.dto;
 
 import java.io.Serializable;
 
@@ -7,13 +7,13 @@ import java.io.Serializable;
  * Date: 12/31/13
  * Time: 5:34 PM
  */
-public class CountryDto implements Serializable {
+public class CurrencyDto implements Serializable {
     private Long id;
     private Long version;
     private String code;
     private String name;
 
-    public CountryDto() {
+    public CurrencyDto() {
     }
 
     public Long getId() {

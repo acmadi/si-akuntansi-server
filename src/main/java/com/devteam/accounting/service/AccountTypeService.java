@@ -1,7 +1,6 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.service.dto.AccountDto;
-import com.devteam.accounting.service.dto.AccountTypeDto;
+import com.devteam.accounting.dto.AccountTypeDto;
 
 import java.util.List;
 

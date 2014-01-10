@@ -2,7 +2,7 @@ package com.devteam.accounting.service;
 
 import com.devteam.accounting.dao.AccountTypeDao;
 import com.devteam.accounting.persistence.AccountType;
-import com.devteam.accounting.service.dto.AccountTypeDto;
+import com.devteam.accounting.dto.AccountTypeDto;
 import com.devteam.accounting.mapping.MappingUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

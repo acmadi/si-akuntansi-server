@@ -4,21 +4,23 @@
 module.exports = function (config) {
     config.set({
         // base path, that will be used to resolve files and exclude
-        basePath: '',
+        basePath: 'src/',
 
         // testing framework to use (jasmine/mocha/qunit/...)
         frameworks: ['jasmine'],
 
         // list of files / patterns to load in the browser
         files: [
-            'src/main/webapp/bower_components/jquery/jquery.js',
-            'src/main/webapp/bower_components/angular/angular.js',
-            'src/main/webapp/bower_components/angular-mocks/angular-mocks.js',
-            'src/main/webapp/bower_components/angular-resource/angular-resource.js',
-            'src/main/webapp/bower_components/angular-cookies/angular-cookies.js',
-            'src/main/webapp/bower_components/angular-sanitize/angular-sanitize.js',
-            'src/main/webapp/js/*.js',
-            'src/test/webapp/js/*.js'
+            'main/webapp/bower_components/jquery/jquery.js',
+            'main/webapp/bower_components/angular/angular.js',
+            'main/webapp/bower_components/angular-mocks/angular-mocks.js',
+            'main/webapp/bower_components/angular-resource/angular-resource.js',
+            'main/webapp/bower_components/angular-cookies/angular-cookies.js',
+            'main/webapp/bower_components/angular-sanitize/angular-sanitize.js',
+            'main/webapp/js/*.js',
+            'main/webapp/js/controllers/*.js',
+//            'test/webapp/js/*.js',
+            'test/webapp/js/controllers/*.spec.js'
         ],
 
         // list of files / patterns to exclude

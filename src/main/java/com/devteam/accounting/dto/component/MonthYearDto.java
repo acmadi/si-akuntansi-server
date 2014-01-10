@@ -1,4 +1,4 @@
-package com.devteam.accounting.service.dto.component;
+package com.devteam.accounting.dto.component;
 
 import java.io.Serializable;
 

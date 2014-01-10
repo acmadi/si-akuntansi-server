@@ -11,19 +11,14 @@
     <link rel='stylesheet' href='#springUrl("/css/normalize.css")'>
     <link rel='stylesheet' href='#springUrl("/css/foundation.css")'>
     <link rel='stylesheet' href='#springUrl("/css/style.css")'>
+
     <script src='#springUrl("/js/vendor/custom.modernizr.js")'></script>
 </head>
 <body class="antialiased hide-extras">
-<div class="marketing off-canvas-wrap">
+<div class="off-canvas-wrap">
 <div class="inner-wrap">
+<nav class="top-bar" data-topbar>
 
-<!-- <nav class="tab-bar show-for-small">
-  <a class="off-canvas-left-toggle menu-icon ">
-    <span></span>
-  </a>
-</nav> -->
-
-<nav class="top-bar docs-bar" data-topbar>
     <ul class="title-area">
         <li class="name">
             <h1><a href="#">SI Akuntansi</a></h1>

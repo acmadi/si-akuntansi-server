@@ -18,7 +18,7 @@
 
     <bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/accounting_test"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/accounting"/>
         <property name="username" value="postgres"/>
         <property name="password" value="postgres"/>
     </bean>
@@ -30,7 +30,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
                 <prop key="org.hibernate.envers.auditTablePrefix">_</prop>
                 <prop key="org.hibernate.envers.auditTableSuffix">_AUD</prop>
             </props>

@@ -19,15 +19,18 @@ import java.util.List;
 @Repository
 public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements AccountDao {
 
-    public Account findById(Long id) {
-        return (Account) getCurrentSession().get(Account.class, id);
-    }
-
     @Override
     public List<Account> findByCode(String code) {
         Query query = getCurrentSession().createQuery("FROM Account a WHERE a.code LIKE :code");
         query.setParameter("code", code);
         return query.list();
+    }
+
+    @Override
+    public Long countByCode(String code) {
+        Query query = getCurrentSession().createQuery("SELECT COUNT(a) FROM Account a WHERE a.code LIKE :code");
+        query.setParameter("code", code);
+        return (Long) query.uniqueResult();
     }
 
 }

@@ -1,14 +1,13 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.service.dto.AccountDto;
+import com.devteam.accounting.dto.AccountDto;
 
+import com.devteam.accounting.service.wrapper.QueryResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
@@ -45,12 +44,12 @@ public class AccountServiceImplTest {
 
     @Test
     public void testSave() throws Exception {
-        AccountDto parent = new AccountDto();
-        parent.setCode("P001");
-        parent.setName("Parent 1");
-        parent.setDescription("Parent 1 of child 1");
-        parent.setParent(null);
-        accountService.save(parent);
+        AccountDto parent = accountService.findById(1L);
+//        parent.setCode("P001");
+//        parent.setName("Parent 1");
+//        parent.setDescription("Parent 1 of child 1");
+//        parent.setParent(null);
+//        accountService.save(parent);
 
         AccountDto child = new AccountDto();
         child.setCode("C001");
@@ -68,16 +67,17 @@ public class AccountServiceImplTest {
 
     @Test
     public void findByCode() {
-        List<AccountDto> accounts = accountService.findByCode("ACC%");
-        for (AccountDto acc : accounts) {
+        QueryResult<AccountDto> result = accountService.findByCode("ACC%");
+        for (AccountDto acc : result.getData()) {
             System.out.println(acc.getCode());
         }
     }
 
     @Test
     public void findAlls() {
-        List<AccountDto> accounts = accountService.findAlls();
-        for(AccountDto dto : accounts) {
+        QueryResult<AccountDto> result = accountService.findAlls();
+        System.out.println(result.getCount());
+        for (AccountDto dto : result.getData()) {
             System.out.println(dto);
         }
     }

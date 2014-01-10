@@ -1,6 +1,7 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.service.dto.AccountDto;
+import com.devteam.accounting.dto.AccountDto;
+import com.devteam.accounting.service.wrapper.QueryResult;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ public interface AccountService {
 
     AccountDto findById(Long id);
 
-    List<AccountDto> findByCode(String code);
+    QueryResult findByCode(String code);
 
-    List<AccountDto> findAlls();
+    QueryResult findAlls();
 
     void deleteById(Long id);
 }

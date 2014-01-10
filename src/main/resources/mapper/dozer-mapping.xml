@@ -8,7 +8,7 @@
         <custom-converters>
             <converter type="com.devteam.accounting.mapping.converter.AccountConverter">
                 <class-a>com.devteam.accounting.persistence.Account</class-a>
-                <class-b>com.devteam.accounting.service.dto.AccountDto</class-b>
+                <class-b>com.devteam.accounting.dto.AccountDto</class-b>
             </converter>
         </custom-converters>
 

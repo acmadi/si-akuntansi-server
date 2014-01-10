@@ -1,6 +1,6 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.service.dto.AccountTypeDto;
+import com.devteam.accounting.dto.AccountTypeDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

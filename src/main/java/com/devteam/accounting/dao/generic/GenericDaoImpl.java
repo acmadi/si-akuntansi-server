@@ -61,6 +61,13 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     }
 
     @Override
+    public Long countAlls() {
+        String queryString = String.format("SELECT  COUNT(entity) FROM %s entity", getPersistentClass().getCanonicalName());
+        Query query = getCurrentSession().createQuery(queryString);
+        return (Long) query.uniqueResult();
+    }
+
+    @Override
     public void removeById(Long id) {
         T entity = (T) getCurrentSession().load(getPersistentClass(), id);
         getCurrentSession().delete(entity);

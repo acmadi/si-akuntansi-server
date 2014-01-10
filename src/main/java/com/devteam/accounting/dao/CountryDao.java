@@ -2,6 +2,7 @@ package com.devteam.accounting.dao;
 
 import com.devteam.accounting.dao.generic.GenericDao;
 import com.devteam.accounting.persistence.Account;
+import com.devteam.accounting.persistence.Country;
 
 import java.util.List;
 
@@ -10,9 +11,9 @@ import java.util.List;
  * Date: 12/19/13
  * Time: 8:26 AM
  */
-public interface AccountDao extends GenericDao<Account, Long> {
+public interface CountryDao extends GenericDao<Country, Long> {
 
-    List<Account> findByCode(String code);
+    List<Country> findByIso2(String code);
 
-    Long countByCode(String code);
+    List<Country> findByIso3(String code);
 }

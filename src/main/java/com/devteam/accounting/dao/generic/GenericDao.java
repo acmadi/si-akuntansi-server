@@ -22,5 +22,7 @@ public interface GenericDao<T, TId extends Serializable> {
 
     List<T> findAlls();
 
+    Long countAlls();
+
     void removeById(Long id);
 }

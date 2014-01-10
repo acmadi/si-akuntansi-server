@@ -1,14 +1,26 @@
-package com.devteam.accounting.service.dto;
+package com.devteam.accounting.dto;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class AccountDto implements Serializable {
     private Long id;
     private Long version;
+
+    @NotNull
+    @Size(min = 4, max = 10)
     private String code;
+
+    @NotNull
     private String name;
+
+    @Size(max = 1000)
     private String description;
+
+    @NotNull
     private AccountTypeDto type;
+
     private AccountDto parent;
 
     public AccountDto() {

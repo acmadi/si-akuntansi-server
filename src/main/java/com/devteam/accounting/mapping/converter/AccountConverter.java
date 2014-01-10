@@ -2,8 +2,8 @@ package com.devteam.accounting.mapping.converter;
 
 import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.persistence.AccountType;
-import com.devteam.accounting.service.dto.AccountDto;
-import com.devteam.accounting.service.dto.AccountTypeDto;
+import com.devteam.accounting.dto.AccountDto;
+import com.devteam.accounting.dto.AccountTypeDto;
 import org.dozer.DozerConverter;
 
 /**
