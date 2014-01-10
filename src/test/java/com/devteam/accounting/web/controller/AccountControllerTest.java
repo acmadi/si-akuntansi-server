@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -50,7 +51,10 @@ public class AccountControllerTest {
 
     @Test
     public void getAccount() throws Exception {
-        this.mockMvc.perform(get("/account/1").accept(TestUtil.APPLICATION_JSON_UTF8))
+        MockHttpServletRequestBuilder request = get("/account/1")
+                .accept(TestUtil.APPLICATION_JSON_UTF8);
+
+        this.mockMvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.id", is(1)))
@@ -71,11 +75,12 @@ public class AccountControllerTest {
 
         byte[] bodyRequest = jsonMapper.writeValueAsBytes(dto);
 
-        this.mockMvc.perform(post("/account")
+        MockHttpServletRequestBuilder request = post("/account")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(bodyRequest)
-                .accept(TestUtil.APPLICATION_JSON_UTF8)
-        )
+                .accept(TestUtil.APPLICATION_JSON_UTF8);
+
+        this.mockMvc.perform(request)
                 .andExpect(status().isOk());
     }
 
@@ -94,19 +99,20 @@ public class AccountControllerTest {
 
         byte[] bodyRequest = jsonMapper.writeValueAsBytes(dto);
 
-        this.mockMvc.perform(put("/account")
+        MockHttpServletRequestBuilder request = put("/account")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(bodyRequest)
-                .accept(TestUtil.APPLICATION_JSON_UTF8)
-        )
-                .andExpect(status().isOk());
+                .accept(TestUtil.APPLICATION_JSON_UTF8);
+
+        this.mockMvc.perform(request).andExpect(status().isOk());
     }
 
     @Test
     public void deleteAccount() throws Exception {
-        this.mockMvc.perform(delete("/account/5")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-        )
+        MockHttpServletRequestBuilder request = delete("/account/5")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8);
+
+        this.mockMvc.perform(request)
                 .andExpect(status().isOk());
     }
 }
