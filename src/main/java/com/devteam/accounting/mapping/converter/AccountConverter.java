@@ -4,7 +4,9 @@ import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.persistence.AccountType;
 import com.devteam.accounting.dto.AccountDto;
 import com.devteam.accounting.dto.AccountTypeDto;
+import org.dozer.CustomConverter;
 import org.dozer.DozerConverter;
+import org.dozer.MappingException;
 
 /**
  * User: pancara
@@ -12,11 +14,10 @@ import org.dozer.DozerConverter;
  * Time: 12:24 AM
  */
 
-public class AccountConverter extends DozerConverter<Account, AccountDto> {
+public class AccountConverter implements CustomConverter {
     private int maxDepth = 1;
 
     public AccountConverter() {
-        super(Account.class, AccountDto.class);
     }
 
     public void setMaxDepth(int maxDepth) {
@@ -24,15 +25,38 @@ public class AccountConverter extends DozerConverter<Account, AccountDto> {
     }
 
     @Override
-    public AccountDto convertTo(Account source, AccountDto destination) {
-        if (source != null) {
-            destination = new AccountDto();
+    public Object convert(Object destination, Object source, Class<?> destinationClass, Class<?> sourceClass) {
+        if (source == null) {
+            return null;
         }
-        convertTo(source, destination, 0);
-        return destination;
+        Account acc ;
+        AccountDto dto;
+        if (source instanceof Account) {
+            acc = (Account) source;
+            if (destination == null) {
+                dto = new AccountDto();
+            } else {
+                dto = (AccountDto) destination;
+            }
+            return convertTo(acc, dto);
+
+        } else if (source instanceof AccountDto) {
+            dto = (AccountDto) source;
+
+            if (destination == null) {
+                acc = new Account();
+            } else {
+                acc = (Account) destination;
+            }
+            return convertFrom(dto, acc);
+        } else {
+            throw new MappingException("Converter TestCustomConverter "
+                    + "used incorrectly. Arguments passed in were:"
+                    + destination + " and " + source);
+        }
     }
 
-    private void convertTo(Account source, AccountDto destination, int depth) {
+    public AccountDto convertTo(Account source, AccountDto destination) {
         destination.setId(source.getId());
         destination.setVersion(source.getVersion());
         destination.setCode(source.getCode());
@@ -52,17 +76,50 @@ public class AccountConverter extends DozerConverter<Account, AccountDto> {
         }
 
         // account parent
-        if (depth < maxDepth) {
-            if (source.getParent() != null) {
-                destination.setParent(new AccountDto());
-                convertTo(source.getParent(), destination.getParent(), depth + 1);
-            } else {
-                destination.setParent(null);
-            }
+        if (source.getParent() != null) {
+            destination.setParent(new AccountDto());
+            convertTo_Parent(source.getParent(), destination.getParent(), 0);
+        } else {
+            destination.setParent(null);
         }
+
+        return destination;
     }
 
-    @Override
+    private AccountDto convertTo_Parent(Account source, AccountDto destination, int depth) {
+
+        destination.setId(source.getId());
+        destination.setVersion(source.getVersion());
+        destination.setCode(source.getCode());
+        destination.setName(source.getName());
+        destination.setDescription(source.getDescription());
+
+        // type
+        if (source.getType() != null) {
+            AccountTypeDto type = new AccountTypeDto();
+            type.setId(source.getType().getId());
+            type.setVersion(source.getType().getVersion());
+            type.setCode(source.getType().getCode());
+            type.setName(source.getType().getName());
+            destination.setType(type);
+        } else {
+            destination.setType(null);
+        }
+
+        // account parent
+        if (source.getParent() != null) {
+            if (depth < maxDepth) {
+                destination.setParent(new AccountDto());
+                convertTo_Parent(source.getParent(), destination.getParent(), 0);
+            }
+        } else {
+            destination.setParent(null);
+        }
+
+
+        return destination;
+    }
+
     public Account convertFrom(AccountDto source, Account destination) {
 
         destination.setId(source.getId());

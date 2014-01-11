@@ -1,0 +1,5 @@
+#macro(agenda_date $date)
+
+#end
+
+

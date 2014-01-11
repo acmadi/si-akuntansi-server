@@ -17,6 +17,7 @@ import java.io.Serializable;
 @Audited
 @SequenceGenerator(name = "fiscal_period_seq", sequenceName = "fiscal_period_seq", allocationSize = 1)
 public class FiscalPeriod implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fiscal_period_seq")
     @Basic(optional = false)

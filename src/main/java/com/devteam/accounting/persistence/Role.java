@@ -1,9 +1,12 @@
 package com.devteam.accounting.persistence;
 
+import com.devteam.accounting.persistence.app.Menu;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * User: pancara
@@ -30,6 +33,14 @@ public class Role implements Serializable {
 
     @Column(name = "name", unique = true)
     private String name;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "role_menu", joinColumns = {
+            @JoinColumn(name = "role", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "menu",
+                    nullable = false, updatable = false)})
+    private Set<Menu> menus = new HashSet<>();
+
 
     public Role() {
     }
@@ -64,5 +75,13 @@ public class Role implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
     }
 }

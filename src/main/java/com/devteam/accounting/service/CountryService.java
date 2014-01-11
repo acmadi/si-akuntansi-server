@@ -1,6 +1,7 @@
 package com.devteam.accounting.service;
 
 import com.devteam.accounting.dto.CountryDto;
+import com.devteam.accounting.service.wrapper.QueryResult;
 
 import java.util.List;
 
@@ -13,12 +14,13 @@ public interface CountryService {
 
     void save(CountryDto country);
 
-//    void update(CountryDto country);
+    void update(CountryDto country);
 
     CountryDto findById(Long id);
 
-    List<CountryDto> findAlls();
+    QueryResult<CountryDto> findAlls();
 
     void deleteById(Long id);
 
+    void removeById(Long id);
 }

@@ -6,6 +6,7 @@ import com.devteam.accounting.mapping.MappingUtil;
 import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.dto.AccountDto;
 import com.devteam.accounting.persistence.Country;
+import com.devteam.accounting.service.wrapper.QueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -30,25 +31,26 @@ public class CountryServiceImpl implements CountryService {
 
     @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void save(CountryDto dto) {
-        if (dto.getId() == null) {
-            Country country = new Country();
-            mappingUtil.map(dto, country);
-            countryDao.save(country);
-            mappingUtil.map(country, dto);
-        } else {
-            Country country = countryDao.findById(dto.getId());
-
-            if (!country.getVersion().equals(dto.getVersion())) {
-                throw new OptimisticLockException();
-            }
-
-            mappingUtil.map(dto, country);
-            countryDao.update(country);
-            mappingUtil.map(country, dto);
-        }
+        Country country = new Country();
+        mappingUtil.map(dto, country);
+        countryDao.save(country);
+        mappingUtil.map(country, dto);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void update(CountryDto dto) {
+        Country country = countryDao.findById(dto.getId());
+        if (!country.getVersion().equals(dto.getVersion())) {
+            throw new OptimisticLockException();
+        }
+
+        mappingUtil.map(dto, country);
+        countryDao.update(country);
+        mappingUtil.map(country, dto);
+    }
+
+
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public CountryDto findById(Long id) {
         Country country = countryDao.findById(id);
         return (country == null) ? null : mappingUtil.map(country, CountryDto.class);
@@ -56,15 +58,23 @@ public class CountryServiceImpl implements CountryService {
 
 
     @Override
-    @Transactional(readOnly = true)
-    public List<CountryDto> findAlls() {
-        List<Country> countries = countryDao.findAlls();
-        return mappingUtil.mapList(countries, CountryDto.class);
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public QueryResult<CountryDto> findAlls() {
+        List<Country> entities = countryDao.findAlls();
+        List<CountryDto> data = mappingUtil.mapList(entities, CountryDto.class);
+        Long count = countryDao.countAlls();
+        return new QueryResult(count, data);
     }
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void deleteById(Long id) {
+        countryDao.removeById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void removeById(Long id) {
         countryDao.removeById(id);
     }
 

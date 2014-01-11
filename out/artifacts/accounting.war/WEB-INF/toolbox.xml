@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<toolbox>
+    <tool>
+        <key>esc</key>
+        <scope>application</scope>
+        <class>org.apache.velocity.tools.generic.EscapeTool</class>
+    </tool>
+    
+    <tool>
+        <key>mathTool</key>
+        <scope>application</scope>
+        <class>org.apache.velocity.tools.generic.MathTool</class>
+    </tool>
+
+    <tool>
+        <key>numberTool</key>
+        <scope>application</scope>
+        <class>org.apache.velocity.tools.generic.NumberTool</class>
+        <parameter name="format" value="#0.000"/>
+        <parameter name="locale" value="id_ID"/>
+    </tool>
+
+</toolbox>

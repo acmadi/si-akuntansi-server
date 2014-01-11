@@ -28,7 +28,7 @@ public class AccountServiceImplTest {
     @Test
     public void findById() {
         AccountDto dto = new AccountDto();
-        dto.setCode("P-001 ");
+        dto.setCode("P-004 ");
         accountService.save(dto);
 
         AccountDto acc = accountService.findById(dto.getId());

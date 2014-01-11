@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.OptimisticLockException;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class AccountServiceImpl implements AccountService {
     public void save(AccountDto dto) {
         Account account = new Account();
         mappingUtil.map(dto, account);
-        setForeignKey(dto, account);
+        setReferencedEntity(dto, account);
 
         accountDao.save(account);
         mappingUtil.map(account, dto);
@@ -45,14 +46,19 @@ public class AccountServiceImpl implements AccountService {
     public void update(AccountDto dto) {
         Account account = accountDao.findById(dto.getId());
 
+        if (account.getVersion().compareTo(dto.getVersion()) != 0) {
+            throw new OptimisticLockException();
+        }
+
         mappingUtil.map(dto, account);
-        setForeignKey(dto, account);
+        setReferencedEntity(dto, account);
 
         accountDao.update(account);
         mappingUtil.map(account, dto);
     }
 
-    private void setForeignKey(AccountDto dto, Account account) {
+    private void setReferencedEntity(AccountDto dto, Account account) {
+
         // set parent
         if (dto.getParent() != null) {
             Account parent = accountDao.loadById(dto.getParent().getId());

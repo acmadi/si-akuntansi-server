@@ -57,4 +57,15 @@ public class CountryDto implements Serializable {
     public void setIso3(String iso3) {
         this.iso3 = iso3;
     }
+
+    @Override
+    public String toString() {
+        return "CountryDto{" +
+                "id=" + id +
+                ", version=" + version +
+                ", name='" + name + '\'' +
+                ", iso2='" + iso2 + '\'' +
+                ", iso3='" + iso3 + '\'' +
+                '}';
+    }
 }
