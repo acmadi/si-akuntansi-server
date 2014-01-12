@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
 import static junit.framework.TestCase.assertNotNull;
 
 /**
@@ -62,7 +63,15 @@ public class AccountServiceImplTest {
 
     @Test
     public void testDeleteById() {
-        accountService.deleteById(4L);
+        AccountDto dto = new AccountDto();
+        dto.setCode("C001");
+        dto.setName("Child 001");
+        dto.setDescription("first child");
+        accountService.save(dto);
+
+        accountService.deleteById(dto.getId());
+        dto = accountService.findById(dto.getId());
+        assertNull(dto);
     }
 
     @Test

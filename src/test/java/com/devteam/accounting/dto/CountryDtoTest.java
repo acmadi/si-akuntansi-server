@@ -10,6 +10,7 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * User: pancara
@@ -33,17 +34,21 @@ public class CountryDtoTest {
 
         acc.setCode("A");
         violations = validator.validateProperty(acc, "code");
-        for(ConstraintViolation v : violations) {
-            System.out.println(v.getMessage());
-        }
+        assertEquals(1, violations.size());
 
         acc.setCode("C001");
-        violations = validator.validate(acc);
-        assertEquals(2, violations.size());
+        violations = validator.validateProperty(acc, "code");
+        assertEquals(0, violations.size());
+
+
+        // validate name field
+        acc = new AccountDto();
+        violations = validator.validateProperty(acc, "name");
+        assertEquals(1, violations.size());
 
         acc.setName("C");
-        violations = validator.validate(acc);
-        assertEquals(1, violations.size());
+        violations = validator.validateProperty(acc, "name");
+        assertEquals(0, violations.size());
     }
 
 

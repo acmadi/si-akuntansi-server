@@ -26,11 +26,16 @@ public class AccountController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<AccountDto> getAccount(@PathVariable("id") Long id) {
+        AccountDto account = accountService.findById(id);
+        return new ResponseEntity<>(account, HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity save(@RequestBody final AccountDto dto) {
         accountService.save(dto);
         return new ResponseEntity(HttpStatus.OK);
-
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -38,12 +43,6 @@ public class AccountController {
         accountService.update(dto);
         return new ResponseEntity(HttpStatus.OK);
 
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public ResponseEntity<AccountDto> getAccount(@PathVariable("id") Long id) {
-        AccountDto account = accountService.findById(id);
-        return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")

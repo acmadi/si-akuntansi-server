@@ -10,6 +10,12 @@
                 <class-a>com.devteam.accounting.persistence.Account</class-a>
                 <class-b>com.devteam.accounting.dto.AccountDto</class-b>
             </converter>
+
+            <converter type="com.devteam.accounting.mapping.converter.MenuTypeConverter">
+                <class-a>com.devteam.accounting.persistence.type.MenuType</class-a>
+                <class-b>java.lang.String</class-b>
+            </converter>
+
         </custom-converters>
 
     </configuration>

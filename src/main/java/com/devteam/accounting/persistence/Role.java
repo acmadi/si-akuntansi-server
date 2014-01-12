@@ -34,7 +34,7 @@ public class Role implements Serializable {
     @Column(name = "name", unique = true)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Menu.class)
     @JoinTable(name = "role_menu", joinColumns = {
             @JoinColumn(name = "role", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "menu",

@@ -35,17 +35,19 @@ public class AccountTypeDaoImplTest {
     @Test
     @Transactional(readOnly = false)
     public void update() {
-        AccountType type = new AccountType();
-        type.setCode("T-001");
-        type.setName("Type sample 1");
-        accountTypeDao.save(type);
+        AccountType newType = new AccountType();
+        newType.setCode("T-001");
+        newType.setName("Type sample 1");
+        accountTypeDao.save(newType);
 
-        assertNotNull(type.getId());
+        assertNotNull(newType.getId());
 
-        type.setName("Type sample 1 Modified");
-        accountTypeDao.update(type);
+        newType.setName("Type sample 1 Modified");
+        accountTypeDao.update(newType);
 
-        assertEquals(1, type.getVersion().intValue());
+        AccountType type = accountTypeDao.findById(newType.getId());
+
+        assertEquals(newType.getName(), type.getName());
 
     }
 }
