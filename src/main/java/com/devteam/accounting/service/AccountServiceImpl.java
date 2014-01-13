@@ -111,4 +111,10 @@ public class AccountServiceImpl implements AccountService {
     public void removeById(Long id) {
         accountDao.removeById(id);
     }
+
+    @Override
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void removeAll() {
+        accountDao.removeAll();
+    }
 }

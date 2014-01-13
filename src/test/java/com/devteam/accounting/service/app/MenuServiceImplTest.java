@@ -41,7 +41,15 @@ public class MenuServiceImplTest {
 
     @Test
     public void saveChild() {
-        MenuDto parent = menuService.findById(1L);
+        MenuDto parent = new MenuDto();
+        parent.setCaption("Menu 1");
+        parent.setPath("#");
+        parent.setIndex(1);
+        parent.setDescription("first child");
+        parent.setParent(null);
+        parent.setType(MenuType.MENU_ITEM.name());
+        parent.setLocation(MenuLocation.TOP.name());
+        menuService.save(parent);
 
         MenuDto dto = new MenuDto();
         dto.setCaption("Menu 1.1");
@@ -49,15 +57,28 @@ public class MenuServiceImplTest {
         dto.setIndex(2);
         dto.setDescription("first child");
         dto.setParent(parent);
-        dto.setType("TOP");
+        dto.setType(MenuType.MENU_ITEM.name());
+        dto.setLocation(MenuLocation.TOP.name());
         menuService.save(dto);
     }
 
 
     @Test
     public void getByLocation() {
+        menuService.removeAll();
+
+        MenuDto parent = new MenuDto();
+        parent.setCaption("Menu 1");
+        parent.setPath("#");
+        parent.setIndex(1);
+        parent.setDescription("first child");
+        parent.setParent(null);
+        parent.setType(MenuType.MENU_ITEM.name());
+        parent.setLocation(MenuLocation.TOP.name());
+        menuService.save(parent);
+
         List<MenuDto> menus = menuService.getRootByLocation(MenuLocation.TOP);
-        assertEquals(2, menus.size());
+        assertEquals(1, menus.size());
     }
 
 }

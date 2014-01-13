@@ -47,14 +47,12 @@ public class AccountTypeServiceImplTest {
 
     @Test
     public void findByCode() {
-        for (int i = 1; i <= 10; i++) {
-            AccountTypeDto type = new AccountTypeDto();
-            type.setCode("ACT-00" + i);
-            type.setName("Account type 00" + i);
-            accountTypeService.save(type);
-        }
+        AccountTypeDto type = new AccountTypeDto();
+        type.setCode("XX");
+        type.setName("Account type 00");
+        accountTypeService.save(type);
 
-        List<AccountTypeDto> types = accountTypeService.findByCode("10");
+        List<AccountTypeDto> types = accountTypeService.findByCode("XX");
         assertEquals(types.size(), 1);
     }
 }

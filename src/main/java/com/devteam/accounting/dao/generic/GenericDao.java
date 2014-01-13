@@ -29,4 +29,5 @@ public interface GenericDao<T, TId extends Serializable> {
     void removeById(Long id);
 
 
+    void removeAll();
 }

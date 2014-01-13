@@ -78,4 +78,10 @@ public class CountryServiceImpl implements CountryService {
         countryDao.removeById(id);
     }
 
+    @Override
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void deleteAll() {
+        countryDao.removeAll();
+    }
+
 }

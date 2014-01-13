@@ -25,4 +25,6 @@ public interface MenuService {
     void update(MenuDto dto);
 
     void removeById(Long id);
+
+    void removeAll();
 }

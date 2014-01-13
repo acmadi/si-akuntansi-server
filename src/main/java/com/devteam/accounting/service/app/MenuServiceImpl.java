@@ -77,6 +77,12 @@ public class MenuServiceImpl implements MenuService {
         menuDao.removeById(id);
     }
 
+    @Override
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public void removeAll() {
+        menuDao.removeAll();
+    }
+
     private void setReferencedEntity(MenuDto dto, Menu menu) {
         // set parent
         if (dto.getParent() != null) {

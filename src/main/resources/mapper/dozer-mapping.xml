@@ -16,6 +16,11 @@
                 <class-b>java.lang.String</class-b>
             </converter>
 
+            <converter type="com.devteam.accounting.mapping.converter.MenuLocationConverter">
+                <class-a>com.devteam.accounting.persistence.type.MenuLocation</class-a>
+                <class-b>java.lang.String</class-b>
+            </converter>
+
         </custom-converters>
 
     </configuration>

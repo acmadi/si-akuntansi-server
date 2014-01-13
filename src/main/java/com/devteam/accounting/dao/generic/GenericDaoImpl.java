@@ -78,4 +78,11 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
         getCurrentSession().delete(entity);
     }
 
+    @Override
+    public void removeAll() {
+        String queryString = String.format("DELETE FROM %s entity", getPersistentClass().getCanonicalName());
+        Query query = getCurrentSession().createQuery(queryString);
+        query.executeUpdate();
+    }
+
 }

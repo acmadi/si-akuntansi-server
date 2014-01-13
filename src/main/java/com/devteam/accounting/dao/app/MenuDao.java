@@ -19,4 +19,5 @@ public interface MenuDao extends GenericDao<Menu, Long> {
     Long countByType(MenuType type);
 
     List<Menu> getRootByLocationAndParent(MenuLocation loc, Menu parent);
+
 }

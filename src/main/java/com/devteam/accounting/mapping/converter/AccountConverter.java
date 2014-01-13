@@ -5,7 +5,6 @@ import com.devteam.accounting.persistence.AccountType;
 import com.devteam.accounting.dto.AccountDto;
 import com.devteam.accounting.dto.AccountTypeDto;
 import org.dozer.CustomConverter;
-import org.dozer.DozerConverter;
 import org.dozer.MappingException;
 
 /**
@@ -29,25 +28,21 @@ public class AccountConverter implements CustomConverter {
         if (source == null) {
             return null;
         }
-        Account acc ;
-        AccountDto dto;
+
         if (source instanceof Account) {
-            acc = (Account) source;
-            if (destination == null) {
-                dto = new AccountDto();
-            } else {
-                dto = (AccountDto) destination;
-            }
+            Account acc = (Account) source;
+            AccountDto dto = (destination == null) ?
+                    new AccountDto() :
+                    (AccountDto) destination;
+
             return convertTo(acc, dto);
 
         } else if (source instanceof AccountDto) {
-            dto = (AccountDto) source;
+            AccountDto dto = (AccountDto) source;
+            Account acc = (destination == null) ?
+                    new Account() :
+                    (Account) destination;
 
-            if (destination == null) {
-                acc = new Account();
-            } else {
-                acc = (Account) destination;
-            }
             return convertFrom(dto, acc);
         } else {
             throw new MappingException("Converter TestCustomConverter "
@@ -87,7 +82,6 @@ public class AccountConverter implements CustomConverter {
     }
 
     private AccountDto convertTo_Parent(Account source, AccountDto destination, int depth) {
-
         destination.setId(source.getId());
         destination.setVersion(source.getVersion());
         destination.setCode(source.getCode());
@@ -110,7 +104,7 @@ public class AccountConverter implements CustomConverter {
         if (source.getParent() != null) {
             if (depth < maxDepth) {
                 destination.setParent(new AccountDto());
-                convertTo_Parent(source.getParent(), destination.getParent(), 0);
+                convertTo_Parent(source.getParent(), destination.getParent(), depth + 1);
             }
         } else {
             destination.setParent(null);
@@ -120,13 +114,12 @@ public class AccountConverter implements CustomConverter {
         return destination;
     }
 
-    public Account convertFrom(AccountDto source, Account destination) {
-
-        destination.setId(source.getId());
-        destination.setVersion(source.getVersion());
-        destination.setCode(source.getCode());
-        destination.setName(source.getName());
-        destination.setDescription(source.getDescription());
+    public Account convertFrom(AccountDto source, Account dest) {
+        dest.setId(source.getId());
+        dest.setVersion(source.getVersion());
+        dest.setCode(source.getCode());
+        dest.setName(source.getName());
+        dest.setDescription(source.getDescription());
 
         // type
         if (source.getType() != null) {
@@ -135,19 +128,19 @@ public class AccountConverter implements CustomConverter {
             type.setVersion(source.getType().getVersion());
             type.setCode(source.getType().getCode());
             type.setName(source.getType().getName());
-            destination.setType(type);
+            dest.setType(type);
         } else {
-            destination.setType(null);
+            dest.setType(null);
         }
 
         // account parent
         if (source.getParent() != null) {
-            destination.setParent(new Account());
-            convertFrom(source.getParent(), destination.getParent());
+            dest.setParent(new Account());
+            convertFrom(source.getParent(), dest.getParent());
         } else {
-            destination.setParent(null);
+            dest.setParent(null);
         }
 
-        return destination;
+        return dest;
     }
 }

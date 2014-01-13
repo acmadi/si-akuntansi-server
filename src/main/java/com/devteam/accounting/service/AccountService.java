@@ -25,4 +25,7 @@ public interface AccountService {
     void deleteById(Long id);
 
     void removeById(Long id);
+
+    void removeAll();
+
 }

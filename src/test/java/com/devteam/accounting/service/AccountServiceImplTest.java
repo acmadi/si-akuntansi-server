@@ -3,6 +3,7 @@ package com.devteam.accounting.service;
 import com.devteam.accounting.dto.AccountDto;
 
 import com.devteam.accounting.service.wrapper.QueryResult;
+import com.devteam.accounting.util.Helper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,20 @@ public class AccountServiceImplTest {
 
     @Test
     public void update() {
-        AccountDto acc = accountService.findById(1L);
-        acc.setCode("P 0001");
+        AccountDto dto = new AccountDto();
+        String code = Helper.createStringWithLength(4);
+        dto.setCode(code);
+        dto.setName("Child 001");
+        dto.setDescription("first child");
+        accountService.save(dto);
+
+        AccountDto acc = accountService.findById(dto.getId());
+        String newCode = Helper.createStringWithLength(5);
+        acc.setCode(newCode);
         accountService.update(acc);
+
+        acc = accountService.findById(acc.getId());
+        assertEquals(newCode, acc.getCode());
     }
 
     @Test
@@ -63,6 +75,8 @@ public class AccountServiceImplTest {
 
     @Test
     public void testDeleteById() {
+        accountService.removeAll();
+
         AccountDto dto = new AccountDto();
         dto.setCode("C001");
         dto.setName("Child 001");
