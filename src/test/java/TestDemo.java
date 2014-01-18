@@ -1,5 +1,6 @@
-import junit.framework.Assert;
 import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
 
 /**
  * User: pancara
@@ -7,8 +8,9 @@ import org.junit.Test;
  * Time: 5:58 PM
  */
 public class TestDemo {
+
     @Test
     public void compareLongAndInt() {
-        Assert.assertEquals(1L, 1);
+        assertEquals(1L, 1);
     }
 }

@@ -1,0 +1,34 @@
+<nav class="top-bar" ng-controller="TopBarCtrl" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1>
+                <a href="#!">
+                    <img ng-src="{{ 'images/app-logo-small.png' | absPath }}"/>
+                    {{ appTitle }}
+                </a>
+            </h1>
+        </li>
+    </ul>
+
+    <section class="top-bar-section">
+        <ul class="right">
+            <li ng-repeat="menu in menus" ng-class="{ 'has-dropdown': hasChildren(menu) }">
+                <a ng-href="{{ menu.path }}" class="">
+                    {{ menu.caption }}
+                </a>
+                <ul class='dropdown' ng-if="hasChildren(menu)">
+                    <li ng-repeat="child in menu.children">
+                        <a ng-href='{{ child.path }}'>{{ child.caption }}</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="has-form">
+                <a ng-href="#">Pesan <span ng-if="messageCount > 0">({{ messageCount }})</span></a>
+            </li>
+            <li class="has-form">
+                <a ng-href="{{ 'app/user/logout' | absPath}}" class="small button radius">Sign Out</a>
+            </li>
+        </ul>
+    </section>
+</nav>

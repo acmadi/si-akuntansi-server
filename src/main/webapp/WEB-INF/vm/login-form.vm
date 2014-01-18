@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Login - SiAkun</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -25,80 +25,7 @@
     </style>
 </head>
 <body class="antialiased hide-extras">
-<div class="fixed title-bar">
-    <nav class="top-bar" ng-controller="TopBarCtrl" data-topbar>
-        <ul class="title-area">
-            <li class="name">
-                <h1>
-                    <a href="#">
-                        <img ng-src="{{ 'images/app-logo-small.png' | absPath }}"/>
-                        {{ appTitle }}
-                    </a>
-                </h1>
-            </li>
-        </ul>
-
-        <section class="top-bar-section">
-            <ul class="right">
-                <li ng-repeat="menu in menus" ng-class="{ 'has-dropdown': hasChildren(menu) }">
-                    <a ng-href="{{ menu.path }}" class="">
-                        {{ menu.caption }}
-                    </a>
-                    <ul class='dropdown' ng-if="hasChildren(menu)">
-                        <li ng-repeat="child in menu.children">
-                            <a ng-href='{{ child.path }}'>{{ child.caption }}</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="has-form">
-                    <a ng-href="#">Pesan <span ng-if="messageCount > 0">({{ messageCount }})</span></a>
-                </li>
-                <li class="has-form">
-                    <a ng-href="{{ 'app/logout' | absPath}}" class="small button radius">Sign Out</a>
-                </li>
-            </ul>
-        </section>
-    </nav>
-</div>
-<div class="container">
-    <div class="row-custom">
-        <div class="large-1 medium-2 small-0 sidebar columns hide-for-small">
-            <div class="title">
-                <span>Menu</span>
-            </div>
-            <a href="#" class="btnSidebar radius">Buku Besar</a>
-            <a href="#" class="btnSidebar radius">Laporan</a>
-            <a href="#" class="btnSidebar radius">Akun</a>
-        </div>
-
-        <div class="large-11 medium-10 small-12 columns content">
-            #foreach ($i in [1..100])
-##                <a href="#" class="button">Button $i</a> <br/>
-            #end
-        </div>
-    </div>
-</div>
-<div class="fixed-bottom">
-    <nav class="bottom-bar" data-topbar ng-controller="FooterCtrl">
-        <ul class="left-area">
-            <li class="divider">
-                <span>loading...</span>
-            </li>
-        </ul>
-
-        <section class="bottom-bar-section hide-for-small">
-            <ul class="right">
-                <li ng-repeat-start="menu in menus" class="divider"></li>
-
-                <li ng-repeat-end>
-                    <a href="#">{{ menu }}</a>
-                </li>
-            </ul>
-        </section>
-    </nav>
-</div>
-
+Login Form
 
 <!--&lt;!&ndash;-- script --&ndash;&gt;-->
 <script src="#springUrl("/bower_components/jquery/jquery.js")"></script>

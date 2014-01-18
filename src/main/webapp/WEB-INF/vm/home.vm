@@ -18,73 +18,50 @@
 
     <script src="#springUrl("/bower_components/modernizr/modernizr.js")"></script>
     <!-- endbuild -->
+    <style>
+        #nav {
+            top: 100px;
+        }
+    </style>
 </head>
 <body class="antialiased hide-extras">
-<div class="fixed">
-    <nav class="top-bar" data-topbar ng-controller="MenubarCtrl">
-        <ul class="title-area">
-            <li class="name">
-                <h1>
-                    <a href="#">
-                        <img src="#springUrl("/images/app-logo-small.png")"/>
-                        {{ appTitle }}
-                    </a>
-                </h1>
+<div class="fixed title-bar" ui-view="topBar">
+</div>
+
+<div class="container">
+    <div class="row-custom">
+        <div class="large-2 medium-2 small-0 sidebar columns hide-for-small">
+            <div class="title">
+                <span>Menu</span>
+            </div>
+            <a href="#/journal" class="custom_button">Jurnal</a>
+            <a href="#" class="custom_button">Laporan</a>
+            <a href="#" class="custom_button">Akun</a>
+        </div>
+
+        <div class="large-10 medium-10 small-12 columns content" ui-view="content">
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom">
+    <nav class="bottom-bar" data-topbar ng-controller="FooterCtrl">
+        <ul class="left-area">
+            <li class="divider">
+                <span>loading...</span>
             </li>
         </ul>
 
-        <section class="top-bar-section">
+        <section class="bottom-bar-section hide-for-small">
             <ul class="right">
-                <li class="has-dropdown">
-                    <a href="#">Data Master</a>
-                    <ul class="dropdown">
-                        <li><a href="#">First link in dropdown</a></li>
-                        <li><a href="#">First link in dropdown</a></li>
-                        <li><a href="#">First link in dropdown</a></li>
-                        <li><a href="#">First link in dropdown</a></li>
-                        <li><a href="#">First link in dropdown</a></li>
-                    </ul>
+                <li ng-repeat-start="menu in menus" class="divider"></li>
+
+                <li ng-repeat-end>
+                    <a href="#">{{ menu }}</a>
                 </li>
-
-                <li ng-repeat-start="menu in menus">
-                    <a href="#" class="">
-                        {{ menu }}
-                    </a>
-                </li>
-                <li ng-repeat-end class="divider"></li>
-
-
-                <li class="has-form">
-                    <a href="#" class="small button radius">Sign Out</a>
-                </li>
-
             </ul>
         </section>
     </nav>
 </div>
-
-<!— the main body row —>
-<div class="container" style="display: none;">
-    <div class="row">
-        <!— this has a wide first columns —>
-        <div class="large-2 medium-3 small-0 columns sidebar">
-            Col 1
-            <!--<ul class="sidebar" class="no-bullet">-->
-            <!--<li>-->
-            <!--<a href="#" id="text" class="button radius">-->
-            <!--<i class="icon-tumblr"></i>-->
-            <!--SIDEBAR</a>-->
-            <!--</li>-->
-            <!--</ul>-->
-        </div>
-
-        <div class="large-10 medium-9 small-12 columns" style="height: 1000px; background: #0000FF;">
-        </div>
-    </div>
-</div>
-
-
-<ng-include src="'#springUrl("/views/bottom-bar.html")'"></ng-include>
 
 
 <!--&lt;!&ndash;-- script --&ndash;&gt;-->
@@ -98,16 +75,29 @@
 <script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
 <script src="#springUrl("/bower_components/angular-sanitize/angular-sanitize.js")"></script>
 <script src="#springUrl("/bower_components/angular-cookies/angular-cookies.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
 <!--endbuild-->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="#springUrl("/scripts/module.js")"></script>
+<script src="#springUrl("/scripts/functions/initApp.js")"></script>
 <script src="#springUrl("/scripts/functions/layout.js")"></script>
+<script src="#springUrl("/scripts/functions/initStates.js")"></script>
 <script src="#springUrl("/scripts/init.js")"></script>
-<script src="#springUrl("/scripts/controllers/MenubarCtrl.js")"></script>
-<!---->
+
+<!-- controllers -->
 <script src="#springUrl("/scripts/controllers/main.js")"></script>
 <script src="#springUrl("/scripts/controllers/customer.js")"></script>
+<script src="#springUrl("/scripts/controllers/TopBarCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/HomeCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/JournalCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FooterCtrl.js")"></script>
+
+<!-- services -->
+<script src="#springUrl("/scripts/services/FoundationSvc.js")"></script>
+
+<!-- filters -->
+<script src="#springUrl("/scripts/filters/absPath.js")"></script>
 
 <!-- endbuild -->
 

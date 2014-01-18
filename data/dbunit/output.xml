@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <_account_aud/>
+  <_account_type_aud/>
+  <_country_aud/>
+  <_currency_aud/>
+  <_currency_rate_aud/>
+  <_fiscal_period_aud/>
+  <_menu_aud/>
+  <_role_aud/>
+  <_role_menu_aud/>
+  <_users_aud/>
+  <account id="1" code="CD001" description="test" name="tet" version="0"/>
+  <account_type/>
+  <aud_account/>
+  <aud_account_type/>
+  <aud_country/>
+  <aud_currency/>
+  <aud_currency_rate/>
+  <aud_fiscal_period/>
+  <aud_menu/>
+  <aud_role/>
+  <aud_role_menu/>
+  <aud_users/>
+  <country/>
+  <currency/>
+  <currency_rate/>
+  <fiscal_period/>
+  <menu/>
+  <role/>
+  <role_menu/>
+  <sys_revisions/>
+  <users/>
+</dataset>

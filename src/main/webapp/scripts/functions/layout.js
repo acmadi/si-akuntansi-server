@@ -2,11 +2,31 @@
 
 siakun.func.layout = function (options) {
     var defaults = {
-        topBar: ".top-bar",
         container: ".container",
+        top: ".title-bar",
+        side: ".sidebar",
+        bottom: ".bottom-bar",
         spacing: 0
     }
     var options = $.extend({}, defaults, options);
-    var hTopBar = $(options.topBar).height();
-    $(options.container).css("margin-top", hTopBar + options.spacing);
+
+    var hTop = $(options.top).height();
+    var hBottom = $(options.bottom).height();
+    $(options.container).css({
+        "margin-top": hTop + "px",
+        "padding": "0px 0px 0px 0px"
+    });
+
+//    $(options.container).css({
+//        "margin-top": hTop,
+//        "padding": "0px 0px 0px 0px",
+//        "top": hTop + "px",
+//        "position": "absolute",
+//        "background": "#FF0000"
+//
+//    });
+//    var hBottom = $(options.bottom).height();
+//
+    var hSide = window.innerHeight - hTop - hBottom;
+    $(options.side).height(hSide);
 };

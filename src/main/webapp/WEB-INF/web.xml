@@ -28,15 +28,6 @@
     </listener>
 
 
-
-
-
-
-
-
-
-
-
     <servlet>
         <servlet-name>accounting</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -49,17 +40,17 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>/app/home</welcome-file>
+        <welcome-file>app/home</welcome-file>
     </welcome-file-list>
 
     <!--<error-page>-->
-        <!--<error-code>404</error-code>-->
-        <!--<location>/error/page-not-found.jsp</location>-->
+    <!--<error-code>404</error-code>-->
+    <!--<location>/error/page-not-found.jsp</location>-->
     <!--</error-page>-->
 
     <!--<error-page>-->
-        <!--<error-code>500</error-code>-->
-        <!--<location>/error/server-error.jsp</location>-->
+    <!--<error-code>500</error-code>-->
+    <!--<location>/error/server-error.jsp</location>-->
     <!--</error-page>-->
 
 </web-app>
