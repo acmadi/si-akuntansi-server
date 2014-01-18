@@ -1,0 +1,134 @@
+<!doctype html>
+<html ng-app="siakunApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+
+    <link rel="stylesheet" href="#springUrl("/bower_components/foundation/css/normalize.css")">
+    <link rel="stylesheet" href="#springUrl("/css/style.css")">
+
+    <!--<link href='css/work.css' rel='stylesheet'/>-->
+    <!--<link rel="stylesheet" href="styles/custom/_sidebar.css">-->
+    <!-- endbuild -->
+
+    <script src="#springUrl("/bower_components/modernizr/modernizr.js")"></script>
+    <!-- endbuild -->
+    <style>
+        #nav {
+            top: 100px;
+        }
+    </style>
+</head>
+<body class="antialiased hide-extras">
+<div class="fixed title-bar">
+    <nav class="top-bar" ng-controller="TopBarCtrl" data-topbar>
+        <ul class="title-area">
+            <li class="name">
+                <h1>
+                    <a href="#">
+                        <img ng-src="{{ 'images/app-logo-small.png' | absPath }}"/>
+                        {{ appTitle }}
+                    </a>
+                </h1>
+            </li>
+        </ul>
+
+        <section class="top-bar-section">
+            <ul class="right">
+                <li ng-repeat="menu in menus" ng-class="{ 'has-dropdown': hasChildren(menu) }">
+                    <a ng-href="{{ menu.path }}" class="">
+                        {{ menu.caption }}
+                    </a>
+                    <ul class='dropdown' ng-if="hasChildren(menu)">
+                        <li ng-repeat="child in menu.children">
+                            <a ng-href='{{ child.path }}'>{{ child.caption }}</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="has-form">
+                    <a ng-href="#">Pesan <span ng-if="messageCount > 0">({{ messageCount }})</span></a>
+                </li>
+                <li class="has-form">
+                    <a ng-href="{{ 'app/logout' | absPath}}" class="small button radius">Sign Out</a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+</div>
+<div class="container">
+    <div class="row-custom">
+        <div class="large-1 medium-2 small-0 sidebar columns hide-for-small">
+            <div class="title">
+                <span>Menu</span>
+            </div>
+            <a href="#" class="btnSidebar radius">Buku Besar</a>
+            <a href="#" class="btnSidebar radius">Laporan</a>
+            <a href="#" class="btnSidebar radius">Akun</a>
+        </div>
+
+        <div class="large-11 medium-10 small-12 columns content">
+            #foreach ($i in [1..100])
+##                <a href="#" class="button">Button $i</a> <br/>
+            #end
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom">
+    <nav class="bottom-bar" data-topbar ng-controller="FooterCtrl">
+        <ul class="left-area">
+            <li class="divider">
+                <span>loading...</span>
+            </li>
+        </ul>
+
+        <section class="bottom-bar-section hide-for-small">
+            <ul class="right">
+                <li ng-repeat-start="menu in menus" class="divider"></li>
+
+                <li ng-repeat-end>
+                    <a href="#">{{ menu }}</a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+</div>
+
+
+<!--&lt;!&ndash;-- script --&ndash;&gt;-->
+<script src="#springUrl("/bower_components/jquery/jquery.js")"></script>
+<script src="#springUrl("/bower_components/angular/angular.js")"></script>
+<script src="#springUrl("/bower_components/foundation/js/foundation.js")"></script>
+
+<!--build:js scripts/modules.js-->
+<script src="#springUrl("/bower_components/angular-resource/angular-resource.js")"></script>
+<script src="#springUrl("/bower_components/angular-route/angular-route.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-sanitize/angular-sanitize.js")"></script>
+<script src="#springUrl("/bower_components/angular-cookies/angular-cookies.js")"></script>
+<!--endbuild-->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="#springUrl("/scripts/module.js")"></script>
+<script src="#springUrl("/scripts/functions/layout.js")"></script>
+<script src="#springUrl("/scripts/init.js")"></script>
+<!---->
+<script src="#springUrl("/scripts/controllers/main.js")"></script>
+<script src="#springUrl("/scripts/controllers/customer.js")"></script>
+<script src="#springUrl("/scripts/controllers/TopBarCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FooterCtrl.js")"></script>
+<!-- filter -->
+<script src="#springUrl("/scripts/filters/absPath.js")"></script>
+
+<!-- endbuild -->
+
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>
