@@ -1,4 +1,3 @@
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
 meta.foundation-mq-small {
   font-family: "/only screen and (max-width: 40em)/";
   width: 0em; }
@@ -5352,7 +5351,8 @@ meta.foundation-mq-bottombar {
   position: relative;
   background: #333333;
   margin-bottom: 0;
-  padding-right: 10px; }
+  padding-right: 10px;
+  box-shadow: 0px 0px 8px black; }
   .bottom-bar ul {
     margin-bottom: 0;
     list-style: none; }
@@ -5396,8 +5396,11 @@ meta.foundation-mq-bottombar {
         padding: 0 8.66667px;
         display: inline-block;
         margin-left: 4px;
-        background-color: #f04124;
         border-radius: 3px; }
+        .bottom-bar .left-area li span.alert {
+          background-color: #f04124; }
+        .bottom-bar .left-area li span.success {
+          background-color: #43ac6a; }
   .bottom-bar .toggle-bottombar {
     position: absolute;
     right: 0;
@@ -5729,10 +5732,36 @@ meta.foundation-mq-bottombar {
     background-color: #0b4d63;
     text-shadow: 0px 0px 4px #666666;
     font-size: 12px;
-    border-radius: 0px; }
+    border-radius: 0px;
+    -webkit-transition: background-color 300ms ease-out;
+    -moz-transition: background-color 300ms ease-out;
+    transition: background-color 300ms ease-out; }
     .sidebar a.custom_button:hover, .sidebar a.custom_button:focus {
       background-color: #0079a1; }
     .sidebar a.custom_button:hover, .sidebar a.custom_button:focus {
       color: white; }
+    .sidebar a.custom_button:hover {
+      background-color: #083b4c;
+      -webkit-transition: background-color 500ms ease-out;
+      -moz-transition: background-color 500ms ease-out;
+      transition: background-color 500ms ease-out; }
+    .sidebar a.custom_button:focus {
+      background-color: #062935; }
     .sidebar a.custom_button:first-child {
       margin-top: 12px; }
+
+.action_pane {
+  display: inline;
+  position: absolute;
+  -webkit-transition: background-color 2000ms ease-out;
+  -moz-transition: background-color 2000ms ease-out;
+  transition: background-color 2000ms ease-out;
+  background-color: #cccccc;
+  border-radius: 4px;
+  padding: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: 0px;
+  z-index: 999;
+  float: right; }

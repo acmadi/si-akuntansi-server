@@ -1,25 +1,28 @@
 'use strict';
 
 siakun.app = angular.module(siakun.appName, [
-//        'ngRoute',
-//        'ngCookies',
-//        'ngResource',
-//        'ngSanitize',
-//        'ngRoute',
+        'ngRoute',
+        'ngCookies',
+        'ngResource',
+        'ngSanitize',
         'ui.router'
     ])
     .constant('Config', {
         appName: 'SiAkun',
-        root: '/accounting_exploded'
+        root: '/accounting_exploded',
+        servletPath: '/accounting_exploded/app'
     })
-    .config(['$stateProvider', '$urlRouterProvider', siakun.func.initStates])
+    .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
+        siakun.func.initStates($stateProvider, $urlRouterProvider);
+        $httpProvider.interceptors.push('requestInterceptor');
+    }])
 
     // define app configuration
-    .run(function ($rootScope) {
+    .run(['Util', '$rootScope', function (Util, $rootScope) {
         $rootScope.$on('$viewContentLoaded', function () {
-            $(document).foundation();
+            Util.initFoundation();
         });
-    });
+    }]);
 //    .config(function ($routeProvider) {
 //        $routeProvider
 //            .when('/', {

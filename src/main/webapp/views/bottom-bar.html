@@ -1,0 +1,18 @@
+<nav class="bottom-bar" data-topbar>
+    <ul class="left-area">
+        <li class="divider">
+            <span ng-if='requestExist()' class='alert'>[ {{ pendingRequests }} ] loading...</span>
+            <span ng-if='!requestExist()' class='success'>ready</span>
+        </li>
+    </ul>
+
+    <section class="bottom-bar-section hide-for-small">
+        <ul class="right">
+            <li ng-repeat-start="menu in menus" class="divider"></li>
+
+            <li ng-repeat-end>
+                <a href="#">{{ menu }}</a>
+            </li>
+        </ul>
+    </section>
+</nav>

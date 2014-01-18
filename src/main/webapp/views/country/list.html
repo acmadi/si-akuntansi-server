@@ -1,0 +1,22 @@
+<h1>Negara</h1>
+<div>
+    {{ countries.data.length }}
+    <table>
+        <tr ng-repeat='c in countries.data' class="row">
+            <td class="small-2 large-1 columns">
+                {{ $index + 1}}
+            </td>
+            <td class="small-10 large-11columns" ng-mouseover='mouseOver($index)' ng-mouseleave='mouseLeave($index)'>
+                {{ c.iso2 }}
+                <span ng-show='showActionPane($index)' class='action_pane'>
+                    <span ng-click='removeCountry(c)'>hapus</span>
+                    <span ng-click='editCountry(c)'>edit </span>
+                </span>
+            </td>
+            <td>{{ c.iso3 }}</td>
+            <td>{{ c.name }}</td>
+        </tr>
+    </table>
+    <button ng-click='refresh()' class="small">Refresh</button>
+    <button ng-click='add()' class="small">Add</button>
+</div>

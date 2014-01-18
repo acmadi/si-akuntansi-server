@@ -1,8 +1,8 @@
 'use strict';
 
 // var siakun = siakun || {};
-siakun.app.controller('TopBarCtrl', ['Config', '$timeout', '$scope', 'FoundationSvc',
-    function (Config, $timeout, $scope, FoundationSvc) {
+siakun.app.controller('TopBarCtrl', ['Config', '$timeout', '$scope', 'Util',
+    function (Config, $timeout, $scope, Util) {
         $scope.appTitle = Config.appName;
         $scope.menus = [
             {
@@ -19,11 +19,11 @@ siakun.app.controller('TopBarCtrl', ['Config', '$timeout', '$scope', 'Foundation
                     },
                     {
                         caption: 'Mata Uang',
-                        path: '#/currency_rate'
+                        path: '#/currency'
                     },
                     {
                         caption: 'Tahun Fiskal',
-                        path: '#/fiscal_period'
+                        path: '#/fiscal-period'
                     },
                     {
                         caption: 'Negara',
@@ -43,15 +43,14 @@ siakun.app.controller('TopBarCtrl', ['Config', '$timeout', '$scope', 'Foundation
         }
 
         $scope.$on('$viewContentLoaded', function (event) {
-            FoundationSvc.init();
+            Util.initFoundation();
         });
 
         // start message check thread
+        $scope.updateMessageCount = function () {
+            $scope.messageCount = Math.floor(Math.random() * 10);
+            $timeout($scope.updateMessageCount, 1000);
+        }
 
-//    $scope.updateMessageCount = function() {
-//        $scope.messageCount = Math.floor(Math.random() * 10);
-//        $timeout($scope.updateMessageCount, 1000);
-//    }
-
-//    $timeout($scope.updateMessageCount, 1000);
+        $timeout($scope.updateMessageCount, 1000);
     }]);

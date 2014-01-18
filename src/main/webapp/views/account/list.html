@@ -1,0 +1,18 @@
+<h1>Akun</h1>
+<div>
+    {{ accounts.count }}
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Kode</th>
+            <th>Nama</th>
+        </tr>
+
+        <tr ng-repeat='account in accounts.data'>
+            <td>{{ $index + 1 }}.</td>
+            <td>{{ account.code }}</td>
+            <td>{{ account.name }}</td>
+        </tr>
+    </table>
+    <button ng-click='refresh()'>Refresh</button>
+</div>

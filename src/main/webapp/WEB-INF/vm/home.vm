@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width">
 
     <!-- build:css({.tmp,app}) styles/main.css -->
-
     <link rel="stylesheet" href="#springUrl("/bower_components/foundation/css/normalize.css")">
     <link rel="stylesheet" href="#springUrl("/css/style.css")">
 
@@ -18,11 +17,6 @@
 
     <script src="#springUrl("/bower_components/modernizr/modernizr.js")"></script>
     <!-- endbuild -->
-    <style>
-        #nav {
-            top: 100px;
-        }
-    </style>
 </head>
 <body class="antialiased hide-extras">
 <div class="fixed title-bar" ui-view="topBar">
@@ -35,33 +29,16 @@
                 <span>Menu</span>
             </div>
             <a href="#/journal" class="custom_button">Jurnal</a>
-            <a href="#" class="custom_button">Laporan</a>
-            <a href="#" class="custom_button">Akun</a>
+            <a href="#/reporting" class="custom_button">Laporan</a>
+            <a href="#/reporting" class="custom_button">Laporan</a>
         </div>
 
         <div class="large-10 medium-10 small-12 columns content" ui-view="content">
         </div>
     </div>
 </div>
-<div class="fixed-bottom">
-    <nav class="bottom-bar" data-topbar ng-controller="FooterCtrl">
-        <ul class="left-area">
-            <li class="divider">
-                <span>loading...</span>
-            </li>
-        </ul>
 
-        <section class="bottom-bar-section hide-for-small">
-            <ul class="right">
-                <li ng-repeat-start="menu in menus" class="divider"></li>
-
-                <li ng-repeat-end>
-                    <a href="#">{{ menu }}</a>
-                </li>
-            </ul>
-        </section>
-    </nav>
-</div>
+<div class="fixed-bottom" ui-view='bottomBar'></div>
 
 
 <!--&lt;!&ndash;-- script --&ndash;&gt;-->
@@ -80,24 +57,33 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="#springUrl("/scripts/module.js")"></script>
-<script src="#springUrl("/scripts/functions/initApp.js")"></script>
 <script src="#springUrl("/scripts/functions/layout.js")"></script>
 <script src="#springUrl("/scripts/functions/initStates.js")"></script>
 <script src="#springUrl("/scripts/init.js")"></script>
+
+<!-- interceptor -->
+<script src="#springUrl("/scripts/factory/httpInterceptor.js")"></script>
 
 <!-- controllers -->
 <script src="#springUrl("/scripts/controllers/main.js")"></script>
 <script src="#springUrl("/scripts/controllers/customer.js")"></script>
 <script src="#springUrl("/scripts/controllers/TopBarCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/BottomBarCtrl.js")"></script>
+
 <script src="#springUrl("/scripts/controllers/HomeCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/AccountCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CountryCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/JournalCtrl.js")"></script>
-<script src="#springUrl("/scripts/controllers/FooterCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/ReportingCtrl.js")"></script>
 
 <!-- services -->
-<script src="#springUrl("/scripts/services/FoundationSvc.js")"></script>
+<script src="#springUrl("/scripts/services/Util.js")"></script>
 
 <!-- filters -->
 <script src="#springUrl("/scripts/filters/absPath.js")"></script>
+
 
 <!-- endbuild -->
 
