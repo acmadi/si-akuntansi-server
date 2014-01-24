@@ -1,5 +1,5 @@
 <h1>Negara</h1>
-<div style="padding: 0px 0px 0px 0px;">
+<div>
     <div>
         <div>
             <button ng-click='refresh()' class="small">Refresh</button>
@@ -16,6 +16,26 @@
                 {{ value }}
             </span>
         </div>
+
+        <ul class="cust-pagination">
+            <li ng-click='toPage("first")'>
+                <a>&laquo;&laquo;</a>
+            </li>
+            <li ng-click='toPage("prev")'>
+                <a>&laquo;&nbsp;</a>
+            </li>
+            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)" ng-class='{current: p == data.paging.current}'>
+                <a>
+                    {{ p }}
+                </a>
+            </li>
+            <li ng-click='toPage("next")'>
+                <a>&nbsp;&raquo;</a>
+            </li>
+            <li ng-click='toPage("last")'>
+                <a>&raquo;&raquo;</a>
+            </li>
+        </ul>
 
         <table style="width: 100%">
             <colgroup>
@@ -50,21 +70,24 @@
             </tr>
             </tbody>
         </table>
-        <ul class='paging'>
-            {{ data.dataset.count }}
-            //
-            <li ng-click='toPage("first")'>First</li>
-            <li ng-click='toPage("prev")'>Prev</li>
-            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)">
-                <span ng-if='p === data.paging.current'>
-                    [ {{ p }} ]
-                </span>
-                <span ng-if='p !== data.paging.current'>
-                    {{ p }}
-                </span>
+        <ul class="cust-pagination">
+            <li ng-click='toPage("first")'>
+                <a>&laquo;&laquo;</a>
             </li>
-            <li ng-click='toPage("next")'>Next</li>
-            <li ng-click='toPage("last")'>Last</li>
+            <li ng-click='toPage("prev")'>
+                <a>&laquo;&nbsp;</a>
+            </li>
+            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)" ng-class='{current: p == data.paging.current}'>
+                <a>
+                    {{ p }}
+                </a>
+            </li>
+            <li ng-click='toPage("next")'>
+                <a>&nbsp;&raquo;</a>
+            </li>
+            <li ng-click='toPage("last")'>
+                <a>&raquo;&raquo;</a>
+            </li>
         </ul>
     </div>
 </div>

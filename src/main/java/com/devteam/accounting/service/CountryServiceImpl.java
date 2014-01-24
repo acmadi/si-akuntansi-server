@@ -3,12 +3,10 @@ package com.devteam.accounting.service;
 import com.devteam.accounting.dao.CountryDao;
 import com.devteam.accounting.dto.CountryDto;
 import com.devteam.accounting.mapping.MappingUtil;
-import com.devteam.accounting.persistence.Account;
-import com.devteam.accounting.dto.AccountDto;
 import com.devteam.accounting.persistence.Country;
 import com.devteam.accounting.service.helper.OrderDir;
-import com.devteam.accounting.service.helper.PropertyOrder;
 import com.devteam.accounting.service.wrapper.QueryResult;
+import com.devteam.accounting.web.controller.params.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -71,8 +69,8 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
-    public QueryResult<CountryDto> findAlls(String orderProperty, OrderDir orderDir, int start, int count) {
-        List<Country> entities = countryDao.findAlls(orderProperty, orderDir, start, count);
+    public QueryResult<CountryDto> findAlls(List<Order> orders, int start, int count) {
+        List<Country> entities = countryDao.findAlls(orders, start, count);
 
         List<CountryDto> dto = mappingUtil.mapList(entities, CountryDto.class);
         Long total = countryDao.countAlls();
@@ -81,8 +79,8 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
-    public QueryResult findByKeyword(String orderProperty, OrderDir orderDir, int start, int count, String keyword) {
-        List<Country> entities = countryDao.findByKeyword(orderProperty, orderDir, start, count, keyword);
+    public QueryResult findByKeyword(List<Order> orders, int start, int count, String keyword) {
+        List<Country> entities = countryDao.findByKeyword(orders, start, count, keyword);
         List<CountryDto> dto = mappingUtil.mapList(entities, CountryDto.class);
         Long total = countryDao.countByKeyword(keyword);
         return new QueryResult(total, dto);

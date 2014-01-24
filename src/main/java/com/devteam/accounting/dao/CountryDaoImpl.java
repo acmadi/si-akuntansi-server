@@ -1,13 +1,10 @@
 package com.devteam.accounting.dao;
 
 import com.devteam.accounting.dao.generic.GenericDaoImpl;
-import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.persistence.Country;
-import com.devteam.accounting.service.helper.OrderDir;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -38,13 +35,13 @@ public class CountryDaoImpl extends GenericDaoImpl<Country, Long> implements Cou
     }
 
     @Override
-    public List<Country> findByKeyword(String orderProperty, OrderDir orderDir, int start, int count, String keyword) {
+    public List<Country> findByKeyword(List<com.devteam.accounting.web.controller.params.Order> orders, int start, int count, String keyword) {
         Criteria criteria = getCurrentSession().createCriteria(Country.class);
         criteria.add(Restrictions.ilike("name", keyword));
 
-        Order order = orderDir == OrderDir.ASC ?
-                Order.asc(orderProperty) : Order.desc(orderProperty);
-        criteria.addOrder(order);
+        for (com.devteam.accounting.web.controller.params.Order order : orders) {
+            criteria.addOrder(order.toHibernateOrder());
+        }
 
         criteria.setFirstResult(start);
         criteria.setMaxResults(count);

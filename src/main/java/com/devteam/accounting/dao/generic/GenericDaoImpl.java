@@ -1,7 +1,8 @@
 package com.devteam.accounting.dao.generic;
 
-import com.devteam.accounting.persistence.Country;
 import com.devteam.accounting.service.helper.OrderDir;
+import com.devteam.accounting.web.controller.params.Order;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -70,12 +71,29 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     }
 
     @Override
-    public List<T> findAlls(String property, OrderDir orderDir) {
-        String queryString = String.format("FROM %s ORDER BY %s %s",
-                getPersistentClass().getCanonicalName(),
-                property, orderDir);
+    public List<T> findAlls(List<Order> orders) {
+        String orderingString = createOrderQuery(orders);
+        String queryString = String.format("FROM %s", getPersistentClass().getCanonicalName());
+        if (!StringUtils.isEmpty(orderingString)) {
+            queryString += " ORDER BY " + orderingString;
+        }
         Query query = getCurrentSession().createQuery(queryString);
         return query.list();
+    }
+
+    private String createOrderQuery(List<Order> orders) {
+        StringBuilder sb = new StringBuilder();
+        if (orders.size() > 0) {
+            for (Order order : orders) {
+                if (sb.length() > 0)
+                    sb.append(", ");
+
+                sb.append(order.getProperty());
+                sb.append(" ");
+                sb.append(order.getOrdering());
+            }
+        }
+        return sb.toString().trim();
     }
 
     @Override
@@ -88,10 +106,13 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     }
 
     @Override
-    public List<T> findAlls(String property, OrderDir orderDir, int start, int count) {
-        String queryString = String.format("FROM %s ORDER BY %s %s",
-                getPersistentClass().getCanonicalName(),
-                property, orderDir);
+    public List<T> findAlls(List<Order> orders, int start, int count) {
+        String orderingString = createOrderQuery(orders);
+        String queryString = String.format("FROM %s", getPersistentClass().getCanonicalName());
+        if (!StringUtils.isEmpty(orderingString)) {
+            queryString += " ORDER BY " + orderingString;
+        }
+
         Query query = getCurrentSession().createQuery(queryString);
         query.setFirstResult(start);
         query.setMaxResults(count);

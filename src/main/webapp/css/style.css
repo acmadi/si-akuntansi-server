@@ -5672,8 +5672,42 @@ meta.foundation-mq-bottombar {
     color: white; }
   .no-js .bottom-bar-section .has-dropdown:hover > .dropdown {
     display: block; } }
-.paging {
-  background-color: white; }
+.cust-pagination {
+  display: block;
+  height: 1.5rem;
+  margin-left: -0.3125rem; }
+  .cust-pagination li {
+    height: 1.5rem;
+    color: #222222;
+    font-size: 0.875rem;
+    margin-left: 0.3125rem; }
+    .cust-pagination li a {
+      display: block;
+      padding: 0.0625rem 0.625rem 0.0625rem;
+      color: #999999;
+      -webkit-border-radius: 3px;
+      border-radius: 3px; }
+    .cust-pagination li:hover a,
+    .cust-pagination li a:focus {
+      background: #e6e6e6; }
+    .cust-pagination li.unavailable a {
+      cursor: default;
+      color: #999999; }
+    .cust-pagination li.unavailable:hover a, .cust-pagination li.unavailable a:focus {
+      background: transparent; }
+    .cust-pagination li.current a {
+      background: #008cba;
+      color: white;
+      font-weight: bold;
+      cursor: default; }
+      .cust-pagination li.current a:hover, .cust-pagination li.current a:focus {
+        background: #008cba; }
+  .cust-pagination li {
+    float: left;
+    display: block; }
+  .cust-pagination li {
+    border: 1px solid #cccccc;
+    border-radius: 3px; }
 
 .container {
   width: 100%;

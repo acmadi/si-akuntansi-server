@@ -1,8 +1,8 @@
 'use strict';
 
 
-siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope', 'localStorageService', 'Dialog', 'Util', 'Config',
-    function ($resource, $timeout, $state, $scope, localStorageService, Dialog, Util, Config) {
+siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$state', '$scope', 'localStorageService', 'Dialog', 'Util', 'Config',
+    function ($resource, $timeout, $window, $state, $scope, localStorageService, Dialog, Util, Config) {
 
         $scope.addCountry = function () {
             $scope.data.recordInForm = {};
@@ -30,12 +30,49 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
             }
         };
 
-        $scope.columnClick = function (col) {
-            if (col.isData) {
-                if ($scope.data.queryParams.orderProperty === col.remoteField) {
-                    $scope.data.queryParams.orderDir = Util.toggleOrdering($scope.data.queryParams.orderDir);
+        $scope.columnClick = function (column) {
+            if (column.isData) {
+
+                var orders = $scope.data.queryParams.orders;
+                if (!$window.event.ctrlKey) {
+                    if (orders.length === 0) {
+                        var order = {
+                            property: column.remoteProperty,
+                            ordering: column.ordering
+                        };
+                        orders.push(order);
+                    } else {
+                        var old = orders[0];
+                        if (old.property === column.remoteProperty) {
+                            column.ordering = Util.toggleOrdering(column.ordering);
+                        }
+
+                        var order = {
+                            property: column.remoteProperty,
+                            ordering: column.ordering
+                        };
+
+                        orders.length = 0; // clean array
+                        orders.push(order);
+                    }
                 } else {
-                    $scope.data.queryParams.orderProperty = col.remoteField;
+                    // check jika column sudah ada dalam ordering
+                    var inOrdering = false;
+                    for (var i = 0; i < orders.length; i++) {
+                        if (column.remoteProperty === orders[i].property) {
+                            column.ordering = Util.toggleOrdering(column.ordering);
+                            orders[i].ordering = column.ordering;
+                            inOrdering = true;
+                        }
+                    }
+
+                    if (!inOrdering) {
+                        var order = {
+                            property: column.remoteProperty,
+                            ordering: column.ordering
+                        };
+                        orders.push(order);
+                    }
                 }
                 $scope.refresh();
             }
@@ -44,7 +81,7 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
         $scope.refresh = function () {
             $scope.data.queryParams.start = ($scope.data.paging.current - 1) * $scope.data.queryParams.count;
 
-            Country.get($scope.data.queryParams, function (data) {
+            Country.query({}, $scope.data.queryParams, function (data) {
                 $scope.data.dataset = data;
                 var curr = $scope.data.paging.current;
                 var shownPages = Config.pageCount;
@@ -111,11 +148,19 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
             $scope.data.queryParams.count = count;
             $scope.refresh();
         }
+        $scope.getOrders = function() {
+            return "hello";
+        }
 
         // init controller
         var Country = $resource(Config.servletPath + '/country/:id', {},
             {
+                query: {
+                    url: Config.servletPath + '/country/browse',
+                    method: 'POST'
+                },
                 delete: {
+                    url: Config.servletPath + '/country/:id',
                     method: 'DELETE',
                     params: {
                         id: '@id'
@@ -140,8 +185,10 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
                     start: 0,
                     count: 1,
                     keyword: null,
-                    orderProperty: null,
-                    orderDir: null
+                    orders: [],
+                    getOrders: function () {
+                        return "orders params func"
+                    }
                 }
             };
             $scope.needRefresh = true;
@@ -161,9 +208,9 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
         $scope.data.columns = [
             {title: '', isData: false},
             {title: 'No', isData: false},
-            {title: 'ISO 2', isData: true, remoteField: 'iso2'},
-            {title: 'ISO 3', isData: true, remoteField: 'iso3'},
-            {title: 'Nama', isData: true, remoteField: 'name'}
+            {title: 'ISO 2', isData: true, remoteProperty: 'iso2', ordering: "ASC"},
+            {title: 'ISO 3', isData: true, remoteProperty: 'iso3', ordering: "ASC"},
+            {title: 'Nama', isData: true, remoteProperty: 'name', ordering: "ASC"}
         ];
 
         if ($scope.needRefresh)
