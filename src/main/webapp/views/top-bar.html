@@ -1,4 +1,4 @@
-<nav class="top-bar" ng-controller="TopBarCtrl" data-topbar>
+<nav class="top-bar" ng-controller="TopBarCtrl" data-topbar ng-cloak>
     <ul class="title-area">
         <li class="name">
             <h1>
@@ -23,7 +23,7 @@
                 </ul>
             </li>
 
-            <li class="has-form">
+            <li class="has-form" style="width: 120px;">
                 <a ng-href="#">Pesan <span ng-if="messageCount > 0">({{ messageCount }})</span></a>
             </li>
             <li class="has-form">

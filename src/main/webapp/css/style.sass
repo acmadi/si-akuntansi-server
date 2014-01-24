@@ -43,6 +43,8 @@
 // custom
 
 @import "custom/bottom-bar"
+@import "custom/table"
+@import "custom/paging"
 
 .container
   width: 100%
@@ -58,14 +60,16 @@
       margin-top: 0px
       width: 100%
       max-width: 100%
+
     .content
-      padding: 1px 0px 1px 1px !important
+      padding: 0px 0px 1px 1px !important
       h1
         margin: 0px 0px 0px 0px
         padding: 2px 4px 4px 4px
         background-color: #888
         color: #FFF
         font-size: 14px
+
       > div
         margin-top: 1px
 
@@ -73,6 +77,7 @@
   background: lighten($bottombar-bg, 50)
   position: fixed !important
   padding: 0px
+  z-index: 100
 
   .title
     background: $bottombar-bg
@@ -111,19 +116,3 @@
 
     &:first-child
       margin-top: 12px
-
-.action_pane
-  display: inline
-  position: absolute
-  -webkit-transition: background-color 2000ms ease-out
-  -moz-transition: background-color 2000ms ease-out
-  transition: background-color 2000ms ease-out
-  background-color: #CCC
-  border-radius: 4px
-  padding: 4px
-  margin-left: auto
-  margin-right: auto
-  margin-top: auto
-  margin-bottom: 0px
-  z-index: 999
-  float: right

@@ -1,22 +1,70 @@
 <h1>Negara</h1>
-<div>
-    {{ countries.data.length }}
-    <table>
-        <tr ng-repeat='c in countries.data' class="row">
-            <td class="small-2 large-1 columns">
-                {{ $index + 1}}
-            </td>
-            <td class="small-10 large-11columns" ng-mouseover='mouseOver($index)' ng-mouseleave='mouseLeave($index)'>
-                {{ c.iso2 }}
-                <span ng-show='showActionPane($index)' class='action_pane'>
-                    <span ng-click='removeCountry(c)'>hapus</span>
-                    <span ng-click='editCountry(c)'>edit </span>
+<div style="padding: 0px 0px 0px 0px;">
+    <div>
+        <div>
+            <button ng-click='refresh()' class="small">Refresh</button>
+            <button ng-click='addCountry()' class="small">Tambah</button>
+            <span>{{ model.notification }}</span>
+        </div>
+        <div>
+            <span class="label">Pencarian</span>
+            <input type='text' ng-model='data.queryParams.keyword' ui-keypress="{'enter':'refresh()'}">
+        </div>
+
+        <div class="data-count">
+            <span ng-repeat="value in optionsDataCount()" ng-click='setDataCount(value)'>
+                {{ value }}
+            </span>
+        </div>
+
+        <table style="width: 100%">
+            <colgroup>
+                <col style="width: 10px;"/>
+                <col style="width: 20px;"/>
+                <col style="width: 450px;"/>
+                <col style="width: 160px;"/>
+                <col style="width: 200px;"/>
+            </colgroup>
+            <thead>
+            <tr>
+                <th ng-repeat='col in data.columns' ng-click='columnClick(col)' style="width: 100px;">
+                    {{ col.title }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='c in data.dataset.data' class='anim-fade'>
+                <td>*</td>
+                <td class="small-2 large-1 columns">
+                    {{ $index + data.queryParams.start + 1}}
+                </td>
+                <td ng-mouseover='mouseOver($index)' ng-mouseleave='mouseLeave()'>
+                    {{ c.iso2 }}
+                    <div>
+                        <span confirm-click='Hapus data ?' ng-click='removeCountry(c, $index)'>hapus</span>
+                        <span ng-click='editCountry(c)'>edit </span>
+                    </div>
+                </td>
+                <td>{{ c.iso3 }}</td>
+                <td>{{ c.name }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <ul class='paging'>
+            {{ data.dataset.count }}
+            //
+            <li ng-click='toPage("first")'>First</li>
+            <li ng-click='toPage("prev")'>Prev</li>
+            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)">
+                <span ng-if='p === data.paging.current'>
+                    [ {{ p }} ]
                 </span>
-            </td>
-            <td>{{ c.iso3 }}</td>
-            <td>{{ c.name }}</td>
-        </tr>
-    </table>
-    <button ng-click='refresh()' class="small">Refresh</button>
-    <button ng-click='add()' class="small">Add</button>
+                <span ng-if='p !== data.paging.current'>
+                    {{ p }}
+                </span>
+            </li>
+            <li ng-click='toPage("next")'>Next</li>
+            <li ng-click='toPage("last")'>Last</li>
+        </ul>
+    </div>
 </div>

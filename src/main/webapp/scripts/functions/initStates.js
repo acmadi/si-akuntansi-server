@@ -1,4 +1,4 @@
-siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
+siakun.func.initStates = function ($stateProvider, $urlRouterProvider, Config) {
     $urlRouterProvider
         // The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
         // Here we are just setting up some convenience urls.
@@ -17,15 +17,15 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "topBar": {
                     controller: 'TopBarCtrl',
-                    templateUrl: 'views/top-bar.html'
+                    templateUrl: Config.root + '/views/top-bar.html'
                 },
                 "content": {
                     controller: 'HomeCtrl',
-                    templateUrl: 'views/home.html'
+                    templateUrl: Config.root + '/views/home.html'
                 },
                 "bottomBar": {
                     controller: 'BottomBarCtrl',
-                    templateUrl: 'views/bottom-bar.html'
+                    templateUrl: Config.root + '/views/bottom-bar.html'
                 }
             }
         })
@@ -34,7 +34,7 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "content@": {
                     controller: 'HomeCtrl',
-                    templateUrl: 'views/home.html'
+                    templateUrl: Config.root + '/views/home.html'
                 }
             }
         })
@@ -43,7 +43,7 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "content@": {
                     controller: 'JournalCtrl',
-                    templateUrl: 'views/journal.html'
+                    templateUrl: Config.root + '/views/journal.html'
                 }
             }
         })
@@ -52,7 +52,7 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "content@": {
                     controller: 'ReportingCtrl',
-                    templateUrl: 'views/reporting.html'
+                    templateUrl: Config.root + '/views/reporting.html'
                 }
             }
         })
@@ -63,26 +63,27 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "content@": {
                     controller: 'AccountCtrl',
-                    templateUrl: 'views/account/list.html'
+                    templateUrl: Config.root + '/views/account/list.html'
                 }
             }
         })
-
         .state("root.country", {
             url: "/country",
             views: {
                 "content@": {
                     controller: 'CountryCtrl',
-                    templateUrl: 'views/country/list.html'
+                    templateUrl: Config.root + '/views/country/list.html'
                 }
-            }
+            },
+            data: {}
+
         })
-        .state("root.country.edit", {
-            url: "/country/:id",
+        .state("root.country.entry", {
+            url: "/:id",
             views: {
                 "content@": {
-                    controller: 'CountryCtrl',
-                    templateUrl: 'views/country/form.html'
+                    controller: 'CountryFormCtrl',
+                    templateUrl: Config.root + '/views/country/form.html'
                 }
             }
         })
@@ -93,7 +94,7 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "content@": {
                     controller: 'FiscalPeriodCtrl',
-                    templateUrl: 'views/fiscal-period/list.html'
+                    templateUrl: Config.root + '/views/fiscal-period/list.html'
                 }
             }
         })
@@ -103,11 +104,12 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider) {
             views: {
                 "content@": {
                     controller: 'CurrencyCtrl',
-                    templateUrl: 'views/currency/list.html'
+                    templateUrl: Config.root + '/views/currency/list.html'
                 }
             }
         })
-};
+}
+;
 
 
 

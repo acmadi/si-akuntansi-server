@@ -5,23 +5,32 @@ siakun.app = angular.module(siakun.appName, [
         'ngCookies',
         'ngResource',
         'ngSanitize',
-        'ui.router'
+//        'ngAnimate',
+        'ui.router',
+        'ui.keypress',
+        'LocalStorageModule'
     ])
     .constant('Config', {
         appName: 'SiAkun',
         root: '/accounting_exploded',
-        servletPath: '/accounting_exploded/app'
+        servletPath: '/accounting_exploded/app',
+        pageCount: 10
     })
-    .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
-        siakun.func.initStates($stateProvider, $urlRouterProvider);
-        $httpProvider.interceptors.push('requestInterceptor');
-    }])
-
+    .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'Config',
+        function ($stateProvider, $urlRouterProvider, $httpProvider, Config) {
+            siakun.func.initStates($stateProvider, $urlRouterProvider, Config);
+            $httpProvider.interceptors.push('requestInterceptor');
+        }]
+    )
     // define app configuration
-    .run(['Util', '$rootScope', function (Util, $rootScope) {
+    .run(['$timeout', 'Util', '$rootScope', function ($timeout, Util, $rootScope) {
         $rootScope.$on('$viewContentLoaded', function () {
             Util.initFoundation();
         });
+
+        $rootScope.optionsDataCount = function () {
+            return Util.optionsDataCount();
+        };
     }]);
 //    .config(function ($routeProvider) {
 //        $routeProvider

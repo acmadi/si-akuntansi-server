@@ -5,14 +5,16 @@ package com.devteam.accounting.dto.error;
  * Date: 1/10/14
  * Time: 10:08 AM
  */
-public class FieldErrorDto {
+public class ErrorFieldDto extends ErrorDto {
 
     private String field;
-    private String message;
 
-    public FieldErrorDto(String field, String message) {
+    public ErrorFieldDto() {
+    }
+
+    public ErrorFieldDto(String field, String message) {
+        super(message);
         this.field = field;
-        this.message = message;
     }
 
     public String getField() {
@@ -23,11 +25,4 @@ public class FieldErrorDto {
         this.field = field;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

@@ -6,6 +6,8 @@ import com.devteam.accounting.mapping.MappingUtil;
 import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.dto.AccountDto;
 import com.devteam.accounting.persistence.Country;
+import com.devteam.accounting.service.helper.OrderDir;
+import com.devteam.accounting.service.helper.PropertyOrder;
 import com.devteam.accounting.service.wrapper.QueryResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +52,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
 
+    @Override
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public CountryDto findById(Long id) {
         Country country = countryDao.findById(id);
@@ -59,18 +62,32 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
-    public QueryResult<CountryDto> findAlls() {
-        List<Country> entities = countryDao.findAlls();
+    public QueryResult<CountryDto> findAlls(int start, int count) {
+        List<Country> entities = countryDao.findAlls(start, count);
         List<CountryDto> data = mappingUtil.mapList(entities, CountryDto.class);
-        Long count = countryDao.countAlls();
-        return new QueryResult(count, data);
+        Long total = countryDao.countAlls();
+        return new QueryResult(total, data);
     }
 
     @Override
-    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
-    public void deleteById(Long id) {
-        countryDao.removeById(id);
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public QueryResult<CountryDto> findAlls(String orderProperty, OrderDir orderDir, int start, int count) {
+        List<Country> entities = countryDao.findAlls(orderProperty, orderDir, start, count);
+
+        List<CountryDto> dto = mappingUtil.mapList(entities, CountryDto.class);
+        Long total = countryDao.countAlls();
+        return new QueryResult(total, dto);
     }
+
+    @Override
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public QueryResult findByKeyword(String orderProperty, OrderDir orderDir, int start, int count, String keyword) {
+        List<Country> entities = countryDao.findByKeyword(orderProperty, orderDir, start, count, keyword);
+        List<CountryDto> dto = mappingUtil.mapList(entities, CountryDto.class);
+        Long total = countryDao.countByKeyword(keyword);
+        return new QueryResult(total, dto);
+    }
+
 
     @Override
     @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
@@ -83,5 +100,6 @@ public class CountryServiceImpl implements CountryService {
     public void deleteAll() {
         countryDao.removeAll();
     }
+
 
 }

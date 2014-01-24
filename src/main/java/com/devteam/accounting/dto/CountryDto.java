@@ -1,6 +1,11 @@
 package com.devteam.accounting.dto;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -11,8 +16,17 @@ import java.io.Serializable;
 public class CountryDto implements Serializable {
     private Long id;
     private Long version;
+
+    @NotNull
+    @NotEmpty
     private String name;
+
+    @NotNull
+    @Size(min = 2, max = 2)
     private String iso2;
+
+    @NotNull
+    @Size(min = 3, max = 3)
     private String iso3;
 
     public CountryDto() {
@@ -33,6 +47,7 @@ public class CountryDto implements Serializable {
     public void setVersion(Long version) {
         this.version = version;
     }
+
 
     public String getName() {
         return name;

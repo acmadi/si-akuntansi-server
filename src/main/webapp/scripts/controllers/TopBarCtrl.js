@@ -30,6 +30,16 @@ siakun.app.controller('TopBarCtrl', ['Config', '$timeout', '$scope', 'Util',
                         path: '#/country'
                     }
                 ]
+            },
+            {
+                caption: 'Setting',
+                path: '#/setting',
+                children: [
+                    {
+                        caption: 'Period Fiskal',
+                        path: '#/setting/fiscal-period'
+                    }
+                ]
             }
         ];
 

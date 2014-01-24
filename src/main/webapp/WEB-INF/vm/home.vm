@@ -10,6 +10,7 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="#springUrl("/bower_components/foundation/css/normalize.css")">
     <link rel="stylesheet" href="#springUrl("/css/style.css")">
+    <link rel="stylesheet" href="#springUrl("/css/animate.css")">
 
     <!--<link href='css/work.css' rel='stylesheet'/>-->
     <!--<link rel="stylesheet" href="styles/custom/_sidebar.css">-->
@@ -33,7 +34,8 @@
             <a href="#/reporting" class="custom_button">Laporan</a>
         </div>
 
-        <div class="large-10 medium-10 small-12 columns content" ui-view="content">
+        <div class="large-10 medium-10 small-12 columns content">
+            <div ui-view="content" class="slide"></div>
         </div>
     </div>
 </div>
@@ -50,9 +52,12 @@
 <script src="#springUrl("/bower_components/angular-resource/angular-resource.js")"></script>
 <script src="#springUrl("/bower_components/angular-route/angular-route.js")"></script>
 <script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-animate/angular-animate.js")"></script>
 <script src="#springUrl("/bower_components/angular-sanitize/angular-sanitize.js")"></script>
 <script src="#springUrl("/bower_components/angular-cookies/angular-cookies.js")"></script>
 <script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-utils/keypress/keypress.js")"></script>
+<script src="#springUrl("/bower_components/angular-local-storage/angular-local-storage.js")"></script>
 <!--endbuild-->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -74,15 +79,21 @@
 <script src="#springUrl("/scripts/controllers/AccountCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/FiscalPeriodCtrl.js")"></script>
-<script src="#springUrl("/scripts/controllers/CountryCtrl.js")"></script>
+
+<script src="#springUrl("/scripts/controllers/country/CountryCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/country/CountryFormCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/JournalCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/ReportingCtrl.js")"></script>
 
 <!-- services -->
 <script src="#springUrl("/scripts/services/Util.js")"></script>
+<script src="#springUrl("/scripts/services/Dialog.js")"></script>
 
 <!-- filters -->
 <script src="#springUrl("/scripts/filters/absPath.js")"></script>
+
+<!-- directives -->
+<script src="#springUrl("/scripts/directives/focusMe.js")"></script>
 
 
 <!-- endbuild -->

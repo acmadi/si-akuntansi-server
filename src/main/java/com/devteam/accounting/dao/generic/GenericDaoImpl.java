@@ -1,5 +1,7 @@
 package com.devteam.accounting.dao.generic;
 
+import com.devteam.accounting.persistence.Country;
+import com.devteam.accounting.service.helper.OrderDir;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,6 +58,8 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     @Override
     public void update(T entity) {
         getCurrentSession().update(entity);
+        getCurrentSession().flush();
+        getCurrentSession().refresh(entity);
     }
 
     @Override
@@ -64,6 +68,36 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
         Query query = getCurrentSession().createQuery(queryString);
         return query.list();
     }
+
+    @Override
+    public List<T> findAlls(String property, OrderDir orderDir) {
+        String queryString = String.format("FROM %s ORDER BY %s %s",
+                getPersistentClass().getCanonicalName(),
+                property, orderDir);
+        Query query = getCurrentSession().createQuery(queryString);
+        return query.list();
+    }
+
+    @Override
+    public List<T> findAlls(int start, int count) {
+        String queryString = String.format("FROM %s ORDER BY %s %s");
+        Query query = getCurrentSession().createQuery(queryString);
+        query.setFirstResult(start);
+        query.setMaxResults(count);
+        return query.list();
+    }
+
+    @Override
+    public List<T> findAlls(String property, OrderDir orderDir, int start, int count) {
+        String queryString = String.format("FROM %s ORDER BY %s %s",
+                getPersistentClass().getCanonicalName(),
+                property, orderDir);
+        Query query = getCurrentSession().createQuery(queryString);
+        query.setFirstResult(start);
+        query.setMaxResults(count);
+        return query.list();
+    }
+
 
     @Override
     public Long countAlls() {
@@ -83,6 +117,16 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
         String queryString = String.format("DELETE FROM %s entity", getPersistentClass().getCanonicalName());
         Query query = getCurrentSession().createQuery(queryString);
         query.executeUpdate();
+    }
+
+    @Override
+    public void flush() {
+        getCurrentSession().flush();
+    }
+
+    @Override
+    public void refresh(T entity) {
+        getCurrentSession().refresh(entity);
     }
 
 }
