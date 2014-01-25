@@ -2,7 +2,7 @@ package com.devteam.accounting.service;
 
 import com.devteam.accounting.dto.CountryDto;
 import com.devteam.accounting.service.wrapper.QueryResult;
-import com.devteam.accounting.web.controller.params.Order;
+import com.devteam.accounting.web.controller.rest.params.Order;
 
 import java.util.List;
 
@@ -21,7 +21,9 @@ public interface CountryService {
 
     QueryResult<CountryDto> findAlls(int start, int count);
 
-    QueryResult<CountryDto> findAlls(List<Order> orderes, int start, int count);
+    QueryResult<CountryDto> findAlls(List<Order> orders);
+
+    QueryResult<CountryDto> findAlls(List<Order> orders, int start, int count);
 
     void removeById(Long id);
 

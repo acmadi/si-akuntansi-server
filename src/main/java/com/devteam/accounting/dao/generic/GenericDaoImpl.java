@@ -1,7 +1,7 @@
 package com.devteam.accounting.dao.generic;
 
-import com.devteam.accounting.service.helper.OrderDir;
-import com.devteam.accounting.web.controller.params.Order;
+import com.devteam.accounting.persistence.Currency;
+import com.devteam.accounting.web.controller.rest.params.Order;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -103,6 +103,11 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
         query.setFirstResult(start);
         query.setMaxResults(count);
         return query.list();
+    }
+
+    @Override
+    public void evict(Currency entity) {
+        getCurrentSession().evict(entity);
     }
 
     @Override

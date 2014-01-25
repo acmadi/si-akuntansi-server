@@ -1,10 +1,8 @@
 package com.devteam.accounting.dao;
 
 import com.devteam.accounting.dao.generic.GenericDao;
-import com.devteam.accounting.persistence.Account;
 import com.devteam.accounting.persistence.Country;
-import com.devteam.accounting.service.helper.OrderDir;
-import com.devteam.accounting.web.controller.params.Order;
+import com.devteam.accounting.web.controller.rest.params.Order;
 
 import java.util.List;
 

@@ -4,9 +4,8 @@ import com.devteam.accounting.dao.CountryDao;
 import com.devteam.accounting.dto.CountryDto;
 import com.devteam.accounting.mapping.MappingUtil;
 import com.devteam.accounting.persistence.Country;
-import com.devteam.accounting.service.helper.OrderDir;
 import com.devteam.accounting.service.wrapper.QueryResult;
-import com.devteam.accounting.web.controller.params.Order;
+import com.devteam.accounting.web.controller.rest.params.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -32,7 +31,8 @@ public class CountryServiceImpl implements CountryService {
     @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void save(CountryDto dto) {
         Country country = new Country();
-        mappingUtil.map(dto, country);
+
+        applyDtoProperty(dto, country);
         countryDao.save(country);
         mappingUtil.map(country, dto);
     }
@@ -44,11 +44,16 @@ public class CountryServiceImpl implements CountryService {
             throw new OptimisticLockException();
         }
 
-        mappingUtil.map(dto, country);
+
+        applyDtoProperty(dto, country);
         countryDao.update(country);
         mappingUtil.map(country, dto);
     }
 
+
+    private void applyDtoProperty(CountryDto dto, Country entity) {
+        mappingUtil.map(dto, entity);
+    }
 
     @Override
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
@@ -65,6 +70,15 @@ public class CountryServiceImpl implements CountryService {
         List<CountryDto> data = mappingUtil.mapList(entities, CountryDto.class);
         Long total = countryDao.countAlls();
         return new QueryResult(total, data);
+    }
+
+    @Override
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
+    public QueryResult<CountryDto> findAlls(List<Order> orders) {
+        List<Country> entities = countryDao.findAlls(orders);
+        List<CountryDto> dto = mappingUtil.mapList(entities, CountryDto.class);
+        Long total = countryDao.countAlls();
+        return new QueryResult(total, dto);
     }
 
     @Override

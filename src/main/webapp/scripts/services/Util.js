@@ -14,6 +14,28 @@ Util.prototype.isUndefinedOrNull = function (obj) {
     return !angular.isDefined(obj) || obj === null;
 }
 
+Util.prototype.isEmpty = function (obj) {
+    return angular.isUndefined(obj) || (obj === null) || (obj === "");
+}
+
+Util.prototype.writeProperty = function (obj, path, value) {
+    var ps = path.split('.');
+    var co = obj;
+    for (var i = 0; i < ps.length - 1; i++) {
+        co = (co[ps[i]]) ? co[ps[i]] : co[ps[i]] = {};
+    }
+    co[ps[ps.length - 1]] = value;
+}
+
+Util.prototype.readProperty = function (obj, path) {
+    var ps = path.split('.');
+    var co = obj;
+    for (var i = 0; i < ps.length; i++) {
+        co = (co[ps[i]]) ? co[ps[i]] : co[ps[i]] = {};
+    }
+    return co;
+}
+
 Util.prototype.randomStr = function (len, charSet) {
     charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var randomString = '';

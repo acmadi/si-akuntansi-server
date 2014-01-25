@@ -3,7 +3,7 @@
     <div>
         <div>
             <button ng-click='refresh()' class="small">Refresh</button>
-            <button ng-click='addCountry()' class="small">Tambah</button>
+            <button ng-click='addRecord()' class="small">Tambah</button>
             <span>{{ model.notification }}</span>
         </div>
         <div>
@@ -47,7 +47,7 @@
             </colgroup>
             <thead>
             <tr>
-                <th ng-repeat='col in data.columns' ng-click='columnClick(col)' style="width: 100px;">
+                <th ng-repeat='col in data.columns' ng-click='columnClick($event, col)' style="width: 100px;">
                     {{ col.title }}
                 </th>
             </tr>
@@ -61,8 +61,8 @@
                 <td ng-mouseover='mouseOver($index)' ng-mouseleave='mouseLeave()'>
                     {{ c.iso2 }}
                     <div>
-                        <span confirm-click='Hapus data ?' ng-click='removeCountry(c, $index)'>hapus</span>
-                        <span ng-click='editCountry(c)'>edit </span>
+                        <span confirm-click='Hapus data ?' ng-click='removeRecord(c, $index)'>hapus</span>
+                        <span ng-click='editRecord(c)'>edit </span>
                     </div>
                 </td>
                 <td>{{ c.iso3 }}</td>

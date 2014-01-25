@@ -1,6 +1,4 @@
-package com.devteam.accounting.web.controller.params;
-
-import org.springframework.web.bind.annotation.RequestParam;
+package com.devteam.accounting.web.controller.rest.params;
 
 import java.util.LinkedList;
 import java.util.List;

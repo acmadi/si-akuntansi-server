@@ -1,10 +1,8 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.dto.CountryDto;
 import com.devteam.accounting.dto.FiscalPeriodDto;
-import com.devteam.accounting.service.helper.OrderDir;
 import com.devteam.accounting.service.wrapper.QueryResult;
-import com.devteam.accounting.web.controller.params.Order;
+import com.devteam.accounting.web.controller.rest.params.Order;
 
 import java.util.List;
 

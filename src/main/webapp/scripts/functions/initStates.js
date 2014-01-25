@@ -78,8 +78,8 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider, Config) {
             data: {}
 
         })
-        .state("root.country.entry", {
-            url: "/:id",
+        .state("root.country.form", {
+            url: "/form/:id",
             views: {
                 "content@": {
                     controller: 'CountryFormCtrl',
@@ -96,15 +96,35 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider, Config) {
                     controller: 'FiscalPeriodCtrl',
                     templateUrl: Config.root + '/views/fiscal-period/list.html'
                 }
+            },
+            data: {}
+        })
+        .state("root.fiscalPeriod.form", {
+            url: "/form/:id",
+            views: {
+                "content@": {
+                    controller: 'FiscalPeriodFormCtrl',
+                    templateUrl: Config.root + '/views/fiscal-period/form.html'
+                }
             }
         })
-        // fiscal period
+        // currency (mata uang)
         .state("root.currency", {
             url: "/currency",
             views: {
                 "content@": {
                     controller: 'CurrencyCtrl',
                     templateUrl: Config.root + '/views/currency/list.html'
+                }
+            },
+            data: {}
+        })
+        .state("root.currency.form", {
+            url: "/form/:id",
+            views: {
+                "content@": {
+                    controller: 'CurrencyFormCtrl',
+                    templateUrl: Config.root + '/views/currency/form.html'
                 }
             }
         })

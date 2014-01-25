@@ -1,4 +1,4 @@
-package com.devteam.accounting.web.controller.params;
+package com.devteam.accounting.web.controller.rest.params;
 
 import com.devteam.accounting.service.helper.OrderDir;
 
@@ -12,6 +12,11 @@ public class Order {
     private OrderDir ordering;
 
     public Order() {
+    }
+
+    public Order(String property, OrderDir ordering) {
+        this.property = property;
+        this.ordering = ordering;
     }
 
     public String getProperty() {

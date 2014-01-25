@@ -78,10 +78,14 @@
 <script src="#springUrl("/scripts/controllers/HomeCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/AccountCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
-<script src="#springUrl("/scripts/controllers/FiscalPeriodCtrl.js")"></script>
 
-<script src="#springUrl("/scripts/controllers/country/CountryCtrl.js")"></script>
-<script src="#springUrl("/scripts/controllers/country/CountryFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CountryCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CountryFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyFormCtrl.js")"></script>
+
 <script src="#springUrl("/scripts/controllers/JournalCtrl.js")"></script>
 <script src="#springUrl("/scripts/controllers/ReportingCtrl.js")"></script>
 

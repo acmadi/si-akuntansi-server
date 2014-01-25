@@ -1,27 +1,46 @@
 'use strict';
 
 
-siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$state', '$scope', 'localStorageService', 'Dialog', 'Util', 'Config',
-    function ($resource, $timeout, $window, $state, $scope, localStorageService, Dialog, Util, Config) {
+siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope', 'localStorageService', 'Dialog', 'Util', 'Config',
 
-        $scope.addCountry = function () {
+    function ($resource, $timeout, $state, $scope, localStorageService, Dialog, Util, Config) {
+        $scope.Country = $resource(Config.servletPath + '/country/:id', {},
+            {
+                query: {
+                    url: Config.servletPath + '/country/browse',
+                    method: 'POST'
+                },
+                delete: {
+                    url: Config.servletPath + '/country/:id',
+                    method: 'DELETE',
+                    params: {
+                        id: '@id'
+                    }
+                }
+            });
+
+
+        $scope.addRecord = function () {
             $scope.data.recordInForm = {};
             $state.$current.data = $scope.data;
-            $state.go(".entry", null, null);
+            $state.go(".form", null, null);
         };
 
-        $scope.editCountry = function (record) {
+        $scope.editRecord = function (record) {
             $scope.data.recordInForm = record;
             $state.$current.data = $scope.data;
-            $state.go(".entry", {id: record.id}, null);
+            $state.go(".form", {id: record.id}, null);
         };
 
 
-        $scope.removeCountry = function (record, idx) {
+        $scope.removeRecord = function (record, idx) {
             var prompt = "Yakin akan menghapus record '" + record.name + "' ?";
             if (Dialog.confirm(prompt)) {
-                Country.delete(record, function () {
+                $scope.Country.delete(record, function () {
                     $scope.data.dataset.data.splice(idx, 1);
+                    if ($scope.data.dataset.data.length === 0) {
+                        $scope.refresh();
+                    }
                 }, function (response) {
                     if (response.status === 422) {
                         Dialog.alert("Data tidak dapat dihapus");
@@ -30,11 +49,10 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$stat
             }
         };
 
-        $scope.columnClick = function (column) {
+        $scope.columnClick = function ($event, column) {
             if (column.isData) {
-
                 var orders = $scope.data.queryParams.orders;
-                if (!$window.event.ctrlKey) {
+                if (!$event.ctrlKey) {
                     if (orders.length === 0) {
                         var order = {
                             property: column.remoteProperty,
@@ -78,24 +96,29 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$stat
             }
         };
 
+        $scope.updatePaging = function () {
+            var curr = $scope.data.paging.current;
+            if (curr < 1) curr = 1;
+            var shownPages = Config.pageCount;
+            var dataPerPage = $scope.data.queryParams.count;
+            var totalData = $scope.data.dataset.count;
+
+            var paging = Util.generatePages(curr, shownPages, dataPerPage, totalData);
+            $scope.data.paging.count = paging.count;
+            $scope.data.paging.pages = paging.pages;
+
+            if ($scope.data.paging.current > $scope.data.paging.count && $scope.data.paging.count > 0) {
+                $scope.data.paging.current = $scope.data.paging.count;
+            } else if ($scope.data.paging.current < 1) {
+                $scope.data.paging.current = 1;
+            }
+        };
+
         $scope.refresh = function () {
             $scope.data.queryParams.start = ($scope.data.paging.current - 1) * $scope.data.queryParams.count;
-
-            Country.query({}, $scope.data.queryParams, function (data) {
+            $scope.Country.query({}, $scope.data.queryParams, function (data) {
                 $scope.data.dataset = data;
-                var curr = $scope.data.paging.current;
-                var shownPages = Config.pageCount;
-                var dataPerPage = $scope.data.queryParams.count;
-                var totalData = $scope.data.dataset.count;
-
-                var paging = Util.generatePages(curr, shownPages, dataPerPage, totalData);
-                $scope.data.paging.count = paging.count;
-                $scope.data.paging.pages = paging.pages;
-
-                if ($scope.data.paging.current > $scope.data.paging.count) {
-                    $scope.data.paging.current = $scope.data.paging.count;
-                    $scope.refresh();
-                }
+                $scope.updatePaging();
             });
         };
 
@@ -148,28 +171,6 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$stat
             $scope.data.queryParams.count = count;
             $scope.refresh();
         }
-        $scope.getOrders = function() {
-            return "hello";
-        }
-
-        // init controller
-        var Country = $resource(Config.servletPath + '/country/:id', {},
-            {
-                query: {
-                    url: Config.servletPath + '/country/browse',
-                    method: 'POST'
-                },
-                delete: {
-                    url: Config.servletPath + '/country/:id',
-                    method: 'DELETE',
-                    params: {
-                        id: '@id'
-                    }
-                }
-            });
-
-
-        // init table columns
 
         if (Util.isUndefinedOrNull($state.$current.data.dataset)) {
             $scope.data = {
@@ -177,18 +178,10 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$stat
                 notification: null,
                 recordInForm: null,
                 paging: {
-                    current: 1,
-                    total: 0,
-                    pages: []
+                    current: 1, total: 0, pages: []
                 },
                 queryParams: {
-                    start: 0,
-                    count: 1,
-                    keyword: null,
-                    orders: [],
-                    getOrders: function () {
-                        return "orders params func"
-                    }
+                    start: 0, count: 1, keyword: null, orders: []
                 }
             };
             $scope.needRefresh = true;
@@ -200,6 +193,7 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$window', '$stat
                 } else {
                     $scope.data.dataset.data.unshift($scope.data.recordInForm);
                     $scope.data.dataset.count++;
+                    $scope.updatePaging();
                 }
             }
             $scope.needRefresh = false;

@@ -1,7 +1,10 @@
 package com.devteam.accounting.dto;
 
 import com.devteam.accounting.dto.component.MonthYearDto;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -13,8 +16,14 @@ import java.io.Serializable;
 public class FiscalPeriodDto implements Serializable {
     private Long id;
     private Long version;
-    private MonthYearDto start;
-    private MonthYearDto end;
+
+    @NotNull
+    @Valid
+    private MonthYearDto startAt = new MonthYearDto();
+
+    @NotNull
+    @Valid
+    private MonthYearDto endAt = new MonthYearDto();
 
     public FiscalPeriodDto() {
     }
@@ -35,19 +44,19 @@ public class FiscalPeriodDto implements Serializable {
         this.version = version;
     }
 
-    public MonthYearDto getStart() {
-        return start;
+    public MonthYearDto getStartAt() {
+        return startAt;
     }
 
-    public void setStart(MonthYearDto start) {
-        this.start = start;
+    public void setStartAt(MonthYearDto startAt) {
+        this.startAt = startAt;
     }
 
-    public MonthYearDto getEnd() {
-        return end;
+    public MonthYearDto getEndAt() {
+        return endAt;
     }
 
-    public void setEnd(MonthYearDto end) {
-        this.end = end;
+    public void setEndAt(MonthYearDto endAt) {
+        this.endAt = endAt;
     }
 }

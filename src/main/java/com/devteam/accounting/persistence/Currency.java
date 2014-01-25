@@ -31,6 +31,8 @@ public class Currency implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "symbol")
+    private String symbol;
 
     @ManyToOne
     @JoinColumn(name = "country")
@@ -70,6 +72,14 @@ public class Currency implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public Country getCountry() {

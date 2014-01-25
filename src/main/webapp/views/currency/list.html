@@ -1,3 +1,102 @@
 <h1>Mata Uang</h1>
 <div>
+    <div>
+        <div>
+            <button ng-click='refresh()' class="small">Refresh</button>
+            <button ng-click='addRecord()' class="small">Tambah</button>
+            <span>{{ data.notification }}</span>
+        </div>
+
+        <ul class="cust-pagination">
+            <li>
+                <span>Data per page :</span>
+            </li>
+            <li ng-repeat="value in optionsDataCount()" ng-click='setDataCount(value)' ng-class='{current: value == data.queryParams.count}'>
+                <a>{{ value }}</a>
+            </li>
+        </ul>
+
+        <ul class="cust-pagination">
+            <li ng-click='toPage("first")'>
+                <a>&laquo;&laquo;</a>
+            </li>
+            <li ng-click='toPage("prev")'>
+                <a>&laquo;&nbsp;</a>
+            </li>
+            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)" ng-class='{current: p == data.paging.current}'>
+                <a>
+                    {{ p }}
+                </a>
+            </li>
+            <li ng-click='toPage("next")'>
+                <a>&nbsp;&raquo;</a>
+            </li>
+            <li ng-click='toPage("last")'>
+                <a>&raquo;&raquo;</a>
+            </li>
+        </ul>
+
+        <div>
+            <ul>
+                <li ng-repeat='order in data.queryParams.orders'>
+                    {{ order.property }} {{ order.ordering }}
+                </li>
+            </ul>
+        </div>
+
+        <table style="width: 100%">
+            <colgroup>
+                <col style="width: 10px;"/>
+                <col style="width: 20px;"/>
+                <col style="width: 100px;"/>
+                <col style="width: 100;"/>
+                <col style="width: 100;"/>
+                <col style="width: 100;"/>
+            </colgroup>
+            <thead>
+            <tr>
+                <th ng-repeat='col in data.columns' ng-click='columnClick($event, col)' style="width: 100px;">
+                    {{ col.title }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='rec in data.dataset.data' class='anim-fade'>
+                <td>*</td>
+                <td class="small-2 large-1 columns">
+                    {{ $index + data.queryParams.start + 1}}
+                </td>
+                <td ng-mouseover='mouseOver($index)' ng-mouseleave='mouseLeave()'>
+                    {{ rec.code }}
+                    <div>
+                        <span confirm-click='Hapus data ?' ng-click='removeRecord(rec, $index)'>hapus</span>
+                        <span ng-click='editRecord(rec)'>edit </span>
+                    </div>
+                </td>
+                <td>{{ rec.name }}</td>
+                <td>{{ rec.country.name }}</td>
+                <td>{{ rec.symbol }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <ul class="cust-pagination">
+            <li ng-click='toPage("first")'>
+                <a>&laquo;&laquo;</a>
+            </li>
+            <li ng-click='toPage("prev")'>
+                <a>&laquo;&nbsp;</a>
+            </li>
+            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)" ng-class='{current: p == data.paging.current}'>
+                <a>
+                    {{ p }}
+                </a>
+            </li>
+            <li ng-click='toPage("next")'>
+                <a>&nbsp;&raquo;</a>
+            </li>
+            <li ng-click='toPage("last")'>
+                <a>&raquo;&raquo;</a>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -33,14 +33,14 @@ public class FiscalPeriod implements Serializable {
             @AttributeOverride(name = "month", column = @Column(name = "start_month")),
             @AttributeOverride(name = "year", column = @Column(name = "start_year"))
     })
-    private MonthYear start;
+    private MonthYear startAt;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "month", column = @Column(name = "end_month")),
-            @AttributeOverride(name = "year", column = @Column(name = "end_year"))
+            @AttributeOverride(name = "month", column = @Column(name = "`end_month`")),
+            @AttributeOverride(name = "year", column = @Column(name = "`end_year`"))
     })
-    private MonthYear end;
+    private MonthYear endAt;
 
     public FiscalPeriod() {
     }
@@ -61,19 +61,19 @@ public class FiscalPeriod implements Serializable {
         this.version = version;
     }
 
-    public MonthYear getStart() {
-        return start;
+    public MonthYear getStartAt() {
+        return startAt;
     }
 
-    public void setStart(MonthYear start) {
-        this.start = start;
+    public void setStartAt(MonthYear startAt) {
+        this.startAt = startAt;
     }
 
-    public MonthYear getEnd() {
-        return end;
+    public MonthYear getEndAt() {
+        return endAt;
     }
 
-    public void setEnd(MonthYear end) {
-        this.end = end;
+    public void setEndAt(MonthYear endAt) {
+        this.endAt = endAt;
     }
 }

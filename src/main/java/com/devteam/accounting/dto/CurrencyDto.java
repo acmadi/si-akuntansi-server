@@ -1,5 +1,7 @@
 package com.devteam.accounting.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 
 /**
@@ -10,8 +12,17 @@ import java.io.Serializable;
 public class CurrencyDto implements Serializable {
     private Long id;
     private Long version;
+
+    @NotEmpty
     private String code;
+
+    @NotEmpty
     private String name;
+
+    @NotEmpty
+    private String symbol;
+
+    private CountryDto country;
 
     public CurrencyDto() {
     }
@@ -46,5 +57,21 @@ public class CurrencyDto implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public CountryDto getCountry() {
+        return country;
+    }
+
+    public void setCountry(CountryDto country) {
+        this.country = country;
     }
 }

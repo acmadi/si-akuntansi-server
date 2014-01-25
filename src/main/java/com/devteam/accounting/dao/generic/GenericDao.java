@@ -1,11 +1,7 @@
 package com.devteam.accounting.dao.generic;
 
-import com.devteam.accounting.persistence.Account;
-import com.devteam.accounting.persistence.Country;
-import com.devteam.accounting.service.helper.OrderDir;
-import com.devteam.accounting.web.controller.params.Order;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.devteam.accounting.persistence.Currency;
+import com.devteam.accounting.web.controller.rest.params.Order;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,4 +38,6 @@ public interface GenericDao<T, TId extends Serializable> {
     List<T> findAlls(List<Order> orders, int start, int count);
 
     List<T> findAlls(int start, int count);
+
+    void evict(Currency entity);
 }

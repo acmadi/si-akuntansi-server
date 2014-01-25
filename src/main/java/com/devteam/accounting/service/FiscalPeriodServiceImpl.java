@@ -1,15 +1,11 @@
 package com.devteam.accounting.service;
 
-import com.devteam.accounting.dao.CountryDao;
 import com.devteam.accounting.dao.FiscalPeriodDao;
-import com.devteam.accounting.dto.CountryDto;
 import com.devteam.accounting.dto.FiscalPeriodDto;
 import com.devteam.accounting.mapping.MappingUtil;
-import com.devteam.accounting.persistence.Country;
 import com.devteam.accounting.persistence.FiscalPeriod;
-import com.devteam.accounting.service.helper.OrderDir;
 import com.devteam.accounting.service.wrapper.QueryResult;
-import com.devteam.accounting.web.controller.params.Order;
+import com.devteam.accounting.web.controller.rest.params.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -35,7 +31,7 @@ public class FiscalPeriodServiceImpl implements FiscalPeriodService {
     @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void save(FiscalPeriodDto dto) {
         FiscalPeriod entity = new FiscalPeriod();
-        mappingUtil.map(dto, entity);
+        applyDtoProperty(dto, entity);
         fiscalPeriodDao.save(entity);
         mappingUtil.map(entity, dto);
     }
@@ -47,11 +43,15 @@ public class FiscalPeriodServiceImpl implements FiscalPeriodService {
             throw new OptimisticLockException();
         }
 
-        mappingUtil.map(dto, entity);
+
+        applyDtoProperty(dto, entity);
         fiscalPeriodDao.update(entity);
         mappingUtil.map(entity, dto);
     }
 
+    private void applyDtoProperty(FiscalPeriodDto dto, FiscalPeriod entity) {
+        mappingUtil.map(dto, entity);
+    }
 
     @Override
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)

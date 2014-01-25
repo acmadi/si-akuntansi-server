@@ -1,0 +1,54 @@
+<h1>
+    <span>
+        Tahun Fiskal
+    </span>
+    &raquo;
+    <span ng-if="data.record.id">
+        Edit
+    </span>
+    <span ng-if="!data.record.id">
+        Baru
+    </span>
+</h1>
+<div>
+    <ul ng-show="data.globalErrors.length > 0">
+        <li class="error" ng-repeat='err in data.globalErrors'>
+            {{ err.message }}
+            <br/>
+            {{ err.detail }}
+        </li>
+    </ul>
+    <div>
+        <span class="label">Mulai Bulan:</span>
+        <span class="error" ng-show='data.errors.startAt.month.message.length > 0'>
+            {{ data.errors.startAt.month.message }}
+        </span>
+        <input type='text' ng-model='data.record.startAt.month' focus-me='startEdit'/>
+    </div>
+    <div>
+        <span class="label">Tahun :</span>
+        <span class="error" ng-show='data.errors.startAt.year.message.length > 0'>
+            {{ data.errors.startAt.year.message }}
+        </span>
+        <input type='text' ng-model='data.record.startAt.year' />
+    </div>
+
+    <div>
+        <span class="label">Berakhir Bulan :</span>
+        <span class="error" ng-show='data.errors.endAt.month.message.length > 0'>
+            {{ data.errors.endAt.month.message }}
+        </span>
+        <input type='text' ng-model='data.record.endAt.month' />
+    </div>
+
+    <div>
+        <span class="label">Tahun :</span>
+        <span class="error" ng-show='data.errors.endAt.year.message.length > 0'>
+            {{ data.errors.endAt.year.message }}
+        </span>
+        <input type='text' ng-model='data.record.endAt.year' />
+    </div>
+
+    <button ng-click='save()'>Simpan</button>
+    <button ng-click='cancel()'>Batal</button>
+</div>
