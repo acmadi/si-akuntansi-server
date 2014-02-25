@@ -1,7 +1,7 @@
 @charset "UTF-8"
 
+@import "../bower_components/foundation/scss/foundation/functions"
 @import "custom/setting"
-@import "custom/custom"
 
 @import "../bower_components/foundation/scss/foundation/components/global"
 @import "../bower_components/foundation/scss/foundation/components/grid"
@@ -26,7 +26,7 @@
 @import "../bower_components/foundation/scss/foundation/components/orbit"
 @import "../bower_components/foundation/scss/foundation/components/pagination"
 @import "../bower_components/foundation/scss/foundation/components/panels"
-@import "../bower_components/foundation/scss/foundation/components/pricing-tables"
+//@import "../bower_components/foundation/scss/foundation/components/pricing-tables"
 @import "../bower_components/foundation/scss/foundation/components/progress-bars"
 @import "../bower_components/foundation/scss/foundation/components/reveal"
 @import "../bower_components/foundation/scss/foundation/components/side-nav"
@@ -42,9 +42,9 @@
 
 // custom
 
-@import "custom/bottom-bar"
+@import "custom/components/_bottombar"
 @import "custom/table"
-@import "custom/_pagination"
+@import "custom/components/_pagination"
 
 .container
   width: 100%
@@ -61,17 +61,19 @@
       width: 100%
       max-width: 100%
 
-    .content
-      padding: 0px 0px 1px 1px !important
-      h1
-        margin: 0px 0px 0px 0px
-        padding: 2px 4px 4px 4px
-        background-color: #888
-        color: #FFF
-        font-size: 14px
+  .content
+    padding: 0px 0px !important
+    border: 0px solid #FF0000
+    h1
+      margin: 0px 0px 0px 0px
+      padding: 2px 4px 4px 4px
+      background-color: #888
 
-      > div
-        margin-top: 1px
+      color: #FFF
+      font-size: 1em
+
+    > .main
+      padding: 0 0.5rem
 
 .sidebar
   background: lighten($bottombar-bg, 50)
@@ -82,37 +84,37 @@
   .title
     background: $bottombar-bg
     display: block
-    margin: 0px 0px 1px 0px
+    margin: 0px 0px 0px 0px
     padding: 4px 4px 4px 4px
     border-bottom: 0px solid #990000
-    font-size: 10px
     span
       color: #FFF
-      font-size: 13px
+      font-size: 1em
 
   a.custom_button
-    @include button
-    margin: 0px 0px 1px 0px
-    padding: 12px 5px 12px 5px
+    @include button($button-med, desaturate(darken($primary-color, 15), 20%), true, false, false, false, false)
+    margin: 0px 0px 0px 0px
     text-align: left
     border-left: 0px solid #000
     display: block
-    background-color: desaturate(darken($primary-color, 15), 20%)
     text-shadow: 0px 0px 4px #666
-    font-size: 12px
+    font-size: 0.75em
     border-radius: 0px
     -webkit-transition: background-color 300ms ease-out
     -moz-transition: background-color 300ms ease-out
     transition: background-color 300ms ease-out
 
     &:hover
-      background-color: desaturate(darken($primary-color, 20), 20%)
-      -webkit-transition: background-color 500ms ease-out
-      -moz-transition: background-color 500ms ease-out
-      transition: background-color 500ms ease-out
+      background-color: desaturate(lighten($primary-color, 5), 20%)
+      -webkit-transition: background-color 200ms ease-out
+      -moz-transition: background-color 200ms ease-out
+      transition: background-color 200ms ease-out
 
     &:focus
       background-color: desaturate(darken($primary-color, 25), 20%)
 
     &:first-child
       margin-top: 12px
+
+.bottombar
+  @include bottombar

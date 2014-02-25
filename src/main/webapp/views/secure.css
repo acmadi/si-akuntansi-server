@@ -1,0 +1,51 @@
+/*
+Syntax error: Invalid CSS after "": expected selector_comma_sequence, was "<div class="top..."
+        on line 1 of secure.html
+
+1: <div class="topbar fixed">
+2:     <section class='section hide-for-small'>
+3:         <nav class="dropdown">
+4:             <ul>
+5:                 <li>
+6:                     <a href="#">
+
+Backtrace:
+secure.html:1
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/scss/parser.rb:1148:in `expected'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/scss/parser.rb:1084:in `expected'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/scss/parser.rb:1066:in `expr!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/scss/static_parser.rb:20:in `parse_selector'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:314:in `visit_rule'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `map'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:7:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/engine.rb:315:in `_render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/engine.rb:262:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:201:in `each'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin.rb:81:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:432:in `watch_or_update'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:315:in `process_result'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:41:in `parse'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:21:in `parse!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/bin/sass:9:in `<top (required)>'
+C:/Ruby193/bin/sass:23:in `load'
+C:/Ruby193/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"\": expected selector_comma_sequence, was \"<div class=\"top...\"\A         on line 1 of secure.html\A \A 1: <div class=\"topbar fixed\">\A 2:     <section class='section hide-for-small'>\A 3:         <nav class=\"dropdown\">\A 4:             <ul>\A 5:                 <li>\A 6:                     <a href=\"#\">"; }

@@ -6,128 +6,133 @@ siakun.func.initStates = function ($stateProvider, $urlRouterProvider, Config) {
 //        .when('/user/:id', '/contacts/:id')
 
         // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
-        .otherwise('/home');
+        .otherwise('/secure');
 
     // main
 
     $stateProvider
-        .state("root", {
-            url: '',
-            abstract: true,
+        .state("login", {
+            url: '/login',
             views: {
-                "topBar": {
-                    controller: 'TopBarCtrl',
-                    templateUrl: Config.root + '/views/top-bar.html'
-                },
                 "content": {
-                    controller: 'HomeCtrl',
-                    templateUrl: Config.root + '/views/home.html'
-                },
-                "bottomBar": {
-                    controller: 'BottomBarCtrl',
-                    templateUrl: Config.root + '/views/bottom-bar.html'
+                    controller: 'LoginCtrl',
+                    templateUrl: Config.root + '/views/login.html'
                 }
             }
         })
-        .state("root.home", {
+        .state("secure", {
+            url: "/secure",
+            views: {
+                "content": {
+                    templateUrl: Config.root + '/views/secure.html',
+                    controller: 'SecureCtrl'
+                }
+            }
+        })
+        .state("secure.home", {
             url: "/home",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'HomeCtrl',
                     templateUrl: Config.root + '/views/home.html'
                 }
-            }
+            },
+            data: {}
         })
-        .state("root.journal", {
-            url: "/journal",
-            views: {
-                "content@": {
-                    controller: 'JournalCtrl',
-                    templateUrl: Config.root + '/views/journal.html'
-                }
-            }
-        })
-        .state("root.reporting", {
-            url: "/reporting",
-            views: {
-                "content@": {
-                    controller: 'ReportingCtrl',
-                    templateUrl: Config.root + '/views/reporting.html'
-                }
-            }
-        })
-
-        // master data
-        .state("root.account", {
-            url: "/account",
-            views: {
-                "content@": {
-                    controller: 'AccountCtrl',
-                    templateUrl: Config.root + '/views/account/list.html'
-                }
-            }
-        })
-        .state("root.country", {
+        .state("secure.country", {
             url: "/country",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'CountryCtrl',
                     templateUrl: Config.root + '/views/country/list.html'
                 }
             },
             data: {}
-
         })
-        .state("root.country.form", {
+        .state("secure.country.form", {
             url: "/form/:id",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'CountryFormCtrl',
                     templateUrl: Config.root + '/views/country/form.html'
                 }
             }
         })
-
-        // fiscal period
-        .state("root.fiscalPeriod", {
+    //        // fiscal period
+        .state("secure.fiscalPeriod", {
             url: "/fiscal-period",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'FiscalPeriodCtrl',
                     templateUrl: Config.root + '/views/fiscal-period/list.html'
                 }
             },
             data: {}
         })
-        .state("root.fiscalPeriod.form", {
+        .state("secure.fiscalPeriod.form", {
             url: "/form/:id",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'FiscalPeriodFormCtrl',
                     templateUrl: Config.root + '/views/fiscal-period/form.html'
                 }
             }
         })
         // currency (mata uang)
-        .state("root.currency", {
+        .state("secure.currency", {
             url: "/currency",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'CurrencyCtrl',
                     templateUrl: Config.root + '/views/currency/list.html'
                 }
             },
             data: {}
         })
-        .state("root.currency.form", {
+        .state("secure.currency.form", {
             url: "/form/:id",
             views: {
-                "content@": {
+                "content@secure": {
                     controller: 'CurrencyFormCtrl',
                     templateUrl: Config.root + '/views/currency/form.html'
                 }
             }
         })
+
+
+//
+//        .state("secure.journal", {
+//            url: "/secure/journal",
+//            views: {
+//                "content@": {
+//                    controller: 'JournalCtrl',
+//                    templateUrl: Config.root + '/views/journal.html'
+//                }
+//            }
+//        })
+//        .state("secure.reporting", {
+//            url: "/secure/reporting",
+//            views: {
+//                "content@": {
+//                    controller: 'ReportingCtrl',
+//                    templateUrl: Config.root + '/views/reporting.html'
+//                }
+//            }
+//        })
+//
+//        // master data
+//        .state("secure.account", {
+//            url: "/secure/account",
+//            views: {
+//                "content@": {
+//                    controller: 'AccountCtrl',
+//                    templateUrl: Config.root + '/views/account/list.html'
+//                }
+//            }
+//        })
+//
+//
+
 }
 ;
 

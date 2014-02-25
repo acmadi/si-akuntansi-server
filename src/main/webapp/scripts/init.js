@@ -5,7 +5,7 @@ siakun.app = angular.module(siakun.appName, [
         'ngCookies',
         'ngResource',
         'ngSanitize',
-//        'ngAnimate',
+        'ngAnimate',
         'ui.router',
         'ui.keypress',
         'LocalStorageModule'
@@ -25,7 +25,7 @@ siakun.app = angular.module(siakun.appName, [
     // define app configuration
     .run(['$timeout', 'Util', '$rootScope', function ($timeout, Util, $rootScope) {
         $rootScope.$on('$viewContentLoaded', function () {
-            Util.initFoundation();
+//            Util.initFoundation();
         });
 
         $rootScope.optionsDataCount = function () {
@@ -52,18 +52,18 @@ siakun.app = angular.module(siakun.appName, [
 
 
 $(document).ready(function () {
-    var config = {
-        "container": ".container",
-        "top": ".title-bar",
-        "side": ".sidebar",
-        "bottom": ".fixed-bottom",
-        "spacing": 0
-    };
+//    var config = {
+//        "container": ".container",
+//        "top": ".title-bar",
+//        "side": ".sidebar",
+//        "bottom": ".fixed-bottom",
+//        "spacing": 0
+//    };
 
     // layouting
-    siakun.func.layout(config);
-    $(window).resize(function () {
-        siakun.func.layout(config);
-    });
-    $(document).foundation();
+//    siakun.func.layout(config);
+//    $(window).resize(function () {
+//        siakun.func.layout(config);
+//    });
+//    $(document).foundation();
 });

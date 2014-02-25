@@ -1,0 +1,35 @@
+//
+// Created by pancara kusuma wijonarko
+//
+@mixin pad($side: left, $name:1em, $value: $name)
+    &.#{$fa-css-prefix}-pad-#{$side}-#{$name}
+        padding-#{$side}: $value
+
+@mixin pad-base
+    .#{$fa-css-prefix}-pad
+        +pad(top, halfem, .5em)
+        +pad(bottom, halfem, .5em)
+        +pad(left, halfem, .5em)
+        +pad(right, halfem, .5em)
+
+        +pad(top, 1em)
+        +pad(bottom, 1em)
+        +pad(left, 1em)
+        +pad(right, 1em)
+
+        +pad(top, 2em)
+        +pad(bottom, 2em)
+        +pad(left, 2em)
+        +pad(right, 2em)
+
+        +pad(top, 3em)
+        +pad(bottom, 3em)
+        +pad(left, 3em)
+        +pad(right, 3em)
+
+        +pad(top, 4em)
+        +pad(bottom, 4em)
+        +pad(left, 4em)
+        +pad(right, 4em)
+
++pad-base

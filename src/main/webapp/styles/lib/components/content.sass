@@ -1,0 +1,43 @@
+// content :
+// contains main and sidebar
+
+$content-top: 37px
+$ontent-bottom: 24px
+
+$content-main-bg: transparent
+$content-main-padding: 0em 0em 0em 0em
+
+$content-head-bg: lighten($topbar-bg, 60)
+
+@mixin content
+    .content
+        background: $content-main-bg
+        font-size: 0.75rem
+        padding: $content-main-padding
+        position: relative
+        display: block
+        border: 0px solid #FF0000
+        margin-top: $content-top
+        margin-right: 0
+
+        h1
+
+            font-size: 0.8rem
+            line-height: 1.4rem
+            font-weight: normal
+            margin: 0 0 0 0
+            padding: 0.25rem 0 0.25rem 0.5rem
+            border-bottom: 1px solid #E0E0E0
+            background: $content-head-bg
+            color: #FFF
+            text-shadow: 0px 1px 4px #999
+        > div
+            margin: 0.5rem 0.5rem 0.5rem 0.5rem
+
+        @media #{$small-query}
+            margin-left: $sidebar-width-small
+        @media #{$medium-query}
+            margin-left: $sidebar-width-medium
+        @media #{$large-query}
+            margin-left: $sidebar-width-large
+

@@ -157,6 +157,20 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
             return false;
         };
 
+
+        $scope.mouseOver = function (event, index) {
+            $scope.hoverRow = index;
+            console.log($scope.hoverRow);
+        }
+
+        $scope.mouseLeave = function (event) {
+            $scope.hoverRow = -1;
+        }
+
+        $scope.isHover = function ($index) {
+            return $scope.hoverRow === $index;
+        }
+
         $scope.updateRecordValue = function (rec) {
             var arr = $scope.data.dataset.data;
             for (var i = 0; i < arr.length; i++) {
@@ -181,7 +195,7 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
                     current: 1, total: 0, pages: []
                 },
                 queryParams: {
-                    start: 0, count: 1, keyword: null, orders: []
+                    start: 0, count: 2, keyword: null, orders: []
                 }
             };
             $scope.needRefresh = true;
@@ -200,12 +214,15 @@ siakun.app.controller('CountryCtrl', ['$resource', '$timeout', '$state', '$scope
         }
 
         $scope.data.columns = [
-            {title: '', isData: false},
+            {title: '', isData: false, className: 'indicator'},
             {title: 'No', isData: false},
             {title: 'ISO 2', isData: true, remoteProperty: 'iso2', ordering: "ASC"},
             {title: 'ISO 3', isData: true, remoteProperty: 'iso3', ordering: "ASC"},
             {title: 'Nama', isData: true, remoteProperty: 'name', ordering: "ASC"}
         ];
+
+
+        $scope.hoverRow = -1;
 
         if ($scope.needRefresh)
             $scope.refresh();

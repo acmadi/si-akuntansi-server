@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Dynamic Drive: CSS Bottom Frame Layout</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link href="../styles/normalize.css" type="text/css" rel="stylesheet"/>
+    <link href="../styles/style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="topbar fixed" style="border-top: 3px solid #99140c;">
+    <nav class="dropdown right">
+        <ul>
+            <li class="divider">&nbsp;</li>
+            <li><a href="#">Home</a></li>
+            <li class="divider">&nbsp;</li>
+            <li class="hide-for-small show-for-medium show-for-large"><a href="#">Tutorials</a>
+                <ul>
+                    <li><a href="#">Photoshop</a></li>
+                    <li><a href="#">Illustrator</a></li>
+                    <li><a href="#">Web Design</a></li>
+                </ul>
+            </li>
+            <li class="divider hide-for-small show-for-medium show-for-large">&nbsp;</li>
+            <li>
+                <a href="#">Articles</a>
+                <ul>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">User Experience</a></li>
+                </ul>
+            </li>
+            <li class="divider">&nbsp;</li>
+            <li><a href="#">Inspiration</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="sidebar fixed" >
+    Sidebar
+</div>
+<br/>
+
+<div class="show-for-small hide-for-medium hide-for-large">
+    show for small only
+</div>
+<div class="show-for-small show-for-medium hide-for-large">
+    show for small n medium
+</div>
+
+<div class="show-for-small show-for-medium show-for-large">
+    show for small n medium n large
+</div>
+<div class="hide-for-small">
+    hide for small
+</div>
+<div class="hide-for-medium">
+    hide for medium
+</div>
+<div class="hide-for-large">
+    hide for large
+</div>
+
+<div style="width: 100%;" class='grid'>
+    <div class="row">
+        <div class="small-1 medium-1 large-1 column">
+            <div style="border: 1px solid #CCC;">Cell 1</div>
+        </div>
+        <div class="small-4 medium-4 large-4 column">
+            <div style="border: 1px solid #CCC;">Cell 1</div>
+        </div>
+        <div class="small-7 medium-7 large-7 column">
+            <div style="border: 1px solid #CCC;">Cell</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-1 medium-1 large-1 column">
+            <div style="border: 1px solid #CCC;">Cell 1</div>
+        </div>
+        <div class="small-4 medium-4 large-4 column">
+            <div style="border: 1px solid #CCC;">Cell 1</div>
+        </div>
+        <div class="small-7 medium-7 large-7 column">
+            <div style="border: 1px solid #CCC;">Cell</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-5 medium-5 large-5 column">
+            <div class="row">
+                <div class="small-1 medium-1 large-1 column">
+                    <div style="border: 1px solid #CCC;">Cell 1</div>
+                </div>
+                <div class="small-4 medium-4 large-4 column">
+                    <div style="border: 1px solid #CCC;">Cell 1</div>
+                </div>
+                <div class="small-7 medium-7 large-7 column">
+                    <div style="border: 1px solid #CCC;">Cell</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-1 medium-1 large-1 column">
+                    <div style="border: 1px solid #CCC;">Cell 1</div>
+                </div>
+                <div class="small-4 medium-4 large-4 column">
+                    <div style="border: 1px solid #CCC;">Cell 1</div>
+                </div>
+                <div class="small-7 medium-7 large-7 column">
+                    <div style="border: 1px solid #CCC;">Cell</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="small-7 medium-7 large-7 column">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 medium-12 large-12 column">
+            <button>Just button</button>
+            <button class="ok">OK button</button>
+            <button class="cancel">Cancel button</button>
+            <button class="important">Important button</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row show-for-small hide-for-medium hide-for-large">
+            <button class="radius">Just button with Radius</button>
+            <button class="ok radius">OK button with radius</button>
+            <button class="cancel radius">Cancel button with radius</button>
+            <button class="important radius">Important button with radius</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row hide-for-small show-for-medium hide-for-large">
+            <button class="radius medium">Just button with Radius</button>
+            <button class="ok radius medium">OK button with radius</button>
+            <button class="cancel radius medium">Cancel button with radius</button>
+            <button class="important radius medium">Important button with radius</button>
+        </div>
+    </div>
+
+    <div class="row hide-for-small hide-for-medium show-for-large">
+        <div class="small-12 medium-12 large-12 column">
+            <button class="radius large">Just button with Radius</button>
+            <button class="ok radius large">OK button with radius</button>
+            <button class="cancel radius large">Cancel button with radius</button>
+            <button class="important radius large">Important button with radius</button>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="bottombar fixed hide-for-small">
+    Bottom bar
+</div>
+</body>
+</html>

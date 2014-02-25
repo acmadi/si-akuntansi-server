@@ -1,0 +1,40 @@
+<section class='section'>
+    <nav class="dropdown">
+        <ul>
+            <li>
+                <a href="#">
+                    <i class='fa fa-bar-chart-o' style="position: relative;"></i>
+                    &nbsp;
+                    My App
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>
+<section class='section hide-for-small right'>
+    <nav class="dropdown">
+        <ul>
+            <li ng-repeat="menu in menus.top">
+                <a ng-href="{{ menu.path }}" class="">
+                    <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em' style="position: relative;"></i>
+                    {{ menu.caption }}
+                </a>
+                <ul ng-if="hasChildren(menu)">
+                    <li ng-repeat="child in menu.children">
+                        <a ng-href='{{ child.path }}'>
+                            <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em' style="position: relative;"></i>
+                            {{ child.caption }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="button">
+                <button class="small button radius">
+                    <i class='fa fa-lock fa-pad fa-pad-right-halfem'></i>
+                    Logout
+                </button>
+            </li>
+        </ul>
+    </nav>
+</section>

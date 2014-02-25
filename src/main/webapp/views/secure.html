@@ -1,0 +1,18 @@
+<div class="topbar fixed">
+    <ng-include src="'views/includes/topbar.html' | absPath"></ng-include>
+</div>
+
+
+<div class="sidebar fixed">
+    <ng-include src="'views/includes/sidebar.html' | absPath "></ng-include>
+</div>
+
+<div ui-view="content" class="content slide">
+    <h1>
+        SiAkun: Sistem Informasi Akuntansi
+    </h1>
+</div>
+
+<div class="bottombar fixed hide-for-small">
+    <ng-include src="'views/includes/bottombar.html' | absPath"></ng-include>
+</div>

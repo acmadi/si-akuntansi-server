@@ -1,0 +1,62 @@
+// pushbutton
+
+$pushbutton-bg: transparent
+$pushbutton-item-font-family: $common-font-family
+$pushbutton-item-font-size: 0.9em
+$pushbutton-item-color: #FFF
+$pushbutton-item-bg: #888
+//tint($color-primary, 25)
+$pushbutton-item-border-color: darken($pushbutton-item-bg, 25)
+
+$pushbutton-item-hover-bg: darken($pushbutton-item-bg, 10)
+$pushbutton-item-current: #555
+$pushbutton-item-radius: 0.5em
+
+@mixin pushbutton
+    .pushbutton
+        background-color: $pushbutton-bg
+        margin: 0 0
+        padding: 0 0
+        display: inline-block
+        background: transparent
+        li
+            display: inline-block
+            margin-left: 0.0em
+            margin-right: 0.0em
+            padding: 0em 0em
+            float: left
+
+            a
+                font-family: $pushbutton-item-font-family
+                font-size: $pushbutton-item-font-size
+                color: $pushbutton-item-color
+                padding: .1em .5em
+                line-height: 1.5em
+                text-decoration: none
+                display: block
+                background-color: $pushbutton-item-bg
+                cursor: $cursor-default
+                &:hover
+                    background-color: $pushbutton-item-hover-bg
+                    color: #FFF
+
+                &.current
+                    background-color: $pushbutton-item-current
+
+
+            &:first-child
+                a
+                    border-top-left-radius: $pushbutton-item-radius
+                    border-bottom-left-radius: $pushbutton-item-radius
+
+            &:last-child
+                a
+                    border-top-right-radius: $pushbutton-item-radius
+                    border-bottom-right-radius: $pushbutton-item-radius
+                    border-right: 1px solid transparent
+
+        &.radius
+            li
+                border-radius: $global-border-radius
+
+

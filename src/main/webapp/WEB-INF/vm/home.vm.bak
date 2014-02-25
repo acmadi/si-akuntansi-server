@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+##    <link rel="stylesheet" href="#springUrl("/bower_components/foundation/css/normalize.css")">
+    <link rel="stylesheet" type="text/css" href="#springUrl("/styles/normalize.css")"/>
+    <link rel="stylesheet" type="text/css" href="#springUrl("/styles/style.css")">
+    <link rel="stylesheet" type="text/css" href="#springUrl("/css/animate.css")">
+    <link rel="stylesheet" type="text/css" href="#springUrl("/vendor/font-awesome/font-awesome.css")">
+    <!-- endbuild -->
+
+</head>
+<body>
+<div class="topbar fixed">
+    <section class='section'>
+        <nav class="dropdown">
+            <ul>
+                <li class="divider">&nbsp;</li>
+                <li>
+                    <a href="#">
+                        <i class='fa fa-bars fa-pad fa-2x fa-pad-right-halfem fa-color-white'></i> My App
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <section class='section pull-right hide-for-small'>
+        <nav class="dropdown">
+            <ul>
+                <li class="divider">&nbsp;</li>
+                <li>
+                    <a href="#">
+                        <i class='fa fa-home fa-pad fa-pad-right-1em'></i>
+                        Home
+                    </a>
+                </li>
+                <li class="divider">&nbsp;</li>
+                <li class="hide-for-small show-for-medium show-for-large">
+                    <a href="#">
+                        <i class='fa fa-calendar fa-pad fa-pad-right-1em'></i>
+                        Tutorials
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-calendar fa-pad fa-pad-right-1em'></i>
+                                Photoshop
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                                Illustrator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-tasks fa-pad fa-pad-right-1em'></i>
+                                Web Design
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider hide-for-small show-for-medium show-for-large">&nbsp;</li>
+                <li>
+                    <a href="#">Articles</a>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">User Experience</a></li>
+                    </ul>
+                </li>
+                <li class="divider">&nbsp;</li>
+                <li><a href="#">Inspiration</a></li>
+                <li class="button">
+                    <button class="radius">
+                        <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                        Button
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</div>
+
+<div class="sidebar fixed">
+    sidebar
+</div>
+
+<div class="main">
+    <div ui-view="content"></div>
+    <div class="spacer vertical"></div>
+</div>
+<br/>
+
+<div class="bottombar fixed">Bottom bar</div>
+
+<!--&lt;!&ndash;-- script --&ndash;&gt;-->
+<script src="#springUrl("/bower_components/jquery/jquery.js")"></script>
+<script src="#springUrl("/bower_components/angular/angular.js")"></script>
+
+<!--build:js scripts/modules.js-->
+<script src="#springUrl("/bower_components/angular-resource/angular-resource.js")"></script>
+<script src="#springUrl("/bower_components/angular-route/angular-route.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-animate/angular-animate.js")"></script>
+<script src="#springUrl("/bower_components/angular-sanitize/angular-sanitize.js")"></script>
+<script src="#springUrl("/bower_components/angular-cookies/angular-cookies.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-utils/ui-utils.js")"></script>
+<script src="#springUrl("/bower_components/angular-local-storage/angular-local-storage.js")"></script>
+<!--endbuild-->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="#springUrl("/scripts/module.js")"></script>
+##<script src="#springUrl("/scripts/functions/layout.js")"></script>
+<script src="#springUrl("/scripts/functions/initStates.js")"></script>
+<script src="#springUrl("/scripts/init.js")"></script>
+
+<!-- interceptor -->
+<script src="#springUrl("/scripts/factory/httpInterceptor.js")"></script>
+
+<!-- controllers -->
+<script src="#springUrl("/scripts/controllers/LoginCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/SecureCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/HomeCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/AccountCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
+
+<script src="#springUrl("/scripts/controllers/CountryCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CountryFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyFormCtrl.js")"></script>
+
+<script src="#springUrl("/scripts/controllers/JournalCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/ReportingCtrl.js")"></script>
+
+<!-- services -->
+<script src="#springUrl("/scripts/services/Util.js")"></script>
+<script src="#springUrl("/scripts/services/Dialog.js")"></script>
+
+<!-- filters -->
+<script src="#springUrl("/scripts/filters/absPath.js")"></script>
+
+<!-- directives -->
+<script src="#springUrl("/scripts/directives/focusMe.js")"></script>
+
+
+<!-- endbuild -->
+</body>
+</html>

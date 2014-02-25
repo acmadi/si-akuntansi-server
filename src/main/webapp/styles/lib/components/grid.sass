@@ -1,0 +1,64 @@
+// grids
+
+$grid-columns: 12
+$grid-gutter: 0.5em
+$grid-column-width: 100% / $grid-columns
+$grid-row-margin: 0rem 0rem 0.25rem 0rem
+
+@function calcColumnWidth($col, $width)
+    @return $col * $width
+
+@mixin column
+    display: inline-block
+    position: relative
+    margin: 0px 0px 0px 0px !important
+    float: left
+    padding-right: $grid-gutter
+    &:last-child
+        padding-right: 0
+        float: right
+
+    &.end
+        float: left
+
+@mixin row
+    width: 100%
+    padding: 0%
+    display: block
+    margin: $grid-row-margin
+
+    @include clearfix
+
+@mixin grid
+    @media #{$small-query}
+        .grid
+            .row
+                @include row
+                .column
+                    @include column
+                    @for $i from 1 through $grid-columns
+                        &.small-#{$i}
+                            width: calcColumnWidth($i, $grid-column-width)
+
+    @media #{$medium-query}
+        .grid
+            .row
+                @include row
+                .column
+                    @include column
+                    @for $i from 1 through $grid-columns
+                        &.medium-#{$i}
+                            width: calcColumnWidth($i, $grid-column-width)
+
+    @media #{$large-query}
+        .grid
+            .row
+                @include row
+                .column
+                    @include column
+                    @for $i from 1 through $grid-columns
+                        &.large-#{$i}
+                            width: calcColumnWidth($i, $grid-column-width)
+
+
+

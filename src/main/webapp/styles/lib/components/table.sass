@@ -1,0 +1,157 @@
+// table
+
+$table-bg: #FFF
+$table-margin: 0 0 0 0
+$table-border: 1px solid #EEE
+
+$table-line-height: 1em
+
+//$table-head-bg: #C3D1D6
+$table-head-bg: #D4E2E7
+$table-head-font-family: $common-font-family
+$table-head-font-size: 0.75em
+$table-head-font-color: #555
+$table-head-text-shadow: 1px 1px 2px #EEE
+$table-head-font-weight: bold
+$table-head-text-align: left
+$table-head-padding: 0.5em 0.5em
+$table-head-border-bottom: 1px solid #FFF
+
+$table-body-bg: tint(#C3D1D6, 80)
+$table-body-font-family: $common-font-family
+$table-body-font-size: 0.9em
+$table-body-font-color: #333
+$table-body-font-weight: normal
+$table-body-line-height: 1em
+$table-body-padding: 0.75em 0.5em
+$table-body-text-shadow: 0px 0px 5px #EEE
+
+$table-body-border-bottom: 1px solid tint($table-head-bg, 55)
+
+$table-selected-color: #003300
+$table-selected-bg: complement($table-body-bg)
+$table-hover-color: darken($table-selected-bg, 60)
+$table-hover-bg: darken($table-selected-bg, 10)
+
+$table-head-indicator-bg: lighten($table-head-bg, 10)
+
+@mixin table
+    table
+        background: $table-bg
+        margin-bottom: $table-margin
+        border: $table-border
+        thead
+            tr
+                th, td
+                    font-family: $table-head-font-family
+                    padding: $table-head-padding
+                    font-size: $table-head-font-size
+                    font-weight: $table-head-font-weight
+                    color: $table-head-font-color
+                    cursor: $cursor-default
+                    text-align: $table-head-text-align
+                    text-shadow: $table-head-text-shadow
+
+                    img
+                        float: right
+                    &:nth-child(odd)
+                        +linear-gradient(top, darken($table-head-bg, 5), darken($table-head-bg, 0))
+                    &:nth-child(even)
+                        +linear-gradient(top, darken($table-head-bg, 8), darken($table-head-bg, 4))
+        tbody
+            tr
+                td
+                    cursor: $cursor-default
+                    font-family: $table-body-font-family
+                    padding: $table-body-padding
+                    font-size: $table-body-font-size
+                    color: $table-body-font-color
+                    background-color: $table-body-bg
+                    border-bottom: $table-body-border-bottom
+                    text-shadow: $table-body-text-shadow
+                &:hover
+                    td
+                        color: $table-hover-color
+                        background: $table-hover-bg
+
+    //&:last-child
+    //    td
+    //        border-bottom: none
+    table.zebra
+        tbody
+            tr
+                &:nth-child(odd)
+                    td
+                        +transition(background 300ms ease-in)
+                        &:nth-child(even)
+                            background: darken($table-body-bg, 2)
+                        &:nth-child(odd)
+                            background: darken($table-body-bg, 4)
+                    &.selected
+                        td
+                            color: $table-selected-color
+                            &:nth-child(even)
+                                background: lighten($table-selected-bg, 2)
+                            &:nth-child(odd)
+                                background: lighten($table-selected-bg, 4)
+                    &:hover
+                        td
+                            &:nth-child(even)
+                                background: darken($table-hover-bg, 3)
+                            &:nth-child(odd)
+                                background: darken($table-hover-bg, 5)
+
+                &:nth-child(even)
+                    td
+                        &:nth-child(even)
+                            background: darken($table-body-bg, 6)
+                        &:nth-child(odd)
+                            background: darken($table-body-bg, 8)
+
+                    &.selected
+                        td
+                            &:nth-child(even)
+                                background: darken($table-selected-bg, 6)
+                            &:nth-child(odd)
+                                background: darken($table-selected-bg, 8)
+
+                    &:hover
+                        td
+                            &:nth-child(even)
+                                background: darken($table-hover-bg, 6)
+                            &:nth-child(odd)
+                                background: darken($table-hover-bg, 8)
+
+@mixin table-indicator
+    table, table.zebra
+        thead, tbody, tfoot
+            tr
+                td, th
+                    &.indicator
+                        border: none
+                        background: $table-head-indicator-bg !important
+                        width: .3rem !important
+                        padding: 0 0.25rem 0 0.25rem !important
+
+                        span
+                            display: block
+                            height: .3rem
+                            width: .3rem
+                            position: relative
+                            background: transparent
+                            margin: 0 0 2px 0
+                            margin-bottom: 1px
+                            border-radius: .15rem
+                            box-shadow: 0px 0px 1px #FFF
+
+                            &.primary
+                                background: $color-primary
+
+                            &.important
+                                background: $color-important
+                            &.ok
+                                background: $color-success
+
+                            &.cancel
+                                background: $color-alert
+

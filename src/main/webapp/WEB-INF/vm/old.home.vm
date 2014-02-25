@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="siakunApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+##    <link rel="stylesheet" href="#springUrl("/bower_components/foundation/css/normalize.css")">
+    <link rel="stylesheet" href="#springUrl("/styles/style.css")">
+    <link rel="stylesheet" href="#springUrl("/css/animate.css")">
+    <!-- endbuild -->
+
+##    <script src="#springUrl("/bower_components/modernizr/modernizr.js")"></script>
+</head>
+<body>
+<div ui-view="content"></div>
+
+<!--&lt;!&ndash;-- script --&ndash;&gt;-->
+<script src="#springUrl("/bower_components/jquery/jquery.js")"></script>
+<script src="#springUrl("/bower_components/angular/angular.js")"></script>
+
+<!--build:js scripts/modules.js-->
+<script src="#springUrl("/bower_components/angular-resource/angular-resource.js")"></script>
+<script src="#springUrl("/bower_components/angular-route/angular-route.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-animate/angular-animate.js")"></script>
+<script src="#springUrl("/bower_components/angular-sanitize/angular-sanitize.js")"></script>
+<script src="#springUrl("/bower_components/angular-cookies/angular-cookies.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-utils/ui-utils.js")"></script>
+<script src="#springUrl("/bower_components/angular-local-storage/angular-local-storage.js")"></script>
+<!--endbuild-->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="#springUrl("/scripts/module.js")"></script>
+##<script src="#springUrl("/scripts/functions/layout.js")"></script>
+<script src="#springUrl("/scripts/functions/initStates.js")"></script>
+<script src="#springUrl("/scripts/init.js")"></script>
+
+<!-- interceptor -->
+<script src="#springUrl("/scripts/factory/httpInterceptor.js")"></script>
+
+<!-- controllers -->
+<script src="#springUrl("/scripts/controllers/LoginCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/SecureCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/HomeCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/AccountCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
+
+<script src="#springUrl("/scripts/controllers/CountryCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CountryFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/FiscalPeriodFormCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/CurrencyFormCtrl.js")"></script>
+
+<script src="#springUrl("/scripts/controllers/JournalCtrl.js")"></script>
+<script src="#springUrl("/scripts/controllers/ReportingCtrl.js")"></script>
+
+<!-- services -->
+<script src="#springUrl("/scripts/services/Util.js")"></script>
+<script src="#springUrl("/scripts/services/Dialog.js")"></script>
+
+<!-- filters -->
+<script src="#springUrl("/scripts/filters/absPath.js")"></script>
+
+<!-- directives -->
+<script src="#springUrl("/scripts/directives/focusMe.js")"></script>
+
+
+<!-- endbuild -->
+
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

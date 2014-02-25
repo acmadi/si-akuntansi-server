@@ -1,0 +1,34 @@
+$panel-bg: #F9F9F9
+
+$panel-border: 1px solid darken($panel-bg, 10)
+$panel-border-radius: $global-border-radius
+
+$panel-padding: 0 0
+
+$panel-font-color: #333333
+$panel-font-size: 0.75rem
+
+$toolbar-bg: #EEE
+
+@mixin panel
+    .panel, .toolbar
+        padding: $panel-padding
+        color: $panel-font-color
+
+        &.bordered
+            border: $panel-border
+
+        &.radius
+            border-radius: $global-border-radius
+
+        h1, h2, h3, h4, h5, h6
+            margin: 0 0 0 0
+        h1
+            font-size: 1.5em
+
+    .panel
+        background: $panel-bg
+    .toolbar
+        background-color: $toolbar-bg
+
+

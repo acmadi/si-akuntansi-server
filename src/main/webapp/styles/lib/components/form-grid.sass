@@ -1,0 +1,63 @@
+// grids
+
+$formgrid-columns: 12
+$formgrid-gutter: 0.5em
+$formgrid-column-width: 100% / $formgrid-columns
+$formgrid-row-margin: .5em 0 0.5em 0
+
+@function calcColumnWidth($col, $width)
+    @return $col * $width
+
+@mixin form-grid-column
+    display: inline-block
+    position: relative
+    margin: 0px 0px 0px 0px !important
+    float: left
+    padding-right: $formgrid-gutter
+    &:last-child
+        padding-right: 0
+        float: right
+
+    &.end
+        float: left
+
+@mixin form-grid-row
+    width: 100%
+    margin: 0
+    padding: 0
+    display: block
+    margin: $formgrid-row-margin
+
+    @include clearfix
+
+@mixin form-grid
+    @media #{$small-query}
+        .form-grid
+            .row
+                +form-grid-row
+                .column
+                    +form-grid-column
+                    @for $i from 1 through $formgrid-columns
+                        &.small-#{$i}
+                            width: calcColumnWidth($i, $formgrid-column-width)
+
+    @media #{$medium-query}
+        .form-grid
+            .row
+                +form-grid-row
+                .column
+                    +form-grid-column
+                    @for $i from 1 through $formgrid-columns
+                        &.medium-#{$i}
+                            width: calcColumnWidth($i, $formgrid-column-width)
+
+    @media #{$large-query}
+        .form-grid
+            .row
+                +form-grid-row
+                .column
+                    +form-grid-column
+                    @for $i from 1 through $formgrid-columns
+                        &.large-#{$i}
+                            width: calcColumnWidth($i, $formgrid-column-width)
+

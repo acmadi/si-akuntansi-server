@@ -4,12 +4,6 @@ var Util = function ($timeout) {
     this.$timeout = $timeout;
 }
 
-Util.prototype.initFoundation = function () {
-    this.$timeout(function () {
-        $(document).foundation();
-    }, 5);
-}
-
 Util.prototype.isUndefinedOrNull = function (obj) {
     return !angular.isDefined(obj) || obj === null;
 }
@@ -69,7 +63,7 @@ Util.prototype.generatePages = function (curr, numPage, numShownData, numData) {
 }
 
 Util.prototype.optionsDataCount = function () {
-    return [1, 2, 3, 5, 10, 15, 20, 25];
+    return [2, 5, 15, 25];
 }
 
 siakun.app.service('Util', Util);

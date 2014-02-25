@@ -106,7 +106,7 @@ public abstract class GenericDaoImpl<T, TId extends Serializable> implements Gen
     }
 
     @Override
-    public void evict(Currency entity) {
+    public void evict(T entity) {
         getCurrentSession().evict(entity);
     }
 

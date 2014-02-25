@@ -1,0 +1,27 @@
+// top bar
+$topbar-bg: #333
+$topbar-font-color: #FFF
+
+@mixin topbar
+    .topbar
+        z-index: 9999
+        background: $topbar-bg
+        width: 100%
+        color: $topbar-font-color
+        box-shadow: 0px 0px 6px #666
+        padding: 0 0 0 0
+
+        &.fixed
+            position: fixed
+            top: 0
+
+        section
+            padding: 0 0 0 0
+            float: left
+            display: block
+            &.right
+                margin-right: 0
+                margin-left: auto
+                float: right
+
+

@@ -1,0 +1,178 @@
+// controls
+
+$control-label-color: #888
+$control-label-font-size: 1.1em
+$control-label-hover-color: $color-primary
+$control-label-error-color: $color-alert
+
+$control-label-padding: 0.5em 0.1em 0.1em 0.25em
+
+$control-label-disabled: #BBB
+
+$control-text-font-family: $common-font-family
+$control-text-font-size: 1em
+$control-text-border-color: rgb(204, 204, 204)
+$control-text-focus-border-color: darken($control-text-border-color, 10)
+$control-text-border: 1px solid $control-text-border-color
+$control-text-border-radius: 0
+$control-text-padding: 0.25em 0.25em
+$control-text-line-height: 1.5em
+$control-text-disabled-bg: #E5E5E5
+$control-text-disabled-color: $control-label-disabled
+$control-text-disabled-text-shadow: 0px 1px 2px #EEE
+
+$control-select-padding: .1em .1em
+
+$control-radio-margin: 0.25em 0.25em 0.0em 0.25em
+
+$control-checkbox-margin: 0.25em 0.25em 0.0em 0.25em
+
+$control-input-group-min-width: 12em
+$control-input-group-border: $control-text-border
+
+$control-input-group-size-small: 7rem
+$control-input-group-size-medium: 14rem
+$control-input-group-size-large: 25rem
+$control-input-group-addon-bg: #DDD
+$control-input-group-addon-padding: .5em
+
+@mixin form
+    form
+        padding: 0 0 0 0
+        margin: 0 0 0 0
+
+@mixin label
+    label
+        font-size: $control-label-font-size
+        color: $control-label-color
+        padding: $control-label-padding
+
+        &.left
+            float: left
+        &.right
+            float: right
+        &.error
+            color: $control-label-error-color
+
+@mixin input-base
+    display: inline-block
+    box-shadow: inset 0px 0px 12px #DDD
+    border: $control-text-border
+    padding: $control-text-padding
+    font-family: $control-text-font-family
+    font-size: $control-text-font-size
+    width: 100%
+    border-radius: $control-text-border-radius
+    line-height: $control-text-line-height
+    inset: 0 1px 4px rgba(0, 0, 0, 0.1)
+    +placeholder
+        color: #CCC
+
+@mixin input-base-hover
+    box-shadow: 0px 0px 6px transparentize(#5489A8, 0.5)
+    border-color: $color-primary
+    +transition(all 200ms ease-in)
+
+@mixin input-text
+    textarea, select, input[type=text]
+        +input-base
+        outline: none
+        &:focus
+            border-color: $control-text-focus-border-color
+            +input-base-hover
+
+        &:hover
+            +input-base-hover
+        &:disabled
+            background: $control-text-disabled-bg
+            color: $control-text-disabled-color
+            text-shadow: $control-text-disabled-text-shadow
+
+    select
+        width: auto
+        padding: $control-select-padding
+
+@mixin input-radio
+    input[type=radio]
+        vertical-align: top
+        margin: $control-radio-margin
+        outline: none
+        &:focus
+            box-shadow: inset 0px 0px 6px transparentize(#5489A8, 0.5)
+        &:focus+label
+            color: $control-label-hover-color
+        &:disabled
+            text-shadow: $control-text-disabled-text-shadow
+            &+label
+                color: $control-label-disabled
+                &:hover
+                    color: $control-label-disabled
+        &+label
+            vertical-align: bottom
+            &:hover
+                color: $control-label-hover-color
+
+@mixin input-checkbox
+    input[type=checkbox]
+        vertical-align: top
+        margin: $control-checkbox-margin
+        outline: none
+        &:focus
+            box-shadow: inset 0px 0px 6px transparentize(#5489A8, 0.5)
+        &:focus+label
+            color: $control-label-hover-color
+
+        &:disabled
+            text-shadow: $control-text-disabled-text-shadow
+            &+label
+                color: $control-label-disabled
+                &:hover
+                    color: $control-label-disabled
+        &+label
+            vertical-align: bottom
+            &:hover
+                color: $control-label-hover-color
+
+@mixin input-group
+    div.input-group
+        border: $control-input-group-border
+        position: relative
+        display: table
+        > span.add-on
+            background: $control-input-group-addon-bg
+            display: table-cell
+            padding-left: $control-input-group-addon-padding
+            padding-right: $control-input-group-addon-padding
+            border: none
+            border-right: $control-input-group-border
+        input[type=text]
+            border: none
+            display: table-cell
+            &:after
+                content: "&nbsp;"
+            &:after
+                content: "&nbsp;"
+        input[type=text] + span.add-on
+            display: table-cell
+            border: none
+            background: $control-input-group-addon-bg
+            border-left: $control-input-group-border
+
+        &.input-group-small
+            input[type=text]
+                width: $control-input-group-size-small
+
+        &.input-group-medium
+            input[type=text]
+                width: $control-input-group-size-medium
+
+        &.input-group-large
+            input[type=text]
+                width: $control-input-group-size-large
+
+@mixin error
+    span.error
+        color: $color-error
+
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Dynamic Drive: CSS Bottom Frame Layout</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link href="../styles/normalize.css" type="text/css" rel="stylesheet"/>
+    <link href="../styles/style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="topbar fixed">
+    <nav class="dropdown right">
+        <ul>
+            <li class="divider">&nbsp;</li>
+            <li><a href="#">Home</a></li>
+            <li class="divider">&nbsp;</li>
+            <li class="hide-for-small show-for-medium show-for-large"><a href="#">Tutorials</a>
+                <ul>
+                    <li><a href="#">Photoshop</a></li>
+                    <li><a href="#">Illustrator</a></li>
+                    <li><a href="#">Web Design</a></li>
+                </ul>
+            </li>
+            <li class="divider hide-for-small show-for-medium show-for-large">&nbsp;</li>
+            <li>
+                <a href="#">Articles</a>
+                <ul>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">User Experience</a></li>
+                </ul>
+            </li>
+            <li class="divider">&nbsp;</li>
+            <li><a href="#">Inspiration</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="sidebar fixed">
+    Sidebar
+</div>
+<div class="main">
+    <div class="row">
+        <div class="small-4 medium-4 large-4 column">
+            <div class="panel">
+                Just panel
+            </div>
+        </div>
+        <div class="small-4 medium-4 large-4 column">
+            <div class="panel bordered radius">
+                <h1>Panel</h1>
+                Radius bordered panel
+            </div>
+        </div>
+        <div class="small-4 medium-4 large-4 column">
+            <div class="panel bordered">
+                Bordered panel
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="small-12 medium-12 large-12 column">
+            <div class="panel bordered radius">
+                <h1>Panel</h1>
+                Radius bordered panel
+                <br/>
+                <button class="radius small">Click me</button>
+                <button class="ok radius small">Click me</button>
+                <button class="cancel radius small">Click me</button>
+                <button class="important radius small">Click me</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
+<div class="bottombar fixed">Bottom bar</div>
+</body>
+</html>

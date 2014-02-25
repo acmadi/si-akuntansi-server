@@ -1,0 +1,28 @@
+// bottom bar
+$bottombar-bg: darken($topbar-bg, 5)
+$bottombar-font-color: #FFF
+$bottombar-font-family: $common-font-family
+$bottombar-line-height: 1.5rem
+
+@mixin bottombar
+    .bottombar
+        background: $bottombar-bg
+        width: 100%
+        color: $bottombar-font-color
+        font-size: 0.75em
+        line-height: $bottombar-line-height
+
+        &.fixed
+            position: fixed
+            bottom: 0
+
+        @media #{$small-query}
+            display: none
+
+        @media #{$medium-query}
+            display: inline-block
+
+        @media #{$large-query}
+            display: inline-block
+
+

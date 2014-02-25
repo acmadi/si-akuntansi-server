@@ -9,6 +9,8 @@ public class ErrorDto {
     public static final String MESSAGE_LOCKING_ERROR = "record gagal dikunci.";
     public static final String MESSAGE_SQL_ERROR = "terjadi kegagalan operasi database.";
 
+    public static final String USER_PASSWORD_NOT_RECOGNIZED = "Kombinasi user dan password tidak dikenali.";
+
     private String message;
     private String detail;
 

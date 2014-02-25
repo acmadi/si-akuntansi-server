@@ -1,93 +1,90 @@
-<h1>Negara</h1>
-<div>
-    <div>
-        <div>
-            <button ng-click='refresh()' class="small">Refresh</button>
-            <button ng-click='addRecord()' class="small">Tambah</button>
+<h1>
+    <i class='fa fa-bar-chart-o fa-pad fa-pad-right-halfem fa-color-white'></i>
+    Negara
+</h1>
+<div class="grid">
+    <div class="row">
+        <div class="column small-5 medium-5 large-5">
+            <button ng-click='refresh()' class='small radius primary'>
+                <i class='fa fa-refresh fa-pad fa-pad-right-halfem'></i>
+                Refresh
+            </button>
+            <button ng-click='addRecord()' class='small radius ok'>
+                <i class='fa fa-plus fa-pad fa-pad-right-halfem'></i>
+                Tambah
+            </button>
             <span>{{ model.notification }}</span>
         </div>
-        <div>
-            <span class="label">Pencarian</span>
-            <input type='text' ng-model='data.queryParams.keyword' ui-keypress="{'enter':'refresh()'}">
+
+        <div class="column small-4 medium-4 large-4">
+            <div class="input-group input-group-medium pull-right">
+                <input type="text" ng-model='data.queryParams.keyword' ui-keypress="{'enter':'refresh()'}"
+                       placeholder="pencarian..">
+                <span class="add-on"><i class='fa fa-search fa-color-white'></i></span>
+            </div>
         </div>
 
-        <div class="data-count">
-            <span ng-repeat="value in optionsDataCount()" ng-click='setDataCount(value)'>
-                {{ value }}
-            </span>
-        </div>
 
-        <ul class="cust-pagination">
-            <li ng-click='toPage("first")'>
-                <a>&laquo;&laquo;</a>
-            </li>
-            <li ng-click='toPage("prev")'>
-                <a>&laquo;&nbsp;</a>
-            </li>
-            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)" ng-class='{current: p == data.paging.current}'>
-                <a>
-                    {{ p }}
-                </a>
-            </li>
-            <li ng-click='toPage("next")'>
-                <a>&nbsp;&raquo;</a>
-            </li>
-            <li ng-click='toPage("last")'>
-                <a>&raquo;&raquo;</a>
-            </li>
-        </ul>
-
-        <table style="width: 100%">
-            <colgroup>
-                <col style="width: 10px;"/>
-                <col style="width: 20px;"/>
-                <col style="width: 450px;"/>
-                <col style="width: 160px;"/>
-                <col style="width: 200px;"/>
-            </colgroup>
-            <thead>
-            <tr>
-                <th ng-repeat='col in data.columns' ng-click='columnClick($event, col)' style="width: 100px;">
-                    {{ col.title }}
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat='c in data.dataset.data' class='anim-fade'>
-                <td>*</td>
-                <td class="small-2 large-1 columns">
-                    {{ $index + data.queryParams.start + 1}}
-                </td>
-                <td ng-mouseover='mouseOver($index)' ng-mouseleave='mouseLeave()'>
-                    {{ c.iso2 }}
-                    <div>
-                        <span confirm-click='Hapus data ?' ng-click='removeRecord(c, $index)'>hapus</span>
-                        <span ng-click='editRecord(c)'>edit </span>
-                    </div>
-                </td>
-                <td>{{ c.iso3 }}</td>
-                <td>{{ c.name }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <ul class="cust-pagination">
-            <li ng-click='toPage("first")'>
-                <a>&laquo;&laquo;</a>
-            </li>
-            <li ng-click='toPage("prev")'>
-                <a>&laquo;&nbsp;</a>
-            </li>
-            <li ng-repeat="p in data.paging.pages" ng-click="toPage(p)" ng-class='{current: p == data.paging.current}'>
-                <a>
-                    {{ p }}
-                </a>
-            </li>
-            <li ng-click='toPage("next")'>
-                <a>&nbsp;&raquo;</a>
-            </li>
-            <li ng-click='toPage("last")'>
-                <a>&raquo;&raquo;</a>
-            </li>
-        </ul>
     </div>
+
+    <hr/>
+    <div class='row'>
+        <div class='column small-12 medium-12 large-12'>
+            <dv-data-count current='data.queryParams.count' on-select='setDataCount'></dv-data-count>
+
+            <dv-data-paging paging-data='data.paging' click-func='toPage'></dv-data-paging>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='column small-12 medium-12 large-12'>
+            <table class='zebra'>
+                <thead>
+                <tr>
+                    <th ng-repeat='col in data.columns' ng-click='columnClick($event, col)' class='{{ col.className }}'>
+                        <div ng-if='col.className != "indicator"'>
+                            {{ col.title }} &nbsp;<i class='fa fa-sort fa-pull-right'></i>
+                        </div>
+                        <div ng-if='col.className == "indicator"'>
+                            <span class="important"></span>
+                            <span class="primary"></span>
+                            <span class="ok"></span>
+                            <span class="cancel"></span>
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat='c in data.dataset.data' class='anim-fade'>
+                    <td class='indicator'>
+                        <span class="important"></span>
+                        <span class="primary"></span>
+                        <span class="ok"></span>
+                        <span class="cancel"></span>
+                    </td>
+                    <td class="small-2 large-1 columns">
+                        {{ $index + data.queryParams.start + 1}}
+                    </td>
+                    <td ng-mouseover='mouseOver($event, $index)' ng-mouseleave='mouseLeave($event, $index)'>
+                        {{ c.iso2 }}
+                        <div ng-show="isHover($index)" style="position: absolute;" class="anim-fade">
+                            <span confirm-click='Hapus data ?' ng-click='removeRecord(c, $index)'>hapus</span>
+                            <span ng-click='editRecord(c)'>edit </span>
+                        </div>
+                    </td>
+                    <td>{{ c.iso3 }}</td>
+                    <td>{{ c.name }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='column small-12 medium-12 large-12'>
+            <dv-data-count current='data.queryParams.count' on-select='setDataCount'></dv-data-count>
+
+            <dv-data-paging paging-data='data.paging' click-func='toPage'></dv-data-paging>
+        </div>
+    </div>
+</div>
 </div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Dynamic Drive: CSS Bottom Frame Layout</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link href="../styles/normalize.css" type="text/css" rel="stylesheet"/>
+    <link href="../styles/style.css" type="text/css" rel="stylesheet"/>
+    <script src="../js/vendor/jquery.js"></script>
+
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <div style="display: inline-block; border: 1px solid #0000FF;">
+                <button id="button">Click me</button>
+                <div style="position: absolute; top: 0; display: block; background: #FF0000;" id="panel">
+                    <button>Close</button>
+
+                </div>
+                <span>Hello</span>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    $(document).ready(function () {
+        $("#button").click(function () {
+            $("#panel").show();
+        }).blur(function () {
+                    $("#panel").hide();
+                });
+    });
+</script>
+</body>
+</html>

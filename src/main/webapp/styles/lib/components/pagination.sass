@@ -1,0 +1,62 @@
+// pagination
+
+$pagination-bg: transparent
+$pagination-item-font-family: $common-font-family
+$pagination-item-font-size: 0.9em
+$pagination-item-color: #FFF
+$pagination-item-bg: #AAA
+//tint($color-primary, 25)
+$pagination-item-border-color: darken($pagination-item-bg, 25)
+
+$pagination-item-hover-bg: darken($pagination-item-bg, 10)
+$pagination-item-current: $color-alert
+$pagination-item-radius: 0.5em
+
+@mixin pagination
+    .pagination
+        background-color: $pagination-bg
+        margin: 0 0
+        padding: 0 0
+        display: inline-block
+        background: transparent
+        li
+            display: inline-block
+            margin-left: 0.0em
+            margin-right: 0.0em
+            padding: 0em 0em
+            float: left
+
+            a
+                font-family: $pagination-item-font-family
+                font-size: $pagination-item-font-size
+                color: $pagination-item-color
+                padding: .1em .5em
+                line-height: 1.5em
+                text-decoration: none
+                display: block
+                background-color: $pagination-item-bg
+                cursor: $cursor-default
+                &:hover
+                    background-color: $pagination-item-hover-bg
+                    color: #FFF
+
+                &.current
+                    background-color: $pagination-item-current
+
+
+            &:first-child
+                a
+                    border-top-left-radius: $pagination-item-radius
+                    border-bottom-left-radius: $pagination-item-radius
+
+            &:last-child
+                a
+                    border-top-right-radius: $pagination-item-radius
+                    border-bottom-right-radius: $pagination-item-radius
+                    border-right: 1px solid transparent
+
+        &.radius
+            li
+                border-radius: $global-border-radius
+
+

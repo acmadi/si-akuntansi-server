@@ -1,0 +1,31 @@
+// misc item
+
+$spacer-tiny: 0.25em
+$spacer-small: 0.5em
+$spacer-medium: 1em
+
+@mixin spacer
+    .spacer
+        +clearfix
+
+        &.horizontal
+            display: inline-block
+            height: 100%
+            &.tiny
+                width: $spacer-tiny
+            &.small
+                width: $spacer-small
+            &.medium
+                width: $spacer-medium
+        &.vertical
+            display: block
+            width: 100%
+            &.tiny
+                height: $spacer-tiny
+            &.small
+                height: $spacer-small
+            &.medium
+                height: $spacer-medium
+
+
+

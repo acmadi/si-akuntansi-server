@@ -1,0 +1,25 @@
+<ul class="pagination">
+    <li ng-click='clickFunc("first")'>
+        <a>
+            <i class='fa fa-angle-double-left'></i>
+        </a>
+    </li>
+    <li ng-click='clickFunc("prev")'>
+        <a>
+            <i class='fa fa-angle-left'></i>
+        </a>
+    </li>
+    <li ng-repeat="p in pagingData.pages">
+        <a ng-class='{current: p == pagingData.current}' ng-click="clickFunc(p)">{{ p }}</a>
+    </li>
+    <li ng-click='clickFunc("next")'>
+        <a>
+            <i class='fa fa-angle-right'></i>
+        </a>
+    </li>
+    <li ng-click='clickFunc("last")'>
+        <a>
+            <i class='fa fa-angle-double-right'></i>
+        </a>
+    </li>
+</ul>

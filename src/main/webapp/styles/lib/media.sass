@@ -1,0 +1,20 @@
+// media bound
+$media-small: (0px, 640px)
+$media-medium: (641px, 1024px)
+$media-large: (1025px, -1)
+
+$screen: "screen"
+
+$landscape: "(orientation: landscape)"
+$portrait: "(orientation: portrait)"
+
+$upper-bound: nth($media-small, 2)
+$small-query: "#{$screen} and (max-width: #{$upper-bound})"
+
+$lower-bound: nth($media-medium, 1)
+$upper-bound: nth($media-medium, 2)
+$medium-query: "#{$screen} and (min-width:#{$lower-bound}) and (max-width:#{$upper-bound})"
+
+$lower-bound: nth($media-large, 1)
+$large-query: "#{$screen} and (min-width:#{$lower-bound})"
+

@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login - SiAkun</title>
+    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <!-- build:css({.tmp,app}) styles/main.css -->
-
     <link rel="stylesheet" href="#springUrl("/bower_components/foundation/css/normalize.css")">
     <link rel="stylesheet" href="#springUrl("/css/style.css")">
+    <link rel="stylesheet" href="#springUrl("/css/animate.css")">
 
     <!--<link href='css/work.css' rel='stylesheet'/>-->
     <!--<link rel="stylesheet" href="styles/custom/_sidebar.css">-->
@@ -18,14 +18,9 @@
 
     <script src="#springUrl("/bower_components/modernizr/modernizr.js")"></script>
     <!-- endbuild -->
-    <style>
-        #nav {
-            top: 100px;
-        }
-    </style>
 </head>
 <body class="antialiased hide-extras">
-Login Form
+
 
 <!--&lt;!&ndash;-- script --&ndash;&gt;-->
 <script src="#springUrl("/bower_components/jquery/jquery.js")"></script>
@@ -36,21 +31,52 @@ Login Form
 <script src="#springUrl("/bower_components/angular-resource/angular-resource.js")"></script>
 <script src="#springUrl("/bower_components/angular-route/angular-route.js")"></script>
 <script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-animate/angular-animate.js")"></script>
 <script src="#springUrl("/bower_components/angular-sanitize/angular-sanitize.js")"></script>
 <script src="#springUrl("/bower_components/angular-cookies/angular-cookies.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-router/release/angular-ui-router.js")"></script>
+<script src="#springUrl("/bower_components/angular-ui-utils/keypress/keypress.js")"></script>
+<script src="#springUrl("/bower_components/angular-local-storage/angular-local-storage.js")"></script>
 <!--endbuild-->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="#springUrl("/scripts/module.js")"></script>
-<script src="#springUrl("/scripts/functions/layout.js")"></script>
-<script src="#springUrl("/scripts/init.js")"></script>
-<!---->
-<script src="#springUrl("/scripts/controllers/main.js")"></script>
-<script src="#springUrl("/scripts/controllers/customer.js")"></script>
-<script src="#springUrl("/scripts/controllers/TopBarCtrl.js")"></script>
-<script src="#springUrl("/scripts/controllers/FooterCtrl.js")"></script>
-<!-- filter -->
+<script type='text/javascript'>
+    siakun.app = angular.module(siakun.appName, [
+                'ngRoute',
+                'ngCookies',
+                'ngResource',
+                'ngSanitize',
+//        'ngAnimate',
+                'ui.router',
+                'ui.keypress',
+                'LocalStorageModule'
+            ])
+            .constant('Config', {
+                appName: 'SiAkun',
+                root: '/accounting_exploded',
+                servletPath: '/accounting_exploded/app',
+                pageCount: 10
+            })
+
+</script>
+
+<!-- interceptor -->
+<script src="#springUrl("/scripts/factory/httpInterceptor.js")"></script>
+
+<!-- controllers -->
+<script src="#springUrl("/scripts/controllers/LoginCtrl.js")"></script>
+
+<!-- services -->
+<script src="#springUrl("/scripts/services/Util.js")"></script>
+<script src="#springUrl("/scripts/services/Dialog.js")"></script>
+
+<!-- filters -->
 <script src="#springUrl("/scripts/filters/absPath.js")"></script>
+
+<!-- directives -->
+<script src="#springUrl("/scripts/directives/focusMe.js")"></script>
+
 
 <!-- endbuild -->
 

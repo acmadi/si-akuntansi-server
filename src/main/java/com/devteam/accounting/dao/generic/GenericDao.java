@@ -39,5 +39,5 @@ public interface GenericDao<T, TId extends Serializable> {
 
     List<T> findAlls(int start, int count);
 
-    void evict(Currency entity);
+    void evict(T entity);
 }

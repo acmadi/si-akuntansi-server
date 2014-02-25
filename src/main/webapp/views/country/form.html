@@ -2,46 +2,81 @@
     <span>
         Negara
     </span>
-    &raquo;
+    &nbsp;
+    |
+    &nbsp;
     <span ng-if="data.record.id">
         Edit
     </span>
     <span ng-if="!data.record.id">
-        Baru
+        Tambah
     </span>
 </h1>
-<div>
-    <ul ng-show="data.globalErrors.length > 0">
-        <li class="error" ng-repeat='err in data.globalErrors'>
-            {{ err.message }}
-            <br/>
-            {{ err.detail }}
-        </li>
-    </ul>
-    <div>
-        <span class="label">ISO 2 :</span>
-        <span class="error" ng-show='data.errors.iso2.message.length > 0'>
-            {{ data.errors.iso2.message }}
-        </span>
-        <input type='text' ng-model='data.record.iso2' focus-me='startEdit'/>
 
+<div class="main form-grid">
+    <div class="row" ng-show="data.globalErrors.length > 0">
+        <div class="small-12 medium-12 large-12 columns">
+            <ul>
+                <li class="error" ng-repeat='err in data.globalErrors'>
+                    {{ err.message }}
+                    <br/>
+                    {{ err.detail }}
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div>
-        <span class="label">ISO 3 :</span>
-        <span class="error" ng-show='data.errors.iso3.message.length > 0'>
-            {{ data.errors.iso3.message }}
-        </span>
-        <input type='text' ng-model='data.record.iso3'/>
+    <div class="row">
+        <div class="small-12 medium-1 large-1 column">
+            <label for="iso2" class="left">ISO 2</label>
+        </div>
+        <div class="small-12  medium-3 large-3 column">
+            <input id='iso2' type='text' ng-model='data.record.iso2' focus-me='startEdit'/>
+        </div>
+        <div class="small-12  medium-8 large-8 column end">
+                    <span class="error" ng-show='data.errors.iso2.message.length > 0'>
+                        {{ data.errors.iso2.message }}
+                    </span>
+        </div>
+    </div>
 
+
+    <div class="row">
+        <div class="small-12 medium-1 large-1 column">
+            <label for="iso3" class="left">ISO 3</label>
+        </div>
+        <div class="small-12  medium-3 large-3 column">
+            <input id='iso3' type='text' ng-model='data.record.iso3'/>
+        </div>
+        <div class="small-12  medium-8 large-8 column end">
+            <span class="error" ng-show='data.errors.iso3.message.length > 0'>
+                {{ data.errors.iso3.message }}
+            </span>
+        </div>
     </div>
-    <div>
-        <span class="label">Nama :</span>
-        <span class="error" ng-show='data.errors.name.message.length > 0'>
-            {{ data.errors.name.message }}
-        </span>
-        <input type='text' ng-model='data.record.name'/>
+
+    <div class="row">
+        <div class="small-12 medium-1 large-1 column">
+            <label for="name" class="left">Nama</label>
+        </div>
+        <div class="small-12  medium-6 large-6 column">
+            <input id='name' type='text' ng-model='data.record.name'/>
+        </div>
+        <div class="small-12  medium-5 large-5 column end">
+            <span class="error" ng-show='data.errors.name.message.length > 0'>
+                {{ data.errors.name.message }}
+            </span>
+        </div>
     </div>
-    <button ng-click='save()'>Simpan</button>
-    <button ng-click='cancel()'>Batal</button>
+    <div class="row">
+        <div class="small-12 medium-1 large-1 column">
+            &nbsp;
+        </div>
+        <div class="small-12  medium-6 large-6 column end">
+            <button ng-click='save()' class='small radius'>Simpan</button>
+            <button ng-click='cancel()' class='small radius'>Batal</button>
+        </div>
+    </div>
+</div>
+</div>
 </div>

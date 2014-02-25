@@ -1,0 +1,57 @@
+/*
+Syntax error: Function export finished without @return
+        on line 9 of demo.sass
+
+4:     $modules: append($modules, $name)
+5: 
+6: @mixin navbar
+7:   background: #FFF
+8: 
+9: $modules: export($modules, "navbar")
+10: 
+11: @for $i from 1 through length($modules)
+12:   @include nth
+
+Backtrace:
+demo.sass:9
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/script/funcall.rb:230:in `block (2 levels) in perform_sass_fn'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/script/funcall.rb:228:in `catch'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/script/funcall.rb:228:in `block in perform_sass_fn'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:70:in `perform_arguments'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/script/funcall.rb:227:in `perform_sass_fn'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/script/funcall.rb:103:in `_perform'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/script/node.rb:40:in `perform'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:327:in `visit_variable'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `map'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/visitors/perform.rb:7:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/engine.rb:315:in `_render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/engine.rb:262:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:201:in `each'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/plugin.rb:81:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:432:in `watch_or_update'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:315:in `process_result'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:41:in `parse'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/lib/sass/exec.rb:21:in `parse!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.8/bin/sass:9:in `<top (required)>'
+C:/Ruby193/bin/sass:23:in `load'
+C:/Ruby193/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Function export finished without @return\A         on line 9 of demo.sass\A \A 4:     $modules: append($modules, $name)\A 5: \A 6: @mixin navbar\A 7:   background: #FFF\A 8: \A 9: $modules: export($modules, \"navbar\")\A 10: \A 11: @for $i from 1 through length($modules)\A 12:   @include nth"; }

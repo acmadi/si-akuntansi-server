@@ -1,0 +1,7 @@
+<ul class="pushbutton">
+    <li ng-repeat="value in options">
+        <a ng-class='{current: value == current}' ng-click='onSelect(value)'>
+            {{ value }}
+        </a>
+    </li>
+</ul>

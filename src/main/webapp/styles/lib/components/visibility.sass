@@ -1,0 +1,109 @@
+@mixin visibility
+
+    @media #{$small-query}
+        .show-for-small
+            display: inherit !important
+
+        .hide-for-small
+            display: none !important
+
+        table
+            &.show-for-small,
+            &.hide-for-medium,
+            &.hide-for-large
+                display: table
+        thead
+            &.show-for-small,
+            &.hide-for-medium,
+            &.hide-for-large
+                display: table-header-group !important
+        tbody
+            &.show-for-small,
+            &.hide-for-medium,
+            &.hide-for-large
+                display: table-row-group !important
+        tr
+            &.show-for-small,
+            &.hide-for-medium,
+            &.hide-for-large
+                display: table-row !important
+        td,
+        th
+            &.show-for-small,
+            &.hide-for-medium,
+            &.hide-for-large
+                display: table-cell !important
+
+    @media #{$medium-query}
+        .hide-for-medium
+            display: none !important
+
+        .show-for-medium
+            display: inherited !important
+
+        table
+            &.hide-for-small,
+            &.show-for-medium,
+            &.hide-for-large
+                display: table
+        thead
+            &.hide-for-small,
+            &.show-for-medium,
+            &.hide-for-large
+                display: table-header-group !important
+
+        tbody
+            &.hide-for-small,
+            &.show-for-medium,
+            &.hide-for-large
+                display: table-row-group !important
+
+        tr
+            &.hide-for-small,
+            &.show-for-medium,
+            &.hide-for-large
+                display: table-row !important
+        td,
+        th
+            &.hide-for-small,
+            &.show-for-medium,
+            &.hide-for-large
+                display: table-cell !important
+
+    @media #{$large-query}
+        .show-for-large
+            display: inherit !important
+
+        .hide-for-large
+            display: none !important
+
+        table
+            &.hide-for-small,
+            &.hide-for-medium,
+            &.show-for-large
+                display: table
+        thead
+            &.hide-for-small,
+            &.hide-for-medium,
+            &.show-for-large
+                display: table-header-group !important
+
+        tbody
+            &.hide-for-small,
+            &.hide-for-medium,
+            &.show-for-large
+                display: table-row-group !important
+
+        tr
+            &.hide-for-small,
+            &.hide-for-medium,
+            &.show-for-large
+                display: table-row !important
+
+        td,
+        th
+            &.hide-for-small,
+            &.hide-for-medium,
+            &.show-for-large
+                display: table-cell !important
+

@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Dynamic Drive: CSS Bottom Frame Layout</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link href="../styles/normalize.css" type="text/css" rel="stylesheet"/>
+    <link href="../styles/style.css" type="text/css" rel="stylesheet"/>
+    <link href="../vendor/font-awesome/font-awesome.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="topbar fixed">
+    <section class='section'>
+        <nav class="dropdown">
+            <ul>
+                <li class="divider">&nbsp;</li>
+                <li>
+                    <a href="#">
+                        <i class='fa fa-bars fa-pad fa-2x fa-pad-right-halfem fa-color-white'></i> My App
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <section class='section pull-right hide-for-small'>
+        <nav class="dropdown">
+            <ul>
+                <li class="divider">&nbsp;</li>
+                <li>
+                    <a href="#">
+                        <i class='fa fa-home fa-pad fa-pad-right-1em'></i>
+                        Home
+                    </a>
+                </li>
+                <li class="divider">&nbsp;</li>
+                <li class="hide-for-small show-for-medium show-for-large">
+                    <a href="#">
+                        <i class='fa fa-calendar fa-pad fa-pad-right-1em'></i>
+                        Tutorials
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-calendar fa-pad fa-pad-right-1em'></i>
+                                Photoshop
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                                Illustrator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-tasks fa-pad fa-pad-right-1em'></i>
+                                Web Design
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider hide-for-small show-for-medium show-for-large">&nbsp;</li>
+                <li>
+                    <a href="#">Articles</a>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">User Experience</a></li>
+                    </ul>
+                </li>
+                <li class="divider">&nbsp;</li>
+                <li><a href="#">Inspiration</a></li>
+                <li class="button">
+                    <button class="radius">
+                        <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                        Button
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</div>
+<div class="sidebar fixed">
+</div>
+<div class="main grid">
+<div class="toolbar radius">
+    <button class="radius">
+        <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>Tambah
+    </button>
+    <button class="ok radius">
+        <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>Tambah
+    </button>
+    <button class="important radius">
+        <i class='fa fa-glass fa-pad fa-pad-right-1em'></i>Tambah
+    </button>
+    <button class="cancel radius">
+        <i class='fa fa-glass fa-pad fa-pad-right-1em'></i>Tambah
+    </button>
+</div>
+<div class="spacer vertical tiny"></div>
+<table class="zebra">
+    <thead>
+    <tr>
+        <th class="indicator">
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </th>
+
+        <th>
+            Col 1&nbsp;<i class='fa fa-sort fa-pull-right'></i>
+        </th>
+        <th>
+            Col 2&nbsp;<i class='fa fa-sort fa-pull-right'></i>
+
+        </th>
+        <th>
+            Col 3&nbsp;<i class='fa fa-sort fa-pull-right'></i>
+        </th>
+        <th>Col 4&nbsp;<i class='fa fa-sort fa-pull-right'></i></th>
+        <th>Col 5&nbsp;<i class='fa fa-sort fa-pull-right'></i></th>
+    </tr>
+    </thead>
+    <tbody style="height: 100px;">
+
+    <tr>
+        <td class='indicator'>
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+
+    <tr>
+        <td class='indicator'>
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'>
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'>
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'>
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'>
+            <span class="important"></span>
+            <span class="primary"></span>
+            <span class="ok"></span>
+            <span class="cancel"></span>
+        </td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr>
+        <td class='indicator'></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr class="selected">
+        <td class='indicator'></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    <tr class="selected">
+        <td class='indicator'></td>
+        <td>Cell 1</td>
+        <td>Cell 2</td>
+        <td>Cell 3</td>
+        <td>Cell 4</td>
+        <td>Cell 5</td>
+    </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="column large-6 medium-6 small-12">
+        <ul class="pagination">
+            <li>
+                <a href="#"><i class='fa fa-angle-double-left'></i>&nbsp;</a>
+            </li>
+            <li>
+                <a href="#"><i class='fa fa-angle-left'></i>&nbsp;</a>
+            </li>
+            <li><a href="#" class="current">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li>
+                <a href="#">&nbsp;<i class='fa fa-angle-right'></i></a>
+            </li>
+            <li>
+                <a href="#">&nbsp;<i class='fa fa-angle-double-right'></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="column large-6 medium-6 small-12" style="text-align: right">
+        <ul class="pagination">
+            <li class="spacer"></li>
+            <li>
+            <span>
+                ke hal&nbsp;:
+            <select>
+                <option value="1">1</option>
+                <option value="1">5</option>
+                <option value="1">10</option>
+                <option value="1">16</option>
+            </select>
+                </span>
+            </li>
+            <li class="spacer"></li>
+            <li>
+            <span>
+                baris per hal&nbsp;:
+            <select>
+                <option value="1">1</option>
+                <option value="1">5</option>
+                <option value="1">10</option>
+                <option value="1">16</option>
+            </select>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="spacer vertical"></div>
+
+</div>
+<br/>
+
+<div class="bottombar fixed">Bottom bar</div>
+</body>
+</html>

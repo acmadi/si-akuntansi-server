@@ -1,0 +1,107 @@
+// We use these to build padding for buttons.
+
+$button-font-family: $common-font-family
+$button-font-color: white
+
+$button-font-small: 0.75rem
+$button-font-medium: 0.9rem
+$button-font-large: 1rem
+
+$button-font-size: $button-font-small
+$button-font-weight: normal
+$button-font-align: center
+$button-text-shadow: -1px 1px 1px rgba(66, 66, 66, 0.6)
+$button-active-text-shadow: 0px 0px 1px rgba(66, 66, 66, 0.6)
+$button-line-height: 1.5em
+
+$button-box-shadow: 0px 1px 8px #AAA
+
+$button-darken-factor: 3
+$button-active-darken-factor: 9
+
+$button-margin: 0 0 0 0
+$button-padding: rem-to-px(0.25rem) rem-to-px(0.5rem)
+$button-border: 0px
+$button-border-radius: 0.3em
+
+$button-box-shadow-x: 0
+$button-box-shadow-y: 0.2em
+$button-box-shadow-size: 0.5em
+$button-box-transparent-factor: 0.6
+
+$button-disabled-opacity: 0.7
+
+$button-primary-bg: $color-primary
+$button-ok-bg: $color-success
+$button-cancel-bg: $color-alert
+$button-important-bg: $color-important
+
+%button-base
+    min-width: 6em
+    cursor: $cursor-pointer
+    line-height: normal
+    position: relative
+    text-decoration: none
+    font-family: $button-font-family
+    font-weight: $button-font-weight
+    text-align: $button-font-align
+    background-color: $button-primary-bg
+    border: $button-border
+    margin: $button-margin
+    padding: $button-padding
+    color: $button-font-color
+    line-height: $button-line-height
+    font-size: $button-font-size
+    font-weight: $button-font-weight
+    text-align: $button-font-align
+    text-shadow: $button-text-shadow
+    outline: none
+
+@mixin buttons
+    button
+        @extend %button-base
+
+        &.radius
+            +border-radius($button-border-radius)
+
+        &.small
+            font-size: $button-font-small
+        &.medium
+            font-size: $button-font-medium
+        &.large
+            font-size: $button-font-large
+
+        &:focus, &:hover
+            background-color: darken($button-primary-bg, $button-darken-factor)
+            box-shadow: $button-box-shadow
+
+        &:active
+            background-color: darken($button-primary-bg, $button-active-darken-factor)
+            text-shadow: $button-active-text-shadow
+
+        &.ok
+            background-color: $button-ok-bg
+            &:focus, &:hover
+                background-color: darken($button-ok-bg, $button-darken-factor)
+                box-shadow: $button-box-shadow
+
+            &:active
+                background-color: darken($button-ok-bg, $button-active-darken-factor)
+
+        &.cancel
+            background-color: $button-cancel-bg
+            &:focus, &:hover
+                background-color: darken($button-cancel-bg, $button-darken-factor)
+                box-shadow: $button-box-shadow
+
+            &:active
+                background-color: darken($button-cancel-bg, $button-active-darken-factor)
+        &.important
+            background-color: $button-important-bg
+            &:focus, &:hover
+                background-color: darken($button-important-bg, $button-darken-factor)
+                box-shadow: $button-box-shadow
+
+            &:active
+                background-color: darken($button-important-bg, $button-active-darken-factor)
+

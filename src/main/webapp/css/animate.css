@@ -1,14 +1,13 @@
-.anim-fade.ng-enter, .anim-fade.ng-leave, .anim-fade.ng-move {
-  -webkit-transition: 0.3s linear all;
-  transition: 0.3s linear all; }
-.anim-fade.ng-enter {
+.anim-fade.ng-show, .anim-fade.ng-hide, .anim-fade.ng-move {
+  -webkit-transition: 1000ms linear all;
+  transition: 1000ms linear all; }
+.anim-fade.ng-show {
   opacity: 0; }
-  .anim-fade.ng-enter.ng-enter-active {
+  .anim-fade.ng-show.ng-enter-active {
     opacity: 1; }
-.anim-fade.ng-leave {
-  opacity: 0;
-  display: none; }
-  .anim-fade.ng-leave.ng-leave-active {
+.anim-fade.ng-hide {
+  opacity: 0; }
+  .anim-fade.ng-hide.ng-leave-active {
     opacity: 1; }
 .anim-fade.ng-move {
   opacity: 1; }

@@ -1,0 +1,67 @@
+// sidebar
+
+$sidebar-bg: lighten($topbar-bg, 30)
+$sidebar-font-color: #FFF
+$sidebar-font-family: $common-font-family
+$sidebar-padding: .4em .4em
+
+$sidebar-fixed-top: 37px
+$sidebar-fixed-bottom: $bottombar-line-height
+
+$sidebar-width-small: 2em
+$sidebar-width-medium: 12em
+$sidebar-width-large: 12em
+
+$sidebar-item-hover-bg: $color-alert
+
+@mixin sidebar
+    .sidebar
+        border-left: 3px solid #333
+        background: $sidebar-bg
+        color: $sidebar-font-color
+        font-size: 0.75em
+        padding: $sidebar-padding
+        display: inline-block
+        box-shadow: 4px 0px 16px #DDD
+
+        @media #{$small-query}
+            width: $sidebar-width-small
+            bottom: 0
+        @media #{$medium-query}
+            width: $sidebar-width-medium
+            bottom: $bottombar-line-height
+        @media #{$large-query}
+            width: $sidebar-width-large
+            bottom: $bottombar-line-height
+
+        &.fixed
+            position: fixed
+            top: $sidebar-fixed-top
+
+        ul
+            list-style: none
+            margin: 0 0
+            padding: 0 0
+            li
+                display: block
+                margin: 0 0
+                padding: 0 0
+                margin-bottom: .25em
+
+                a
+                    display: block
+                    padding: .75em 0.1em .75em .1em
+                    text-decoration: none
+                    color: #DDD
+                    border-radius: .5em
+
+                    &:hover
+                        background: $sidebar-item-hover-bg
+                        color: #FFF
+                        box-shadow: inset 0px 0px 8px transparentize(#888, 0.5)
+                    img
+                        padding: 0.0em 0.0em
+                        float: left
+                        margin-left: .25em
+                        margin-right: .75em
+

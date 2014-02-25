@@ -1,0 +1,12 @@
+@import ../../../../../bourbon/bourbon
+
+@mixin clearfix
+    zoom: 1
+    &:before, &:after
+        content: ""
+        display: table
+    &:after
+        clear: both
+
+@mixin border-radius($radius)
+    @include prefixer(border-radius, $radius, spec)

@@ -1,0 +1,22 @@
+$body-bg-color: $bg-primary
+
+@mixin base
+    *
+        @include box-sizing(border-box)
+        -webkit-font-smoothing: antialiased
+        text-shadow: 1px 1px 1px rgba(#CCCCCC, 0.2)
+        font-smooth: always
+        font-family: $common-font-family
+
+    html
+        font-size: $html-font-size
+
+    body
+        background-color: $body-bg-color
+        margin: 0 0 0 0
+
+    hr
+        border-left: none
+        border-right: none
+        border-top: none
+        border-bottom: 1px solid #DDD

@@ -1,19 +1,18 @@
 .anim-fade
-  &.ng-enter,
-  &.ng-leave,
+  &.ng-show,
+  &.ng-hide,
   &.ng-move
-    -webkit-transition: 0.3s linear all
-    transition: 0.3s linear all
+    -webkit-transition: 1000ms linear all
+    transition: 1000ms linear all
 
-  &.ng-enter
+  &.ng-show
     opacity: 0.0
     //position: relative
     &.ng-enter-active
       opacity: 1.0
 
-  &.ng-leave
+  &.ng-hide
     opacity: 0.0
-    display: none
     //position: relative
     &.ng-leave-active
       opacity: 1.0

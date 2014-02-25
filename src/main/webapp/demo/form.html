@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link href="../styles/normalize.css" type="text/css" rel="stylesheet"/>
+    <link href="../vendor/font-awesome/font-awesome.css" type="text/css" rel="stylesheet"/>
+    <link href="../styles/style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+<div class="topbar fixed">
+    <section class='section'>
+        <nav class="dropdown">
+            <ul>
+                <li class="divider">&nbsp;</li>
+                <li>
+                    <a href="#">
+                        <i class='fa fa-bars fa-pad fa-2x fa-pad-right-halfem fa-color-white'></i> My App
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <section class='section pull-right hide-for-small'>
+        <nav class="dropdown">
+            <ul>
+                <li class="divider">&nbsp;</li>
+                <li>
+                    <a href="#">
+                        <i class='fa fa-home fa-pad fa-pad-right-1em'></i>
+                        Home
+                    </a>
+                </li>
+                <li class="divider">&nbsp;</li>
+                <li class="hide-for-small show-for-medium show-for-large">
+                    <a href="#">
+                        <i class='fa fa-calendar fa-pad fa-pad-right-1em'></i>
+                        Tutorials
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-calendar fa-pad fa-pad-right-1em'></i>
+                                Photoshop
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                                Illustrator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class='fa fa-tasks fa-pad fa-pad-right-1em'></i>
+                                Web Design
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider hide-for-small show-for-medium show-for-large">&nbsp;</li>
+                <li>
+                    <a href="#">Articles</a>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">User Experience</a></li>
+                    </ul>
+                </li>
+                <li class="divider">&nbsp;</li>
+                <li><a href="#">Inspiration</a></li>
+                <li class="button">
+                    <button class="radius">
+                        <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                        Button
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</div>
+
+<div class="sidebar fixed">
+</div>
+
+<div class="main">
+    <div class="toolbar radius">
+        <button class="radius">
+            <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>Tambah
+        </button>
+        <button class="ok radius">
+            <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>Tambah
+        </button>
+        <button class="important radius">
+            <i class='fa fa-glass fa-pad fa-pad-right-1em'></i>Tambah
+        </button>
+        <button class="cancel radius">
+            <i class='fa fa-glass fa-pad fa-pad-right-1em'></i>Tambah
+        </button>
+    </div>
+
+    <div class="form-grid">
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column">
+                <label>Label 1</label>
+            </div>
+            <div class="small-12 medium-5 large-4 column end">
+                <input type='text' placeholder='type here...'/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column">
+                <label class="right">Label 1</label>
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <input type='text' placeholder='type here...'/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column">
+                <label class="error">Label 1</label>
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <input type='text' placeholder='type here...'/>
+                <span class="error">
+                    <i class='fa fa-exclamation fa-pad fa-pad-right-halfem'></i>
+                    tidak boleh kosong
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column right">
+                <label>Label 1</label>
+            </div>
+            <div class="small-12 medium-3 large-3 column">
+                <input type='text' placeholder='type here...' value="Text value" disabled='disabled'/>
+            </div>
+            <div class="small-12 medium-1 large-1 column">
+                <label class="right">Label 1</label>
+            </div>
+            <div class="small-12 medium-2 large-2 column end">
+                <input type='text' placeholder='type here...' value="Text value" disabled='disabled'/>
+            </div>
+        </div>
+        <hr/>
+        <!--- textarea -->
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column">
+                <label class="right">Label 1</label>
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <textarea placeholder='type here...'></textarea>
+            </div>
+        </div>
+
+        <!--- textarea -->
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column">
+                <label class="right">Select</label>
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <select>
+                    <option value="">value 1</option>
+                    <option value="">value 2</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- radio button -->
+        <div class="row">
+            <div class="small-1 medium-1 large-1 column">
+                <label>Radio Button</label>
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <input type='radio' id='radio1' name='radio1' value="1"/> <label for='radio1'>Radio button</label>
+                <input type='radio' id='radio2' name='radio1' value="2"/> <label for='radio2'>Radio button</label>
+                <input type='radio' id='radio3' name='radio1' value="3" disabled='disabled'/> <label for='radio3'>Radio
+                button</label>
+            </div>
+        </div>
+
+        <!-- checkbox  -->
+        <div class="row">
+            <div class="small-1 medium-1 large-1 column">
+                <label>Radio Button</label>
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <input type='checkbox' id='checkbox1' name='checkbox1' value="1"/> <label for='checkbox1'>Checkbox
+                button</label>
+                <input type='checkbox' id='checkbox2' name='checkbox2' value="2"/> <label for='checkbox2'>Checkbox
+                button</label>
+                <input type='checkbox' id='checkbox3' name='checkbox3' value="2" disabled='disabled'/> <label
+                    for='checkbox3'>Checkbox button</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="small-12 medium-1 large-1 column">
+                &nbsp;
+            </div>
+            <div class="small-12 medium-6 large-6 column end">
+                <button class="radius">
+                    <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                    Simpan
+                </button>
+                <button class="radius ok">
+                    <i class='fa fa-bar-chart-o fa-pad fa-pad-right-1em'></i>
+                    Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="spacer vertical"></div>
+
+</div>
+<br/>
+
+<div class="bottombar fixed">Bottom bar</div>
+</div>
+</body>
+</html>

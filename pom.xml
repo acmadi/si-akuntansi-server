@@ -23,6 +23,7 @@
 
     <properties>
         <spring.version>3.2.6.RELEASE</spring.version>
+        <!--<spring.version>4.0.2.RELEASE</spring.version>-->
         <springSecurity.version>3.2.0.RELEASE</springSecurity.version>
         <hibernate.version>4.2.8.Final</hibernate.version>
         <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>

@@ -1,0 +1,10 @@
+@function strip-unit($num)
+    @return $num / ($num * 0 + 1)
+
+@function rem-to-px($value, $base:$html-font-size)
+    $result: strip-unit($value)*strip-unit($base)
+    @return #{$result}px
+
+@function px-to-rem($values, $base:$html-font-size)
+    $result: strip-unit($value) / strip-unit($base-value) * 1rem
+    @return $result
